@@ -17,6 +17,7 @@ This framework includes guidelines and core documents for creating specification
 - **This README** — Overview of the entire system
 - `Plan.md` — Complete workflow instructions and methodology
 - `work/Feature.md` — Instructions for writing lean, outcome-oriented feature specifications
+- `language/Go.md` — Go-specific guidelines (module setup, tooling, conventions)
 - `work/00_Project.md` — (created per project) top-level project plan
 - `work/01_authentication.md`, etc. — (created per feature) feature specifications
 - `Build.md` — Tooling guidelines (currently empty)

@@ -43,6 +43,7 @@ That file provides:
 
 ### Language-Specific Guidelines
 - When this framework is used with a specific programming language, guidelines from `language/[language].md` apply when present.
+- For Go projects: follow `language/Go.md` (module setup, tooling, conventions, invariants).
 
 ### Cross-Feature Relationships
 - Cross-feature dependencies and ordering principles are introduced when they become ambiguity sources; these may be deferred if not genuinely necessary for understanding individual features
