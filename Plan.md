@@ -7,7 +7,7 @@ Human remains deeply involved throughout planning.
 Note: This document describes how to build specifications for an AI agent, not a finished product other than those specifications.
 
 ## Intent
-Produce planning and feature specifications with enough clear, precise, descriptive detail that an AI can implement the product correctly on the first attempt with minimal guesswork and no risk of incorrect features or behavior.
+Produce planning and feature specifications with enough clear, precise, descriptive detail that an AI can implement the product correctly on the first attempt with minimal guesswork and maximum freedom for optimal implementation choices.
 
 ## Spec Style Guide
 - Plaintext Markdown only
@@ -17,12 +17,13 @@ Produce planning and feature specifications with enough clear, precise, descript
 - Bullets for lists; numbered for sequences
 - Strong descriptive text of expected behavior, data flows, edge cases, invariants — enough to eliminate ambiguity for implementation
 - Invariant section must contain: each invariant provably true given fundamental constraints, no unstated assumptions or dependencies, no implicit contradictions
+- Explicitly grant AI freedom in non-critical decisions (see work/Feature.md)
 - This framework assumes invariants will be scrutinized for these qualities during the Critically Assess step
 
 ## Document Storage & Naming
-- All planning specifications live in the `specs/` folder at the root of the project
-- `00_Project.spec` — top-level project plan / overall specification
-- `01_Authentication.spec`, `02_User-Profile.spec`, etc. — phase- or feature-specific specifications
+- All planning specifications live in the `work/` folder at the root of the project
+- `work/00_Project.md` — top-level project plan / overall specification
+- `work/01_authentication.md`, `work/02_user-profile.md`, etc. — feature-specific specifications
 - Sequential numbering from 00; descriptive kebab-case names after number
 
 ## Completion Statuses
@@ -30,31 +31,18 @@ Produce planning and feature specifications with enough clear, precise, descript
 - **Complete** — finished, reviewed, approved by human
 - Update status only on completion (no "In Progress")
 
-## Feature Specification Template
-When a feature requires precise, unambiguous descriptive requirements for implementation, copy and adapt the template from:
-`template/Feature.spec`
+## Feature Specification Instructions
+For each feature, create a document in `work/` (e.g., `work/01_authentication.md`) following the guidance in `work/Feature.md`.
 
-The template includes these required sections (all must be completed when relevant to the feature):
-- **Objective** — One-sentence goal description
-- **Invariants** — Non-negotiable truths about system behavior or constraints (with optional rationale)
-- **Functional Requirements** — SHALL statements with trigger → behavior → outcome structure, organized by:
-  - User-Visible Behaviors
-  - Data Requirements
-  - Security & Privacy (if applicable)
-- **Acceptance Scenarios** — Gherkin-style scenarios describing what constitutes sufficient completeness for human approval
-- **Edge Cases & Error Handling** — Required documentation of significant exception conditions and expected responses
-- **Non-Functional Requirements** — Performance, scalability, reliability, and compatibility constraints
-- **Data Model & State Changes** — Description of affected data entities and state transitions (no implementation details)
-- **Known Constraints & Assumptions** — Explicit documentation of limiting conditions and verified assumptions
-- **Validation Approach** — Descriptive methods for verifying correctness without code
-- **Completion Checklist** — Self-check before marking Complete
-
-Use all sections as needed; every section that applies to the feature must be completed.
+That file provides:
+- Core principles (outcome focus, minimal constraints, explicit AI freedom)
+- Required sections (Objective, Invariants & Hard Constraints, Required Behaviors & Verifications, etc.)
+- Emphasis on unambiguous yet non-prescriptive detail sufficient for correct first-pass AI implementation
 
 ## General Guidelines
 
 ### Language-Specific Guidelines
-- When this framework is used with a specific programming language, guidelines from `language/[language].spec` apply when present.
+- When this framework is used with a specific programming language, guidelines from `language/[language].md` apply when present.
 
 ### Cross-Feature Relationships
 - Cross-feature dependencies and ordering principles are introduced when they become ambiguity sources; these may be deferred if not genuinely necessary for understanding individual features
@@ -62,7 +50,7 @@ Use all sections as needed; every section that applies to the feature must be co
 ## Project Workflow
 
 ### Phase 0: Research & Planning
-**Product**: Project planning spec `specs/00_Project.spec`
+**Product**: Project planning spec `work/00_Project.md`
 
 **Scope**: Establish high-level goals, key features, non-functional requirements, invariants, feasibility assessment, and phase breakdown. Produce precise descriptive requirements only. No implementation details or code.
 
@@ -79,7 +67,7 @@ Use all sections as needed; every section that applies to the feature must be co
 - This process is conducted closely with a human; if scrutiny reveals intractable ambiguity, the human should determine whether to revise scope, simplify specs, or defer the feature.
 - Limit to a maximum of 3 total cycles (initial + up to 2 repeats).
 
-**After refinement complete (00_Project.spec ready):**
+**After refinement complete (work/00_Project.md ready):**
 - Record any major decisions or adjustments in the relevant spec(s)
 - Mark as **Complete**
 - Use this specification as the baseline for all Phase 1+ feature refinement
@@ -91,26 +79,17 @@ List significant problems, research gaps, unnecessary resource usage, extra iter
 
 ### Phase 1+: Feature Refinement
 
-**Product**: Feature specification (specs/xx_Feature.spec)
+**Product**: Feature specification (work/xx_feature.md)
 
-**Scope**: Deepen and finalize detailed descriptive specifications for each feature identified in `00_Project.spec`. Preserve high-level scope and boundaries; add precision through research, invariants, edge cases, and scenarios only. No implementation or code.
+**Scope**: Deepen and finalize detailed descriptive specifications for each feature identified in `work/00_Project.md`. Preserve high-level scope and boundaries; add precision through research, invariants, edge cases, and scenarios only where ambiguity exists. No implementation or code.
 
 **Process**:
 
-1. **Assess** — review high-level scope from 00_Project.spec, current knowledge gaps, constraints
+1. **Assess** — review high-level scope from `work/00_Project.md`, current knowledge gaps, constraints
 2. **Research & Elaborate** — investigate domain details, data flows, security/privacy needs, performance invariants; draft/refine descriptive outcomes (no code)
 3. **Create Spec**
-  - Complete all relevant sections from the Feature-Spec-Template:
-    - Objective (one-sentence goal)
-    - Invariants (non-negotiable truths with optional rationale)
-    - Functional Requirements (SHALL statements organized by user-visible behaviors, data requirements, security/privacy)
-    - Acceptance Scenarios (Gherkin-style scenarios for human approval criteria)
-    - Edge Cases & Error Handling (significant exception conditions and expected responses)
-    - Non-Functional Requirements (performance, scalability, reliability, compatibility constraints)
-    - Data Model & State Changes (affected entities and transitions without implementation details)
-    - Known Constraints & Assumptions (limiting conditions and verified assumptions)
-    - Validation Approach (descriptive methods for verifying correctness without code)
-  - Acceptance scenarios should focus primarily on what constitutes sufficient completeness for human acceptance of the current spec state, rather than an exhaustive catalog of test cases.
+   - Follow the Required Content & Guidance in `work/Feature.md`. Complete only sections genuinely needed for unambiguous implementation.
+   - Acceptance scenarios should focus primarily on what constitutes sufficient completeness for human acceptance of the current spec state, rather than an exhaustive catalog of test cases.
 4. **Test (Descriptive)** — define verification approaches: describe test cases, expected behaviors, failure modes (still no code/tests written)
 5. **Critically Assess** — check for ambiguity, completeness, contradictions
 
@@ -121,7 +100,7 @@ List significant problems, research gaps, unnecessary resource usage, extra iter
 **After refinement complete (feature spec ready):**
 - Record any major decisions or adjustments in the relevant spec(s)
 - Mark as **Complete**
-- Optionally update `00_Project.spec` with cross-feature insights or scope adjustments
+- Optionally update `work/00_Project.md` with cross-feature insights or scope adjustments
 - Proceed to implementation in a separate session/tool (outside this planning framework)
 
 **Phase Mini-Retrospective**  
@@ -131,7 +110,7 @@ List significant problems, research gaps, extra iterations, unplanned human inte
 
 ### Final Phase: Retrospective
 
-**Product**: Retrospective document (`specs/99_Retrospective.spec`)
+**Product**: Retrospective document (`work/99_Retrospective.md`)
 
 **Scope**: Holistic review of process, collaboration, output quality, and framework effectiveness
 
@@ -144,7 +123,7 @@ List significant problems, research gaps, extra iterations, unplanned human inte
 **Status**: [Pending/Complete]
 
 ## Unplanned / Out-of-Scope Work
-List explicitly in `specs/00_Project.spec` (and phase/feature specs if relevant):
+List explicitly in `work/00_Project.md` (and feature specs if relevant):
 - Features/capabilities deliberately excluded
 - Work outside current scope
 - Desired features deferred to future projects
@@ -152,4 +131,5 @@ List explicitly in `specs/00_Project.spec` (and phase/feature specs if relevant)
 ## Notes
 - Human deeply involved in planning and review
 - Planning specifications must be unambiguous and detailed enough for correct first-pass implementation by AI
+- Use `work/Feature.md` as the canonical guide for feature specs to keep them lean and outcome-oriented
 - Refine framework iteratively via phase mini-retrospectives and final retrospective

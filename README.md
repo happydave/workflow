@@ -4,19 +4,21 @@
 
 This framework provides a structured approach for documenting project plans and feature specifications with precise, unambiguous language that enables correct implementation on first attempt.
 
-The goal is to produce specifications so detailed and clear that an AI (or another human) can implement features correctly without guesswork or misalignment.
+The goal is to produce specifications so detailed and clear that an AI (or another human) can implement features correctly without guesswork or misalignment, while leaving non-critical decisions open for optimal choices.
 
 ## About
 
-Important: This repository contains meta-instructions.  It is a guide for creating specifications, not a finished software product. We are currently focusing on refining this framework to ensure AI agents can understand and implement features correctly from the outset. Think of it like building the instruction manual before assembling the machine. At this stage, we are concerned with defining a consistent, unambiguous process - not specific feature requirements yet.
+Important: This repository contains meta-instructions. It is a guide for creating specifications, not a finished software product. We are currently refining this framework to ensure AI agents can understand and implement features correctly from the outset. Think of it like building the instruction manual before assembling the machine. At this stage, we are concerned with defining a consistent, unambiguous process — not specific feature requirements yet.
 
 ## Document Structure
 
-This framework includes templates and guidelines for creating specification documents:
+This framework includes guidelines and core documents for creating specifications:
 
 - **This README** — Overview of the entire system
 - `Plan.md` — Complete workflow instructions and methodology
-- `template/Feature.spec` — Template for feature-level specifications
+- `work/Feature.md` — Instructions for writing lean, outcome-oriented feature specifications
+- `work/00_Project.md` — (created per project) top-level project plan
+- `work/01_authentication.md`, etc. — (created per feature) feature specifications
 - `Build.md` — Tooling guidelines (currently empty)
 
 ## Using This Framework
@@ -25,19 +27,18 @@ This framework includes templates and guidelines for creating specification docu
 
 When documenting an actual project's plans:
 
-1. **Start with project-level specs**
-   - Write `00_Project.spec` with overall goals, invariants, features, and phases
-   - Use plain Markdown with precise, objective language
-   - Include invariants, functional requirements (SHALL statements), acceptance scenarios, edge cases
+1. **Start with the project-level plan**  
+   Create `work/00_Project.md` with overall goals, key features, invariants, non-functional constraints, and phase breakdown.  
+   Use plain Markdown with precise, objective language.
 
-2. **Create feature specifications**
-   - Copy `template/Feature.spec`
-   - Fill objectives, invariants, requirements, scenarios for each feature
-   - Avoid code; describe behavior completely
+2. **Create feature specifications**  
+   For each feature, create a file in `work/` (e.g., `work/01_authentication.md`).  
+   Follow the guidance in `work/Feature.md` to include only what is necessary: objective, invariants, behaviors & verifications, edge cases, explicit AI freedom, etc.  
+   Avoid code; describe outcomes and constraints clearly while granting freedom on non-critical decisions.
 
-3. **Follow the workflow**
-   - Research and elaborate → create spec → test descriptively → critically assess
-   - Maximum 3 refinement cycles before marking complete
+3. **Follow the workflow**  
+   Research & elaborate → create spec → test descriptively → critically assess.  
+   Maximum 3 refinement cycles before marking complete.
 
 ## Specification Style
 
@@ -47,22 +48,26 @@ When documenting an actual project's plans:
 - Concise, objective, strictly descriptive
 - Minimal rhetorical flourish
 - No code blocks unless explaining specification format
+- Explicitly grant AI freedom in non-critical areas (see `work/Feature.md`)
 
 ## Expected Output Quality
 
 A healthy project specification satisfies:
-- Every requirement has clear trigger conditions and outcomes
-- Invariants eliminate ambiguity on fundamental constraints
-- Acceptance scenarios provide concrete validation points
-- Edge cases document behavior across all exceptions
-- No dependencies on unstated assumptions or context
+
+- Clear objective and non-negotiable invariants
+- Behaviors and verifications sufficient to confirm correctness without guesswork
+- Edge cases and error responses covered where significant
+- No unstated assumptions or contradictions
+- Critical decisions stated; non-critical ones left open
 - Human and AI remain collaboratively involved throughout refinement
 
 ## Current State
 
-This framework is incomplete:
+This framework is evolving:
+
 - `Build.md` empty (tooling documentation)
-- No example specifications demonstrating full workflow
+- `work/Feature.md` newly added as the single source of truth for feature specs
+- No full example projects yet demonstrating the workflow end-to-end
 - No retrospective documenting lessons learned
 
 The framework can be used ad hoc, but its full value requires committed application with iteration.
