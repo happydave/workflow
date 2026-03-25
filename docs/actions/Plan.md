@@ -35,8 +35,10 @@ The presence of `plan.md` in a ticket folder indicates the ticket has been plann
 
 ## Completion Statuses
 
-- **Pending** — not started or incomplete
-- **Complete** — finished, reviewed, approved by human
+These statuses track the readiness of the plan document itself, not the ticket's lifecycle position (which is determined by its folder location in `docs/pending/` or `docs/completed/`).
+
+- **Pending** — the plan is not yet started, or is in progress and not ready for implementation
+- **Complete** — the plan is finished, reviewed, and approved by a human; ready for implementation
 - Update status only on completion (no "In Progress")
 
 ## Feature Plan Instructions

@@ -44,7 +44,7 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 ## Security & Safety Invariants
 - Never use the `unsafe` package unless explicitly required in a feature plan.
 - Validate all untrusted input (use `net/http`, middleware, or approved libraries).
-- Use `crypto/rand` only when needed for cryptographic randomness; otherwise use `math/rand`.
+- Default to `math/rand` for general-purpose randomness. Use `crypto/rand` only when the feature plan explicitly requires cryptographic randomness (e.g., token generation, secret keys). Security-sensitive usage of either package is reviewed by security specialists.
 
 ## Explicit AI Freedom
 The AI has full discretion over:

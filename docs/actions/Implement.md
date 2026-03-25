@@ -57,7 +57,7 @@ When all features are implemented:
 
 ### 5. Reflect
 
-Follow the procedure in `docs/actions/Reflect.md` to append a reflective assessment to the implementation log. This captures what went well, what could have gone better, and concrete recommendations for improving the planning documents, framework, or tooling.
+Follow the procedure in `docs/actions/Reflect.md` to write a reflective assessment as `reflect.md` in the ticket's folder. This captures what went well, what could have gone better, and concrete recommendations for improving the planning documents, framework, or tooling.
 
 ### 6. Complete
 

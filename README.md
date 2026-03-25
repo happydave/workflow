@@ -28,7 +28,7 @@ This framework includes guidelines and core documents for creating plans and des
 
 When using this framework in a project, the project repository contains:
 
-- `docs/pending/<ticket-id>/` — active work items, each containing `ticket.md`, `plan.md`, `implementation.md` as they progress
+- `docs/pending/<ticket-id>/` — active work items, each containing `ticket.md`, `plan.md`, `implementation.md`, `reflect.md` as they progress
 - `docs/completed/<ticket-id>/` — finished work items (moved from `docs/pending/` on completion)
 
 ## Using This Framework
@@ -76,16 +76,6 @@ A healthy feature plan satisfies:
 - No unstated assumptions or contradictions
 - Critical decisions stated; non-critical ones left open
 - Human and AI remain collaboratively involved throughout refinement
-
-## Current State
-
-This framework is evolving:
-
-- `docs/templates/feature.md` newly added as the single source of truth for feature plans and descriptions
-- No full example projects yet demonstrating the workflow end-to-end
-- No retrospective documenting lessons learned
-
-The framework can be used ad hoc, but its full value requires committed application with iteration.
 
 ## License
 
