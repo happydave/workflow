@@ -1,8 +1,8 @@
-# Feature Specification Instructions
+# Feature Plan Instructions
 
-## Purpose of a Feature Specification
+## Purpose of a Feature Plan
 
-Each feature specification document (work/Feature.md or similar) must contain enough precise, unambiguous description so an AI can produce complete, correct, production-ready code for that feature on the first attempt.
+Each feature plan document (docs/templates/feature.md or similar) must contain enough precise, unambiguous description so an AI can produce complete, correct, production-ready code for that feature on the first attempt.
 
 The document exists to communicate desired **outcomes**, **non-negotiable rules**, and **verifiable success criteria** — not to dictate internal implementation choices unless those choices are essential to the outcome.
 
@@ -15,7 +15,7 @@ The document exists to communicate desired **outcomes**, **non-negotiable rules*
 
 ## Required Content & Guidance
 
-Every feature specification must include the sections below. Complete only what is genuinely necessary for unambiguous implementation; omit or mark optional sections that do not apply.
+Every feature plan must include the sections below. Complete only what is genuinely necessary for unambiguous implementation; omit or mark optional sections that do not apply.
 
 **Objective**  
 One clear sentence that captures the single desired purpose of the feature.  
@@ -70,4 +70,4 @@ Reference related documents or prior features only when order or shared invarian
 - Are the verifications sufficient for a human to confirm the feature works as intended?  
 - Have all critical decisions been stated while leaving non-critical ones open?
 
-Once these checks pass, mark the document Ready for Build.
+Once these checks pass, mark the document Ready for Implementation.

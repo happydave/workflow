@@ -1,7 +1,7 @@
 # Go Language Guidelines
 
 ## Purpose
-These guidelines ensure consistent, idiomatic Go code when the project uses Go. They apply whenever a feature specification or project plan targets Go.
+These guidelines ensure consistent, idiomatic Go code when the project uses Go. They apply whenever a feature plan targets Go.
 
 The rules focus on unambiguous setup and tooling behavior so AI-generated code remains correct and maintainable without unnecessary decisions being forced.
 
@@ -15,7 +15,7 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 - **Module path**  
   If the Go module path is unknown, ask the user:  
   "What should the Go module path be? (e.g., github.com/yourname/project-name)"  
-  Record the confirmed path once in `work/00_Project.md` under "Programming Language(s)":  
+  Record the confirmed path in the ticket's `plan.md` under "Programming Language(s)":  
   "Go module path: [confirmed-path]"
 
 - **go.mod handling**  
@@ -42,7 +42,7 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 - Dependencies: Minimize external packages; prefer standard library when reasonable.
 
 ## Security & Safety Invariants
-- Never use the `unsafe` package unless explicitly required in a feature spec.
+- Never use the `unsafe` package unless explicitly required in a feature plan.
 - Validate all untrusted input (use `net/http`, middleware, or approved libraries).
 - Use `crypto/rand` only when needed for cryptographic randomness; otherwise use `math/rand`.
 
@@ -52,8 +52,8 @@ The AI has full discretion over:
 - Exact file organization and package splitting (within idiomatic Go)
 - Choice of standard-library helpers vs minimal third-party packages
 - Minor refactoring for readability or performance (unless constrained by non-functional requirements)
-- Test structure details (table-driven vs simple) unless feature spec requires specific coverage
+- Test structure details (table-driven vs simple) unless a feature plan requires specific coverage
 
 ## Usage
-Reference this file in `work/00_Project.md` or feature specs when Go is the target language.  
-Follow these rules automatically unless a feature spec explicitly overrides them.
+Reference this file in feature plans when Go is the target language.  
+Follow these rules automatically unless a feature plan explicitly overrides them.
