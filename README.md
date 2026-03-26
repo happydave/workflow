@@ -16,6 +16,7 @@ This framework includes guidelines and core documents for creating plans and des
 
 - **This README** — Overview of the entire system
 - `actions/Ticket.md` — Lightweight intake for work items
+- `actions/Discover.md` — Deep investigation of products, technologies, or domains
 - `actions/Plan.md` — Complete workflow instructions and methodology
 - `actions/Implement.md` — Implementation process (incremental implementation, implementation log)
 - `actions/Reflect.md` — Post-implementation reflection and recommendations
@@ -28,7 +29,7 @@ This framework includes guidelines and core documents for creating plans and des
 
 When using this framework in a project, the project repository contains:
 
-- `docs/pending/<ticket-id>/` — active work items, each containing `ticket.md`, `plan.md`, `implementation.md`, `reflect.md` as they progress
+- `docs/pending/<ticket-id>/` — active work items, each containing `ticket.md`, `discover.md`, `plan.md`, `implementation.md`, `reflect.md` as they progress
 - `docs/completed/<ticket-id>/` — finished work items (moved from `docs/pending/` on completion)
 
 ## Using This Framework
@@ -47,25 +48,29 @@ When documenting an actual project's plans in your consumer repository:
    For each feature or task, create a folder in `docs/pending/` with a `ticket.md` inside.  
    Follow the guidance in the framework's `actions/Ticket.md`.
 
-2. **Plan**  
+2. **Discover** (when needed)  
+   If the work item requires investigation — evaluating a product, researching an API, or understanding a technology before planning — conduct discovery and add `discover.md` to the ticket's folder. Not every ticket needs discovery; skip this step when the domain is already well understood.  
+   See the framework's `actions/Discover.md`.
+
+3. **Plan**  
    For each ticket that needs planning, add `plan.md` to the ticket's folder.  
    Follow the guidance in the framework's `templates/feature.md` .
    Refine until the Critical Assess step confirms the document is unambiguous and complete.  
    See the framework's `actions/Plan.md`.
 
-3. **Implement**  
+4. **Implement**  
    Follow the feature plan to build the feature incrementally, maintaining an implementation log as you go.  
    See the framework's `actions/Implement.md`.
 
-4. **Document**  
+5. **Document**  
    Verify that the project's documentation (README, code comments, help text, etc.) is accurate and consistent with the changes just made.  
    See the framework's `actions/Document.md`.
 
-5. **Reflect**  
+6. **Reflect**  
    After implementation, capture what went well, what didn't, and concrete recommendations for improving the process, plans, or tooling.  
    See the framework's `actions/Reflect.md`.
 
-6. **Complete**  
+7. **Complete**  
    Move the ticket folder from `docs/pending/` to `docs/completed/`.
 
 ## Plan Style
