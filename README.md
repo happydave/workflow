@@ -21,6 +21,7 @@ This repository contains meta-instructions — a guide for creating feature plan
 - `CodeReview.md` — cooperative human+AI merge request review of implementation artifacts
 - `PlanReview.md` — independent evaluation of plan documents before implementation begins
 - `Document.md` — verify documentation accuracy after changes
+- `Close.md` — formally close a ticket by moving its folder to `docs/complete/`
 - `Reflect.md` — capture what went well, what didn't, and concrete recommendations
 
 **Guidelines** — language/tooling-specific rules:
@@ -32,7 +33,7 @@ This repository contains meta-instructions — a guide for creating feature plan
 ## Typical Workflow
 
 ```
-Ticket → Plan → Plan Review → Implement → Code Review → Reflect
+Ticket → Plan → Plan Review → Implement → Code Review → Reflect → Close
        ↑        ↓              ↑         ↑
     Discover (optional, any)  Investigate (optional, any)
 ```
@@ -42,10 +43,10 @@ Ticket → Plan → Plan Review → Implement → Code Review → Reflect
 3. **Plan Review** — independent evaluation of the plan document before implementation begins
 4. **Implement** — build incrementally per plan, log decisions in `implementation.md`
 5. **Code Review** — cooperative human+AI review of merge requests after implementation
-6. **Reflect** — capture lessons in `reflect.md`, move folder to `docs/completed/`
+6. **Reflect** — capture lessons in `reflect.md`
 
 *Discover and Investigate are optional actions available at any point — before Plan, between steps, or in isolation.*
 
 ### Consumer Project Setup
 
-When using this framework in a project repo, scaffold `docs/pending/` and `docs/completed/` directories there. The full set of action documents (Ticket through Reflect) and guidelines live in this framework repository.
+When using this framework in a project repo, scaffold `docs/pending/` and `docs/complete/` directories there. The full set of action documents (Ticket through Reflect) and guidelines live in this framework repository.

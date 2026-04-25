@@ -27,7 +27,7 @@ Two naming conventions are supported for the folder:
 
 Sequential numbers use two-digit prefixes and reflect creation order, not priority or implementation order. When an external system (issue tracker, project board) provides an identifier, use it as the prefix instead.
 
-The ticket folder is the home for all artifacts related to this work item. As the work progresses through planning and implementation, additional files are added to the same folder (see Plan and Implement actions). When work is complete, the entire folder moves from `docs/pending/` to `docs/completed/`.
+The ticket folder is the home for all artifacts related to this work item. As the work progresses through planning and implementation, additional files are added to the same folder (see Plan and Implement actions). When work is complete, the entire folder moves from `docs/pending/` to `docs/complete/` following the procedure in Close.
 
 ## Required Content
 
@@ -52,7 +52,7 @@ Include these when they are known and useful. Omit them when they are not:
 
 ## Completion
 
-When work on a ticket is fully implemented and verified, move the entire ticket folder from `docs/pending/` to `docs/completed/`. This is the only status transition — there is no intermediate state. A ticket folder in `docs/pending/` is in progress or not yet started; a ticket folder in `docs/completed/` is done.
+When work on a ticket is fully implemented and verified, follow the procedure in `actions/Close.md` to formally close the ticket.
 
 ## Guidance
 
@@ -61,3 +61,4 @@ When work on a ticket is fully implemented and verified, move the entire ticket 
 - Do not duplicate external issue trackers verbatim. Summarize the relevant context in the project's own terms.
 - When a ticket is promoted to a plan (via the Plan action), a `plan.md` is added to the ticket's folder — the ticket itself remains unchanged.
 - Acceptance criteria in tickets are intentionally lighter than in feature plans. They answer "how would we know this is done?" not "what are all the edge cases?"
+- When Close determines the ticket is complete, no further actions are expected for this ticket.

@@ -71,7 +71,7 @@ Follow the procedure in `actions/Document.md` to verify that the project's docum
 
 ### 7. Reflect
 
-Follow the procedure in `actions/Reflect.md` to write a reflective assessment as `reflect.md` in the ticket's folder. This captures what went well, what could have gone better, and concrete recommendations for improving the planning documents, framework, or tooling.
+Follow the procedure in `actions/Reflect.md` to write a reflective assessment as `reflect.md` in the ticket's folder. This captures what went well, what could have gone better, and concrete recommendations for improving the planning documents, framework, or tooling. After Reflect completes, if all work is verified done, the Author may explicitly request Close by invoking `actions/Close.md`.
 
 ## Guidance
 
