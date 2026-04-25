@@ -33,7 +33,7 @@ This repository contains meta-instructions — a guide for creating feature plan
 ## Typical Workflow
 
 ```
-Ticket → Plan → Plan Review → Implement → Code Review → Reflect → Close
+Ticket → Plan → Plan Review → Implement → Code Review → Document → Reflect → Close
        ↑        ↓              ↑         ↑
     Discover (optional, any)  Investigate (optional, any)
 ```
@@ -43,7 +43,8 @@ Ticket → Plan → Plan Review → Implement → Code Review → Reflect → Cl
 3. **Plan Review** — independent evaluation of the plan document before implementation begins
 4. **Implement** — build incrementally per plan, log decisions in `implementation.md`
 5. **Code Review** — cooperative human+AI review of merge requests after implementation
-6. **Reflect** — capture lessons in `reflect.md`
+6. **Document** — verify documentation accuracy and consistency after changes
+7. **Reflect** — capture lessons in `reflect.md`
 
 *Discover and Investigate are optional actions available at any point — before Plan, between steps, or in isolation.*
 

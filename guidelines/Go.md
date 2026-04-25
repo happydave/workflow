@@ -1,44 +1,46 @@
 # Go Language Guidelines
 
 ## Purpose
-These guidelines ensure consistent, idiomatic Go code when the project uses Go. They apply whenever a feature plan targets Go.
+These guidelines are intended to ensure consistent, idiomatic Go code.
 
 The rules focus on unambiguous setup and tooling behavior so AI-generated code remains correct and maintainable without unnecessary decisions being forced.
 
 ## Core Principles
 - Follow official Go idioms (Effective Go, Go Proverbs) unless explicitly overridden here.
 - Prefer simplicity, explicitness, and standard practices.
+- Prefer writing base library code over importing libraries for trivial functions.
 - Only constrain what is necessary for correctness or project consistency.
 - Explicitly grant freedom on non-critical choices.
 
 ## Module & Project Setup
 - **Module path**
-  If the Go module path is unknown, ask the user:
+  If the Go module path is unknown, stop and ask:
   "What should the Go module path be? (e.g., github.com/yourname/project-name)"
-  Record the confirmed path in `plan.md` under a relevant section.
+  Record the confirmed go path in `plan.md`.
 
 - **go.mod handling**
   - Check if `go.mod` already exists in the project root.
-  - If it exists → do not run `go mod init`; use the existing module.
-  - If it does not exist → run `go mod init [confirmed-path]`.
+  - If it exists do not run `go mod init`; use the existing module.
+  - If it does not exist run `go mod init [path]` using the go path specified in the plan.
   - Never create nested Go modules (only one `go.mod` at project root).
 
 - **Module name validation**
   Perform only basic sanity checks (non-empty, no illegal characters).
-  User is responsible for semantic correctness of the path.
+  User is responsible for semantic correctness of the go path.
 
 ## Tooling & Build Behavior
 - Always run `gofmt` (or `go fmt`) on generated code.
 - Use `go mod tidy` after adding or removing dependencies.
-- Build with: `go build -trimpath -ldflags="-s -w"` (produces smaller, cleaner binaries).
-- Run `go vet`. Prefer `golangci-lint` (default config) before marking code complete.
+- Test using `go test` (`go test ./...` or a more targeted path for specific changes).
+- Run `go vet` after all changes.
+- If available run `golangci-lint` before considering changes complete.
 
 ## Coding Conventions (Defaults)
 - Package names: lowercase, single word, no underscores.
 - Exported identifiers: UpperCamelCase.
 - Error handling: Use `errors.Is`/`errors.As`; wrap with `fmt.Errorf("%w", err)` when adding context.
 - Testing: Prefer table-driven tests for logic with multiple cases.
-- Dependencies: Minimize external packages; prefer standard library when reasonable.
+- Dependencies: Minimize external packages; prefer writing standard library code when reasonable.
 
 ## Security & Safety Invariants
 - Never use the `unsafe` package unless explicitly required in a feature plan.
@@ -49,10 +51,9 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 The AI has full discretion over:
 - Internal variable/function naming (except user-visible APIs)
 - Exact file organization and package splitting (within idiomatic Go)
-- Choice of standard-library helpers vs minimal third-party packages
 - Minor refactoring for readability or performance (unless constrained by non-functional requirements)
-- Test structure details (table-driven vs simple) unless a feature plan requires specific coverage
+- Test structure details (table-driven vs simple) unless the plan specifies specific coverage
 
 ## Usage
-Reference this file in feature plans when Go is the target language.
-Follow these rules automatically unless a feature plan explicitly overrides them.
+Reference this file in plan document when Go is the target language.
+Follow these rules automatically unless a plan explicitly overrides them.
