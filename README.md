@@ -25,6 +25,7 @@ This repository contains meta-instructions — a guide for creating feature plan
 - `Reflect.md` — capture what went well, what didn't, and concrete recommendations
 
 **Guidelines** — language/tooling-specific rules:
+- `Markdown.md` — quality gates for Markdown artifacts (link checking, structure verification, spell checking)
 - `TypeScript.md` — VS Code extension / Node.js conventions (Docker-based builds)
 - `Go.md` — Go module setup, tooling, conventions
 - `Docker.md` — container-first build environment (`Dockerfile.dev` + `Makefile` pattern)

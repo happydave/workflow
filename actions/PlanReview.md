@@ -2,7 +2,7 @@
 
 ## Intent
 
-Evaluate a plan document to ensure it is sufficient to guide correct implementation on first attempt. The output is a structured set of observations — concerns, questions, and approvals — that identifies gaps, contradictions, or ambiguities before implementation begins.
+Critically assess a plan document to ensure it is sufficient to guide correct implementation on first attempt. The output is a structured set of observations — concerns, questions, and approvals — that identifies gaps, contradictions, or ambiguities before implementation begins.
 
 Plan Review is an *external* quality gate that runs after the author's own "Critically Assess" step in `Plan.md`. While self-assessment identifies issues through the lens of intent, Plan Review provides an independent check to catch blind spots, structural problems, and assumption gaps.
 
@@ -14,7 +14,7 @@ Plan Review is an *external* quality gate that runs after the author's own "Crit
 
 ## Roles
 
-**Reviewer (Automated or Human):**
+**Reviewer:**
 - Systematically evaluates the plan across five dimensions: Completeness, Coherence, Precision, Scope, and Compliance.
 - Identifies contradictions, ambiguities, and scope inflation.
 - Organizes findings into tiered categories with section-level precision.
@@ -37,10 +37,10 @@ Plan Review is an *external* quality gate that runs after the author's own "Crit
 
 The Author provides the following:
 - The plan (typically `plan.md` in the ticket folder).
-- Relevant context not in the plan (constraints, known limitations, etc.).
-- Confirmation that "Critically Assess" from `Plan.md` is complete.
 
-If the plan is absent or insufficient, return **Deferred** with an explanation of what is missing.
+If the plan doc does not exist, stop immediately and inform the requester the plan document is missing.
+
+If the plan is insufficient, document **Deferred** with an explanation of what is missing.
 
 ### 2. Structural Analysis
 
@@ -112,4 +112,3 @@ The Reviewer (or Human Oversight) delivers the verdict and posts feedback in the
 - **Match Depth to Complexity**: A short review for a small, well-scoped plan is appropriate.
 - **Be Specific**: Reference section names and line numbers. "Possible race condition" is less helpful than naming the conflicting invariant and behavior.
 - **Approve When Ready**: Avoid withholding approval as leverage; if it can guide correct implementation, approve it.
-
