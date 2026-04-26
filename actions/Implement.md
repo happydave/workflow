@@ -12,15 +12,19 @@ The plan lives in the ticket folder and specifies what to read, what to implemen
 
 ## Procedure
 
-### 1. Detect Guidelines
+### 1. Identify Applicable Guidelines
 
 Before implementing the plan, identify which guidelines apply to this project:
 
-- If `go.mod` exists in the project root, read and apply `guidelines/Go.md`
-- If the project is a VS Code extension or Opencode plugin or Node.js project (package.json exists in the project root), read and apply `guidelines/TypeScript.md`
-- If the project uses Docker-based builds (`Dockerfile.dev` exists in the project root), read and apply `guidelines/Docker.md`
+- Look at the `plan.md` for this ticket. The plan's **Applicable Guidelines** section lists which `guidelines/*.md` documents apply and what each defines as the **build** and **test** steps for this project.
+- If `plan.md` does not exist, or if it exists but is missing the **Applicable Guidelines** section, **stop immediately** and inform the requester: the plan is missing or incomplete. Do not proceed with implementation until a valid plan with an Applicable Guidelines section is provided.
 
-These guidelines are not optional unless a plan explicitly opts out.
+Read all identified guidelines before proceeding. These guidelines are not optional unless a plan explicitly opts out.
+
+Terminology used throughout this document:
+- **Build** — any procedure that compiles, formats, lints, or otherwise transforms source artifacts into verified output, as defined by the applicable guideline.
+- **Test** — any procedure that validates correctness against specified behavior (unit tests, integration checks, structural validation), as defined by the applicable guideline.
+- **Verification steps** — the collective build and test procedures defined by applicable guidelines.
 
 ### 2. Read Before Implementing
 
@@ -56,8 +60,9 @@ Avoid batching changes then compiling once at the end. Incremental verification 
 
 When all features are implemented:
 
-- Confirm clean test results
-- Update the implementation log with final status
+- Run the verification steps (build and test procedures) defined by the applicable guidelines identified in step 1.
+- Confirm clean results for each verification step.
+- Update the implementation log with final status.
 
 ### 6. Document
 
@@ -69,4 +74,6 @@ Follow the procedure in `actions/Document.md` to verify that the project's docum
 - When a planning document is ambiguous, make a reasonable choice, document it in the implementation log, and continue. Do not block on ambiguity.
 - When a planning document contradicts another, note the inconsistency in the implementation log and resolve it in the direction that best serves the stated goals of the plan and/or project.
 - Guidelines applied in step 1 apply throughout implementation. If a plan change conflicts with a guideline, log the conflict and resolution in the implementation log.
+- Guideline-defined build and test procedures take precedence over any generic interpretation of those terms. When a guideline specifies how to build or test, follow it exactly.
+- If a guideline does not define build or test steps, use conventional defaults for that domain (e.g., the standard tool invocation for that language or format) and record the decision in `implementation.md`.
 - The implementation log is the primary artifact beyond the code itself. It enables continuation after interruption and feeds the continuous improvement process.

@@ -55,6 +55,17 @@ The AI has full discretion over:
 - Internal code structure and optimizations
 - Exact phrasing of non-security-critical user messages
 
+**Applicable Guidelines**
+Identify which `guidelines/*.md` documents apply to this project and record them in the plan. For each applicable guideline, note:
+- What that guideline defines as the **build** step(s) — any procedure that compiles, formats, lints, or otherwise transforms source artifacts into verified output.
+- What that guideline defines as the **test** step(s) — any procedure that validates correctness against specified behavior.
+
+Reference these guidelines in the plan's **Required Behaviors & Verifications** section wherever build or test context is relevant. This information drives the Implement and Document actions: implementers look here first rather than inferring guidelines from project structure.
+
+Examples of applicable guidelines: `guidelines/Go.md`, `guidelines/TypeScript.md`, `guidelines/Docker.md`, `guidelines/Markdown.md`.
+
+If no guidelines apply (e.g., a pure prose or workflow document), state that explicitly.
+
 **Dependencies & Context**
 Reference related documents or prior features only when order or shared invariants matter.
 
@@ -82,8 +93,11 @@ The presence of `plan.md` in a ticket folder indicates the ticket has been plann
 
 ### Language-Specific Guidelines
 
-- When this framework is used with a specific programming language, guidelines from guidelines/[language].md apply when present.
-- For Go projects: follow guidelines/Go.md (module setup, tooling, conventions, invariants).
+The planning process MUST identify all applicable guidelines and document them in the feature plan's **Applicable Guidelines** section. This is mandatory, not optional. Guidelines from `guidelines/[name].md` define the build and test procedures that Implement and Document actions will use — they cannot be applied correctly if they are not named in the plan.
+
+- Inspect the project root and purpose to determine which guidelines apply (e.g., `guidelines/Go.md` for Go projects, `guidelines/TypeScript.md` for Node.js/VS Code extension projects, `guidelines/Docker.md` for Docker-based builds, `guidelines/Markdown.md` for documentation-heavy projects).
+- Record each applicable guideline and its defined build/test steps in the plan's Applicable Guidelines section.
+- If a project spans multiple guidelines (e.g., Go + Docker), list all of them.
 
 ### Cross-Feature Relationships
 
