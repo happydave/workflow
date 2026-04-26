@@ -2,14 +2,15 @@
 
 ## Intent
 
-Deeply investigate a product, solution, technology, or domain to understand what it offers, how it works, and what is useful. The output is a structured summary of findings — not a plan, not a ticket, not an implementation. Discovery exists to build informed understanding before committing to any course of action.
+Deeply investigate a product, solution, technology, methodology, or domain to understand what it offers, how it works, and what is useful. The `discover.md` file serves as the living record of this investigation, from initial scoping through to final assessment. It is not just a summary of results, but the document that drives the discovery process.
 
-Discovery may be broad ("what does this product do and how could we use it?") or narrow ("does this API support webhook filtering by event type?"). The scope of investigation should match the scope of the request. Minimal guidance produces exploratory discovery; specific guidance produces targeted discovery.
+Discovery exists to build informed understanding before committing to any course of action. It may be broad or narrow, matching the scope of the request.
 
 ## When to Discover
 
 - Evaluating a product, service, or tool for potential adoption or integration
 - Investigating an API, SDK, or platform's capabilities before planning work against it
+- Exploring methodologies, conceptual frameworks, or industry standards
 - Understanding a technology domain well enough to make informed decisions
 - Answering a specific technical feasibility question that requires research
 - Any time the question is "what is possible here?" rather than "what should we build?"
@@ -18,29 +19,32 @@ Discovery is not planning. It informs planning. A discovery document may lead to
 
 ## Document Storage & Naming
 
-Discovery documents live inside a ticket folder when one exists, or in their own folder under `docs/pending/` when discovery is standalone:
+Discovery documents live inside a ticket folder when one exists, or in their own folder under `docs/pending/` when discovery is standalone.
+
+The presence of `discover.md` in a folder indicates that discovery has been **initiated**. It serves as the primary entry point, scoping document, and final summary. A folder may also contain auxiliary files (e.g., `procedures.md`, `adaptations.md`) when the discovery requires specialized deliverables.
 
 - `docs/pending/07-investigate-pipeline-jobs/discover.md`
 - `docs/pending/PROJ-123-investigate-pipeline-jobs/discover.md`
 - `docs/pending/03-evaluate-monitoring-tools/discover.md`
 
-The presence of `discover.md` in a folder indicates that discovery has been conducted. A folder may contain both `discover.md` and `ticket.md` when discovery was prompted by a ticket, or `discover.md` alone when discovery preceded any ticket.
+A folder may contain both `discover.md` and `ticket.md` when discovery was prompted by a ticket, or `discover.md` alone when discovery preceded any ticket.
 
 ## Procedure
 
-### 1. Understand the Request
+### 1. Initiate and Scope
 
-Clarify what is being investigated and why. Establish:
+Create `discover.md` immediately. Clarify what is being investigated and why. Fill in the **Status**, **Subject**, **Motivation**, and **Scope** sections.
 
-- **Subject** — the product, API, technology, or domain under investigation
-- **Motivation** — what decision or work this discovery is meant to inform
-- **Scope** — broad exploration or specific questions to answer
+- **Status** — start with `scoping`.
+- **Subject** — the product, API, technology, methodology, or domain under investigation.
+- **Motivation** — what decision or work this discovery is meant to inform.
+- **Scope** — explicit boundaries, quality gates for sources, and evidence calibration (how `guidelines/Evidence.md` applies to this research).
 
-If the request is vague, ask the human for clarification before beginning deep investigation. A few minutes of scoping saves hours of unfocused research.
+For high-complexity tasks, submit the `discover.md` for review and move Status to `pending-approval` before starting deep investigation.
 
 ### 2. Investigate
 
-Research the subject thoroughly within the established scope. This may include:
+Once scoped (and approved if necessary), update Status to `investigating`. Research the subject thoroughly within the established scope. This may include:
 
 - Official documentation, API references, and specifications
 - Available endpoints, methods, data formats, and authentication mechanisms
@@ -60,21 +64,28 @@ For each significant capability or finding, evaluate:
 - What are the constraints, limitations, or risks?
 - What is missing or unclear that would need further investigation?
 
-Separate what is confirmed from what is inferred or uncertain. Flag assumptions explicitly.
+Separate what is confirmed from what is inferred or uncertain using confidence labels adapted from `guidelines/Evidence.md`:
+- **Confirmed** — Cross-referenced across multiple independent industry standards, peer-reviewed sources, or official documentation.
+- **Supported** — Consistent with industry practice and found in reliable sources, but not independently cross-verified.
+- **Hypothesis** — Plausible interpretation or single-source opinion that has not been validated.
+- **Inconclusive** — Conflicting evidence or opinions that cannot be reconciled.
 
-### 4. Write the Discovery Document
+### 4. Finalize the Document
 
-Produce `discover.md` with the findings. Structure the document around what was discovered, not around the process of discovering it. The document should be useful to someone who reads it without having participated in the investigation.
+Update Status to `completed`. Ensure the document is structured around findings and their assessment, serving as a reliable reference for those who did not participate in the investigation.
 
 ## Required Content
 
 Every discovery document must include:
 
-- **Subject** — what was investigated, including version or date context where relevant
-- **Motivation** — why this investigation was conducted and what it is meant to inform
-- **Summary** — a concise overview of key findings (a few sentences or short bullets that convey the essential picture)
-- **Findings** — detailed account of what was discovered, organized by topic or capability area. Include specifics: endpoints, features, data formats, constraints, authentication requirements — whatever is relevant to the subject and scope
-- **Assessment** — evaluation of usefulness, feasibility, risks, and gaps. What is promising, what is problematic, what remains unknown
+- **Status** — `scoping`, `pending-approval`, `investigating`, or `completed`.
+- **Subject** — what was investigated, including version or date context.
+- **Motivation** — why this investigation was conducted.
+- **Scope** — the boundaries of the research, quality gates for sources, and out-of-scope definitions.
+- **Methodology & Sources** — how the discovery was conducted and the specific sources consulted.
+- **Summary** — a concise overview of key findings.
+- **Findings** — detailed account of what was discovered, organized by topic, with confidence labels.
+- **Assessment** — evaluation of usefulness, feasibility, risks, and gaps.
 
 ## Optional Content
 
