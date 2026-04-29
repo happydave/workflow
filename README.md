@@ -32,7 +32,7 @@ The workflow is supported by **Agents** — automated actors that help execute s
 - `TypeScript.md` — VS Code extension / Node.js conventions (Docker-based builds)
 - `Go.md` — Go module setup, tooling, conventions
 - `Docker.md` — container-first build environment (`Dockerfile.dev` + `Makefile` pattern)
-- `Evidence.md` — evidence assessment rules for investigations
+- `Evidence.md` — evidence assessment rules (Hub for Logs, Metrics, Groundcover)
 - `Debug.md` — AI agent debugging methodology (structured hypothesis generation, bias mitigation)
 
 ## Typical Workflow
