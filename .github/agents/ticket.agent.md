@@ -25,6 +25,8 @@ Follow this exact sequence. Move to the next step only when the user confirms re
 
 **Before proceeding**, read the ticket procedure at workflow/procedures/Ticket.md - this is primarily the procedure we will follow.
 
+**Before proceeding**, if you are unable to read the workflow, STOP IMMEDIATELY.
+
 **Before writing anything**, determine where the ticket should be created and what project it targets:
 
 - **Same-project tickets**: If a target project is specified by the user, or if there is only one project in the workspace, assume `docs/pending/` within that project as both the capture location and output path. Confirm this with the user before creating any file.
