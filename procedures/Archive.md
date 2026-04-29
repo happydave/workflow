@@ -8,7 +8,7 @@ Archive is a physical file system operation that follows the logical `Complete` 
 
 ## When to Archive
 
-- The work item's `Status` in `ticket.md` is set to `complete`.
+- The work item's `Status` in `workitem.md` is set to `complete`.
 - The user or orchestrator explicitly requests archival to clean up the `docs/pending/` directory.
 - No further near-term reference to the work item in the active directory is required.
 
@@ -24,7 +24,7 @@ Archive is NOT appropriate when:
 
 ### 1. Verify Completion Status
 
-Check the `ticket.md` inside the work item folder. Verify that the `Status` field is set to `complete`. If the status is not `complete`, stop and inform the user that the work item must be finalized via the `Complete` action first.
+Check the `workitem.md` inside the work item folder. Verify that the `Status` field is set to `complete`. If the status is not `complete`, stop and inform the user that the work item must be finalized via the `Complete` action first.
 
 ### 2. Execute Move
 

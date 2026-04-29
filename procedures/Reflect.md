@@ -10,7 +10,7 @@ At the end of every implementation, or when implementation is interrupted and wi
 
 ## Document Storage
 
-Create `reflect.md` in the work item's folder alongside `ticket.md`, `plan.md`, and `implementation.md` (e.g., `docs/pending/07-investigate-pipeline-jobs/reflect.md`).
+Create `reflect.md` in the work item's folder alongside `workitem.md`, `plan.md`, and `implementation.md` (e.g., `docs/pending/07-investigate-pipeline-jobs/reflect.md`).
 
 ## Procedure
 

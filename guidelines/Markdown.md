@@ -27,7 +27,7 @@ A plan may reference a ticket whose `plan.md` does not yet exist because the ref
 ## Build Procedures — Structure Verification
 Structural requirements ensure every framework artifact contains the sections needed for it to function as intended by the workflow process. Structural failures are hard gates.
 
-**`ticket.md` required sections:**
+**`workitem.md` required sections:**
 - An `Objective` or `Description` section (title of what the work item is).
 - A `Proposed Changes` section (what will be created, modified, or removed).
 - An `Acceptance Criteria` section (concrete conditions for closure).

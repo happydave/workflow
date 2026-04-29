@@ -27,7 +27,7 @@ The presence of `discover.md` in a folder indicates that discovery has been **in
 - `docs/pending/PROJ-123-investigate-pipeline-jobs/discover.md`
 - `docs/pending/03-evaluate-monitoring-tools/discover.md`
 
-A folder may contain both `discover.md` and `ticket.md` when discovery was prompted by a work item, or `discover.md` alone when discovery preceded any work item.
+A folder may contain both `discover.md` and `workitem.md` when discovery was prompted by a work item, or `discover.md` alone when discovery preceded any work item.
 
 ## Procedure
 

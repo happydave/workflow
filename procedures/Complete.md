@@ -2,7 +2,7 @@
 
 ## Intent
 
-Formally mark a work item as complete by updating its status in `ticket.md`. This represents the conclusion of all creative and technical work (planning, implementation, review, documentation) and signals that the work item is ready for archival.
+Formally mark a work item as complete by updating its status in `workitem.md`. This represents the conclusion of all creative and technical work (planning, implementation, review, documentation) and signals that the work item is ready for archival.
 
 Completion is the logical end of the active workflow. It ensures that the state of the work item is explicitly recorded within the artifact itself.
 
@@ -10,7 +10,7 @@ Completion is the logical end of the active workflow. It ensures that the state 
 
 - All implementation, testing, and documentation work for the work item has been verified complete.
 - A Reflect action (if executed) has been finalized.
-- The work item meets all acceptance criteria defined in `ticket.md` and `plan.md`.
+- The work item meets all acceptance criteria defined in `workitem.md` and `plan.md`.
 
 Complete is NOT appropriate when:
 - Unresolved blocking findings remain from a Code Review or Plan Review.
@@ -29,14 +29,14 @@ Complete is NOT appropriate when:
 
 Check the work item folder for required artifacts:
 
-- [ ] `ticket.md` — must be present.
+- [ ] `workitem.md` — must be present.
 - [ ] `plan.md` — must be present if the work item was promoted to a plan.
 - [ ] `implementation.md` — must be present if the work item involved implementation.
 - [ ] `reflect.md` — should be present for non-trivial work items.
 
 ### 2. Update Status
 
-Update the `Status` field in `ticket.md` from `pending` (or its current state) to `complete`. 
+Update the `Status` field in `workitem.md` from `pending` (or its current state) to `complete`. 
 
 If a `Completed Date` or similar metadata field is used in the project, update that as well.
 

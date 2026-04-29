@@ -7,7 +7,7 @@ This document is the central registry for the AI agents defined in this framewor
 
 | Agent | Target Procedure | Role | Location |
 |---|---|---|---|
-| **Work Item Agent** | `WorkItem.md` | Intake and clarify work; create `ticket.md`. | `agents/WorkItem.md` |
+| **Work Item Agent** | `WorkItem.md` | Intake and clarify work; create `workitem.md`. | `agents/WorkItem.md` |
 | **Discover Agent** | `Discover.md` | Research domains and APIs; create `discover.md`. | `agents/Discover.md` |
 | **Explore** | (Read-only) | Fast codebase exploration and Q&A. | (Built-in) |
 

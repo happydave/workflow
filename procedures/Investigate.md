@@ -23,7 +23,7 @@ Investigation documents live inside a work item folder when one exists, or stand
 - `docs/pending/12-diagnose-high-error-rate/investigate.md`
 - `docs/pending/PROJ-456-elevated-error-rate/investigate.md`
 
-The presence of `investigate.md` in a folder indicates that investigation has been conducted. A folder may contain `investigate.md` alongside `ticket.md` when investigation was prompted by a work item, or `investigate.md` alone when the investigation preceded or replaced a work item.
+The presence of `investigate.md` in a folder indicates that investigation has been conducted. A folder may contain `investigate.md` alongside `workitem.md` when investigation was prompted by a work item, or `investigate.md` alone when the investigation preceded or replaced a work item.
 
 ## Procedure
 

@@ -18,12 +18,12 @@ Do not defer capture. A brief work item written now is more valuable than a deta
 
 ## Document Storage & Naming
 
-Each work item gets its own folder under `docs/pending/`, named with an identifier and short description in kebab-case. The intake document inside is always named `ticket.md` — this serves as the persistent identifier for the work item.
+Each work item gets its own folder under `docs/pending/`, named with an identifier and short description in kebab-case. The intake document inside is always named `workitem.md` — this serves as the persistent identifier for the work item.
 
 Two naming conventions are supported for the folder:
 
-- **Sequential numbering** (default): `docs/pending/07-investigate-pipeline-jobs/ticket.md`
-- **External identifier** (when available): `docs/pending/PROJ-123-investigate-pipeline-jobs/ticket.md`
+- **Sequential numbering** (default): `docs/pending/07-investigate-pipeline-jobs/workitem.md`
+- **External identifier** (when available): `docs/pending/PROJ-123-investigate-pipeline-jobs/workitem.md`
 
 Sequential numbers use two-digit prefixes and reflect creation order, not priority or implementation order. When an external system (issue tracker, project board) provides an identifier, use it as the prefix instead.
 
@@ -31,7 +31,7 @@ The folder is the home for all artifacts related to this work item. As the work 
 
 ## Required Content
 
-Every `ticket.md` must include:
+Every `workitem.md` must include:
 
 - **Title** — a concise description of the work item.
 - **Status** — the current state of the work item (e.g., `pending`, `complete`).
@@ -48,7 +48,7 @@ Include these when they are known and useful. Omit them when they are not:
 
 ## Procedure
 
-1. **Capture** — create the work item folder and `ticket.md` with at minimum the Title and Description. Err on the side of writing it down quickly rather than crafting it perfectly.
+1. **Capture** — create the work item folder and `workitem.md` with at minimum the Title and Description. Err on the side of writing it down quickly rather than crafting it perfectly.
 2. **Contextualize** — if immediately obvious, add proposed changes and acceptance criteria. If not, leave them out — they belong in the planning phase, not the work item.
 3. **File it** — commit the work item to the repository so it is not lost.
 
@@ -61,6 +61,6 @@ When work is fully implemented and verified, follow the procedure in `procedures
 - Work items are not plans. They do not need to meet the standard of a feature plan document. They exist to prevent ideas and problems from falling through the cracks.
 - Keep work items short. A work item that takes more than five minutes to write is probably trying to be a plan.
 - Do not duplicate external issue trackers verbatim. Summarize the relevant context in the project's own terms.
-- When a work item is promoted to a plan (via the Plan action), a `plan.md` is added to the folder — the `ticket.md` remains unchanged.
+- When a work item is promoted to a plan (via the Plan action), a `plan.md` is added to the folder — the `workitem.md` remains unchanged.
 - Acceptance criteria in work items are intentionally lighter than in feature plans. They answer "how would we know this is done?" not "what are all the edge cases?"
 - When Complete determines the work item is finished, no further active development is expected for this work item.

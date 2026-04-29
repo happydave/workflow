@@ -15,7 +15,7 @@ Plan Review is an *external* quality gate that provides an independent evaluatio
 ## Roles
 
 **Reviewer:**
-- **Prerequisites**: Access to the originating `ticket.md` (for Scope Alignment), access to applicable guideline documents identified during evaluation, and knowledge of any project-specific constraints stated in the plan's Dependencies & Context or Explicit AI Freedom sections.
+- **Prerequisites**: Access to the originating `workitem.md` (for Scope Alignment), access to applicable guideline documents identified during evaluation, and knowledge of any project-specific constraints stated in the plan's Dependencies & Context or Explicit AI Freedom sections.
 - Systematically evaluates the plan across five dimensions: Completeness, Coherence, Precision, Scope, and Compliance.
 - Identifies contradictions, ambiguities, and scope inflation.
 - Organizes findings into tiered categories with section-level precision.
@@ -39,7 +39,7 @@ The Author provides the plan (typically `plan.md` in the work item folder).
 
 If the plan document does not exist, stop immediately and inform the requester that the plan is missing.
 
-If a prerequisite artifact (e.g., `ticket.md`) cannot be located, Status = Deferred with an explanation of which artifact could not be found.
+If a prerequisite artifact (e.g., `workitem.md`) cannot be located, Status = Deferred with an explanation of which artifact could not be found.
 
 ### 2. Structural Analysis
 
@@ -66,7 +66,7 @@ The Reviewer assesses the plan across these dimensions:
 
 **Precision** — are terms specific and unambiguous? Flag vague language like "appropriate" or "as needed" in critical sections (Invariants, Behaviors, Edge Cases, Data Changes).
 
-**Scope Alignment** — does the plan stay within the mandate of the originating `ticket.md`? Distinguish reasonable deductions from purely opportunistic additions.
+**Scope Alignment** — does the plan stay within the mandate of the originating `workitem.md`? Distinguish reasonable deductions from purely opportunistic additions.
 
 **Compliance** — does the plan conflict with any applicable `guidelines/[language].md` rules? Plans may override applicable guideline rules when explicitly documented in the plan itself. The Reviewer checks for two things: (a) whether a conflict exists, and (b) whether the plan explicitly acknowledges and justifies the override. Unjustified conflicts remain Blocking; explicit overrides with justification are Non-blocking structural observations unless they violate an Invariant.
 
@@ -98,7 +98,7 @@ The Reviewer produces `planreview.md` in the work item folder, populated accordi
 
 ### Deferred — prerequisite artifact is absent
 
-The review cannot begin because a required document (e.g., `plan.md` or the originating `ticket.md`) does not exist. This is a precondition failure, not an evaluation result.
+The review cannot begin because a required document (e.g., `plan.md` or the originating `workitem.md`) does not exist. This is a precondition failure, not an evaluation result.
 
 ### Blocking — plan cannot proceed until resolved
 
@@ -118,7 +118,7 @@ The review cannot begin because a required document (e.g., `plan.md` or the orig
 
 - **Complete**: No blocking findings AND remaining non-blocking findings are minor (single-digit count, no pattern of systemic issues). Numerous non-blocking findings (more than five, or affecting more than half the plan's sections) indicate systemic quality concerns that warrant revision even in the absence of Blocking findings.
 - **Significant Findings**: Blocking findings remain OR numerous non-blocking findings indicate systemic quality concerns that warrant revision even in the absence of Blocking findings.
-- **Deferred**: The review cannot begin because a prerequisite artifact is absent (e.g., no `plan.md` exists, or no originating `ticket.md` exists). This is a precondition failure. If the Reviewer cannot determine whether a prerequisite artifact exists, Status is Deferred with an explanation of which artifact could not be located.
+- **Deferred**: The review cannot begin because a prerequisite artifact is absent (e.g., no `plan.md` exists, or no originating `workitem.md` exists). This is a precondition failure. If the Reviewer cannot determine whether a prerequisite artifact exists, Status is Deferred with an explanation of which artifact could not be located.
 
 ## Notes
 
