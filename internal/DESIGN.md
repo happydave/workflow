@@ -28,3 +28,6 @@ The primary goal of this framework is to enable the production of high-quality c
 - **Actor Agnosticism**: Procedures should be written to be performed by a "Reviewer" or "Author" rather than explicitly "Human" or "AI." This allows the framework to transition from human-driven to AI-driven to fully automated without rewriting the core logic.
 - **Separation of Concerns**: `procedures/` define *what* to do; `guidelines/` define *how* to do it in specific contexts (languages, tools).
 - **Independent Verification**: Where possible, critical steps (like Plan Review) should be designed as external gates that don't rely solely on the original author's self-assessment.
+- **Context Optimization**: To minimize token pressure and align with LLM initial read limits, core framework documents follow a principle of "progressive context disclosure."
+    - **100-Line Target**: Primary skills and procedures aim to remain under 100 lines.
+    - **Modular Decomposition**: If a topic requires extensive detail, the primary file provides the mandatory "High-Level Invariants" and links to specialized sub-documents for implementation details.
