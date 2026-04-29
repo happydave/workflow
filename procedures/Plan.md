@@ -82,12 +82,12 @@ Reference related documents or prior features only when order or shared invarian
 
 ## Document Storage & Naming
 
-Feature plans live inside the ticket folder that originated them. When a ticket is promoted to a plan, create `plan.md` in the ticket's folder:
+Feature plans live inside the work item folder that originated them. When a work item is promoted to a plan, create `plan.md` in the folder:
 
 - `docs/pending/07-investigate-pipeline-jobs/plan.md`
 - `docs/pending/PROJ-123-investigate-pipeline-jobs/plan.md`
 
-The presence of `plan.md` in a ticket folder indicates the ticket has been planned. The absence of `plan.md` indicates it has not.
+The presence of `plan.md` in a work item folder indicates the item has been planned. The absence of `plan.md` indicates it has not.
 
 ## General Guidelines
 
@@ -105,7 +105,7 @@ The planning process MUST identify all applicable guidelines and document them i
 
 ## Planning Workflow
 
-**Product**: Feature plan (`plan.md` in the ticket's folder)
+**Product**: Feature plan (`plan.md` in the work item's folder)
 
 **Scope**: Produce a detailed descriptive document for a feature or work item. Define precise outcomes through research, invariants, edge cases, and scenarios. No implementation or code.
 
@@ -113,7 +113,7 @@ The planning process MUST identify all applicable guidelines and document them i
 
 These are not sequential phases — they are aspects of planning that apply throughout the process, revisited as understanding deepens.
 
-**Assess** — review the ticket, problem domain, stakeholder needs, known constraints, and current knowledge gaps. Assessment happens at the start and again whenever new information changes the picture.
+**Assess** — review the work item, problem domain, stakeholder needs, known constraints, and current knowledge gaps. Assessment happens at the start and again whenever new information changes the picture.
 
 **Research & Elaborate** — investigate technical feasibility, domain details, data flows, security/privacy needs, resource needs, risks, and non-functional requirements. Draft high-level invariants and goals. Refine descriptive outcomes (no code). This is intended as deep scrutiny to ensure the feature plan has sufficient detail to implement confidently and correctly.
 
@@ -143,7 +143,7 @@ A brief, lightweight note on the planning process itself — not a full reflecti
 List explicitly in feature plans if relevant:
 - Features/capabilities deliberately excluded
 - Work outside current scope
-- Desired features deferred to future tickets
+- Desired features deferred to future work items
 
 ## Notes
 - Human deeply involved in planning and review

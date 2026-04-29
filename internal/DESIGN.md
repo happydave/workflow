@@ -17,11 +17,11 @@ The primary goal of this framework is to enable the production of high-quality c
 
 ### File Naming
 - **Workflow Guidance Documents**: All files in `procedures/` and `guidelines/` must use **PascalCase** (e.g., `Plan.md`, `TypeScript.md`). This distinguishes the framework's authoritative instructions from project-specific artifacts.
-- **Ticket Artifacts**: Files created within specific ticket folders (e.g., in `docs/pending/`) must use **lowercase-kebab-case** (e.g., `ticket.md`, `plan.md`, `implementation.md`). This makes them visually distinct from the framework files.
+- **Work Items vs. Tickets**: We use the term **Work Item** to describe the conceptual unit of work (feature, bug, task). The term **Ticket** is reserved for the physical reference identifier. Files created within specific work item folders (e.g., in `docs/pending/`) must use **lowercase-kebab-case** and the intake document is always named `ticket.md` (e.g., `ticket.md`, `plan.md`, `implementation.md`). This makes them visually distinct from the framework files.
 
 ### Referencing
 - When a document refers to a framework file, use the capitalized name: "Follow the steps in `Plan.md`."
-- When a document refers to a ticket-specific instance, use the lowercase name: "The author provides the `plan.md` from the ticket folder."
+- When a document refers to a work item's specific instance, use the lowercase name: "The author provides the `plan.md` from the folder."
 
 ## Structural Principles
 

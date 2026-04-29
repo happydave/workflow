@@ -20,7 +20,7 @@ Follow this exact sequence. Move to the next step only when the user confirms re
 
 **Before proceeding**, read the workflow overview at workflow/README.md
 
-**Before proceeding**, read the ticket procedure at workflow/procedures/Discover.md - this the procedure we will follow.
+**Before proceeding**, read the work item procedure at workflow/procedures/Discover.md - this the procedure we will follow.
 
 **Before proceeding**, if you are unable to read the workflow, STOP IMMEDIATELY.
 
@@ -29,8 +29,8 @@ Follow this exact sequence. Move to the next step only when the user confirms re
 1. Ask the user what they want to investigate (the subject).
 2. Clarify the motivation — what decision or work will this discovery inform?
 3. Determine boundaries:
-   - Is there an existing ticket folder under `docs/pending/`? If so, ask which one.
-   - If no ticket exists, ask where the discover document should be created (e.g., a new folder under `docs/pending/`).
+   - Is there an existing work item folder under `docs/pending/`? If so, ask which one.
+   - If no work item exists, ask where the discover document should be created (e.g., a new folder under `docs/pending/`).
 4. Confirm with the user **before** creating any file:
    - The output path for `discover.md`
    - Whether auxiliary files (`procedures.md`, `adaptations.md`) are needed
@@ -99,7 +99,7 @@ Use these as a guide. Adapt based on context:
 4. **Scope boundaries**: Are there aspects to explicitly exclude from scope?
 5. **Depth**: Broad overview ("what is possible") or focused question ("does X support Y")?
 6. **Evidence calibration**: How rigorously should sources be validated?
-7. **Output location**: Should this live under an existing ticket folder, or a new one?
+7. **Output location**: Should this live under an existing work item folder, or a new one?
 
 ## Behavior Constraints
 

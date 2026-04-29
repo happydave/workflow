@@ -1,7 +1,7 @@
 # Markdown Guidelines
 
 ## Purpose
-These guidelines define quality gates for Markdown artifacts produced by the workflow framework — plans, tickets, documentation, and other `.md` files that form the primary language of the framework itself.
+These guidelines define quality gates for Markdown artifacts produced by the workflow framework — plans, work items, documentation, and other `.md` files that form the primary language of the framework itself.
 
 The checks fall into two categories: **build** procedures (deterministic pass/fail gates) and **test** procedures (advisory quality signals). Build failures block ticket closure; test results flag issues for human review.
 

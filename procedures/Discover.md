@@ -15,11 +15,11 @@ Discovery exists to build informed understanding before committing to any course
 - Answering a specific technical feasibility question that requires research
 - Any time the question is "what is possible here?" rather than "what should we build?"
 
-Discovery is not planning. It informs planning. A discovery document may lead to tickets, plans, or a decision to do nothing — all are valid outcomes.
+Discovery is not planning. It informs planning. A discovery document may lead to work items, plans, or a decision to do nothing — all are valid outcomes.
 
 ## Document Storage & Naming
 
-Discovery documents live inside a ticket folder when one exists, or in their own folder under `docs/pending/` when discovery is standalone.
+Discovery documents live inside a work item folder when one exists, or in their own folder under `docs/pending/` when discovery is standalone.
 
 The presence of `discover.md` in a folder indicates that discovery has been **initiated**. It serves as the primary entry point, scoping document, and final summary. A folder may also contain auxiliary files (e.g., `procedures.md`, `adaptations.md`) when the discovery requires specialized deliverables.
 
@@ -27,7 +27,7 @@ The presence of `discover.md` in a folder indicates that discovery has been **in
 - `docs/pending/PROJ-123-investigate-pipeline-jobs/discover.md`
 - `docs/pending/03-evaluate-monitoring-tools/discover.md`
 
-A folder may contain both `discover.md` and `ticket.md` when discovery was prompted by a ticket, or `discover.md` alone when discovery preceded any ticket.
+A folder may contain both `discover.md` and `ticket.md` when discovery was prompted by a work item, or `discover.md` alone when discovery preceded any work item.
 
 ## Procedure
 
@@ -91,7 +91,7 @@ Every discovery document must include:
 
 Include when relevant, omit when not:
 
-- **Recommendations** — suggested next steps based on the findings (create a ticket, proceed to planning, investigate further, abandon)
+- **Recommendations** — suggested next steps based on the findings (create a work item, proceed to planning, investigate further, abandon)
 - **Open Questions** — specific unknowns that could not be resolved during discovery and may need follow-up
 - **References** — links to documentation, API references, or other sources consulted
 

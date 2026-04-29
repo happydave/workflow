@@ -18,12 +18,12 @@ Investigation may be prompted by an alert, a support request, a hunch, or idle c
 
 ## Document Storage & Naming
 
-Investigation documents live inside a ticket folder when one exists, or standalone when investigation is ad hoc:
+Investigation documents live inside a work item folder when one exists, or standalone when investigation is ad hoc:
 
 - `docs/pending/12-diagnose-high-error-rate/investigate.md`
 - `docs/pending/PROJ-456-elevated-error-rate/investigate.md`
 
-The presence of `investigate.md` in a folder indicates that investigation has been conducted. A folder may contain `investigate.md` alongside `ticket.md` when investigation was prompted by a ticket, or `investigate.md` alone when the investigation preceded or replaced a ticket.
+The presence of `investigate.md` in a folder indicates that investigation has been conducted. A folder may contain `investigate.md` alongside `ticket.md` when investigation was prompted by a work item, or `investigate.md` alone when the investigation preceded or replaced a work item.
 
 ## Procedure
 
@@ -91,7 +91,7 @@ Every investigation document must include:
 
 Include when relevant, omit when not:
 
-- **Recommendations** — suggested next steps based on the findings. These may be fixes, further investigation, tickets to create, or a decision that no action is needed.
+- **Recommendations** — suggested next steps based on the findings. These may be fixes, further investigation, work items to create, or a decision that no action is needed.
 - **Open Questions** — specific unknowns that the investigation could not resolve and may warrant follow-up
 - **Scope & Limitations** — constraints that affected the investigation (limited time window, missing telemetry, services not instrumented, tool limitations such as summary-only statistics) if they materially affect confidence in the findings
 - **What Was Checked and Found Normal** — for inconclusive investigations, a structured record of metrics/logs/traces examined and their observed state, so future investigators don't repeat the same checks

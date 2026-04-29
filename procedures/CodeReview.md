@@ -15,7 +15,7 @@ Code Review is a cooperative process: the AI performs exhaustive mechanical scan
 ## Roles
 
 **Human:**
-- Provides the MR context and any background the AI needs (linked tickets, intent not captured in the description, relevant system knowledge)
+- Provides the MR context and any background the AI needs (linked work items, intent not captured in the description, relevant system knowledge)
 - Clarifies findings the AI flags as uncertain
 - Judges which findings are actually blocking vs. acceptable given team context
 - Delivers the final verdict and posts comments to the MR
@@ -33,7 +33,7 @@ Code Review is a cooperative process: the AI performs exhaustive mechanical scan
 
 Before the AI reads the diff, provide:
 
-- The MR title, description, and any linked tickets or planning documents
+- The MR title, description, and any linked work items or planning documents
 - Any background not captured in the MR itself: what system behavior is changing, what problem is being solved, relevant constraints
 - Any areas of particular concern or focus (e.g., "pay attention to the error handling in the retry logic")
 

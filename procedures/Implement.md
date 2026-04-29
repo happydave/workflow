@@ -4,7 +4,7 @@
 
 Implement a project from its plan document. Read the plan, implement the plan incrementally, and maintain a structured log of work, decisions, and problems (implementation.md).
 
-The plan lives in the ticket folder and specifies what to read, what to implement, and in what order. This document describes the general procedure that applies to any Implement action.
+The plan lives in the work item folder and specifies what to read, what to implement, and in what order. This document describes the general procedure that applies to any Implement action.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ The plan lives in the ticket folder and specifies what to read, what to implemen
 
 Before implementing the plan, identify which guidelines apply to this project:
 
-- Look at the `plan.md` for this ticket. The plan's **Applicable Guidelines** section lists which `guidelines/*.md` documents apply and what each defines as the **build** and **test** steps for this project.
+- Look at the `plan.md` for this work item. The plan's **Applicable Guidelines** section lists which `guidelines/*.md` documents apply and what each defines as the **build** and **test** steps for this project.
 - If `plan.md` does not exist, or if it exists but is missing the **Applicable Guidelines** section, **stop immediately** and inform the requester: the plan is missing or incomplete. Do not proceed with implementation until a valid plan with an Applicable Guidelines section is provided.
 
 Read all identified guidelines before proceeding. These guidelines are not optional unless a plan explicitly opts out.
@@ -34,10 +34,10 @@ The purpose is to understand the full scope, constraints, and dependencies befor
 
 ### 3. Scaffold Implementation Log
 
-Create `implementation.md` in the ticket folder (e.g., `docs/pending/07-investigate-pipeline-jobs/implementation.md`) with the following structure:
+Create `implementation.md` in the work item folder (e.g., `docs/pending/07-investigate-pipeline-jobs/implementation.md`) with the following structure:
 
 ```markdown
-# Implementation Log: <ticket title>
+# Implementation Log: <work item title>
 
 ## Work Completed
 

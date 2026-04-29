@@ -35,7 +35,7 @@ Plan Review is an *external* quality gate that provides an independent evaluatio
 
 ### 1. Initiate Review
 
-The Author provides the plan (typically `plan.md` in the ticket folder).
+The Author provides the plan (typically `plan.md` in the work item folder).
 
 If the plan document does not exist, stop immediately and inform the requester that the plan is missing.
 
@@ -83,7 +83,7 @@ Flag findings as **uncertain** when they depend on intent or context the Reviewe
 **Revision Cycle Protocol:**
 - The Author may revise and resubmit up to **three times**.
 - Each resubmission SHALL address all Blocking findings and note how Non-blocking findings were handled (addressed, deferred with rationale, or acknowledged).
-- If three revisions have occurred and the plan still has unresolved Blocking findings, Status defaults to **Significant Findings** and the matter is escalated for human decision on whether to continue planning, reduce scope, or close the ticket.
+- If three revisions have occurred and the plan still has unresolved Blocking findings, Status defaults to **Significant Findings** and the matter is escalated for human decision on whether to continue planning, reduce scope, or close the work item.
 
 If human oversight is involved:
 - Confirm or dismiss uncertain findings based on domain knowledge.
@@ -92,7 +92,7 @@ If human oversight is involved:
 
 ### 6. Status
 
-The Reviewer produces `planreview.md` in the ticket folder, populated according to the artifact structure defined in this procedure. The file includes: **Status** (Complete, Significant Findings, or Deferred), a **Structure Summary** of which plan sections are present and substantive, **Findings** organized by dimension (Completeness, Coherence, Precision, Scope, Compliance) with each tagged as Blocking or Non-blocking, an **Uncertain Findings** subsection listing all uncertain findings with their disposition, and **Free-form Feedback** for observations that don't fit structured categories.
+The Reviewer produces `planreview.md` in the work item folder, populated according to the artifact structure defined in this procedure. The file includes: **Status** (Complete, Significant Findings, or Deferred), a **Structure Summary** of which plan sections are present and substantive, **Findings** organized by dimension (Completeness, Coherence, Precision, Scope, Compliance) with each tagged as Blocking or Non-blocking, an **Uncertain Findings** subsection listing all uncertain findings with their disposition, and **Free-form Feedback** for observations that don't fit structured categories.
 
 ## Findings Tiers
 
@@ -105,7 +105,7 @@ The review cannot begin because a required document (e.g., `plan.md` or the orig
 - Missing required sections or placeholder-only content.
 - Internal contradictions (e.g., conflicting invariants).
 - Behaviors that violate stated invariants (e.g., unencrypted export vs. encryption invariant).
-- Scope inflation beyond the originating ticket.
+- Scope inflation beyond the originating work item.
 - Ambiguity in critical sections (Behaviors, Invariants, Edge Cases) that could lead to incorrect implementation.
 
 ### Non-blocking — worth addressing but planning may continue

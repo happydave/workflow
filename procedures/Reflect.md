@@ -10,7 +10,7 @@ At the end of every implementation, or when implementation is interrupted and wi
 
 ## Document Storage
 
-Create `reflect.md` in the ticket's folder alongside `ticket.md`, `plan.md`, and `implementation.md` (e.g., `docs/pending/07-investigate-pipeline-jobs/reflect.md`).
+Create `reflect.md` in the work item's folder alongside `ticket.md`, `plan.md`, and `implementation.md` (e.g., `docs/pending/07-investigate-pipeline-jobs/reflect.md`).
 
 ## Procedure
 
@@ -45,6 +45,7 @@ For each significant issue, propose a concrete change to prevent or reduce it in
 - Framework guidelines (e.g., update `guidelines/Docker.md`)
 - Implementation prompts (e.g., add an instruction to compile incrementally)
 - Makefile or tooling (e.g., add a pre-flight check)
+- New work items (if the issue warrants separate follow-up)
 
 Avoid vague recommendations. "Improve documentation" is not actionable. "Add an invariant to feature 08 stating that `.vscode/tasks.json` commands must use Makefile targets" is.
 
