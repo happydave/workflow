@@ -24,6 +24,7 @@ The workflow is supported by **Agents** — automated actors that help execute s
 - `Plan.md` — produce a feature plan with enough detail for correct first-pass implementation
 - `Implement.md` — implement incrementally from plans, maintaining an implementation log
 - `CodeReview.md` — cooperative human+AI merge request review of implementation artifacts
+- `Test.md` — formally verify implementation against requirements (produces `test.md`)
 - `PlanReview.md` — independent evaluation of plan documents before implementation begins
 - `Document.md` — verify documentation accuracy after changes
 - `Reflect.md` — capture what went well, what didn't, and concrete recommendations
@@ -41,7 +42,7 @@ The workflow is supported by **Agents** — automated actors that help execute s
 ## Typical Workflow
 
 ```
-Project → Design → Design Review → Work Item → Plan → Plan Review → Implement → Code Review → Document → Reflect → Complete
+Project → Design → Design Review → Work Item → Plan → Plan Review → Implement → Code Review → Test → Document → Reflect → Complete
 ```
 
 1. **Project** — define high-level initiatives in `docs/projects/<slug>/project.md`
@@ -52,9 +53,10 @@ Project → Design → Design Review → Work Item → Plan → Plan Review → 
 6. **Plan Review** — independent evaluation of the plan document before implementation begins
 7. **Implement** — build incrementally per plan, log decisions in `implementation.md`
 8. **Code Review** — cooperative human+AI review of merge requests after implementation
-9. **Document** — verify documentation accuracy and consistency after changes
-10. **Reflect** — capture lessons in `reflect.md`
-11. **Complete** — update status to `complete` in `workitem.md`
+9. **Test** — verify implementation against plan and guidelines (produces `test.md`)
+10. **Document** — verify documentation accuracy and consistency after changes
+11. **Reflect** — capture lessons in `reflect.md`
+12. **Complete** — update status to `complete` in `workitem.md`
 
 *Discover and Investigate are optional procedures available at any point — before Plan, between steps, or in isolation. Research is assisted by the **Discover Agent**. Archive is a maintenance step to move completed items to long-term storage and should only be performed when explicitly requested by the user.*
 

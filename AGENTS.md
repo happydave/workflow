@@ -8,10 +8,11 @@ This document is the central registry for the AI agents defined in this framewor
 | Agent | Target Procedure | Role | Location |
 |---|---|---|---|
 | **Work Item Agent** | `WorkItem.md` | Intake and clarify work; create `workitem.md`. | `agents/WorkItem.md` |
+| **Tester Agent** | `Test.md` | Execute tests and verify results; create `test.md`. | `agents/Test.md` |
 | **Discover Agent** | `Discover.md` | Research domains and APIs; create `discover.md`. | `agents/Discover.md` |
 | **Explore** | (Read-only) | Fast codebase exploration and Q&A. | (Built-in) |
 
-*Planned Agents: Planner (`Plan.md`), Reviewer (`PlanReview.md`), Implementer (`Implement.md`), Documenter (`Document.md`), Reflector (`Reflect.md`), Archiver (`Archive.md`).*
+*Planned Agents: Planner (`Plan.md`), Reviewer (`PlanReview.md`), Implementer (`Implement.md`), Documenter (`Document.md`), Reflector (`Reflect.md`), Archiver (`Archive.md`), Tester (`Test.md`).*
 
 ## Interaction Principles
 

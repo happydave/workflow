@@ -32,6 +32,7 @@ Check the work item folder for required artifacts:
 - [ ] `workitem.md` — must be present.
 - [ ] `plan.md` — must be present if the work item was promoted to a plan.
 - [ ] `implementation.md` — must be present if the work item involved implementation.
+- [ ] `test.md` — must be present if the work item involved implementation.
 - [ ] `reflect.md` — should be present for non-trivial work items.
 
 ### 2. Update Status
