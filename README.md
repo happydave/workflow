@@ -47,7 +47,7 @@ Project → Design → Design Review → Work Item → Plan → Plan Review → 
 
 1. **Project** — define high-level initiatives in `docs/projects/<slug>/project.md`
 2. **Design** — architectural blueprint in `docs/projects/<slug>/design.md`
-3. **Design Review** — evaluate design against project goals (Gate: status $\rightarrow$ `Designed`)
+3. **Design Review** — evaluate design against project goals (Gate: status → `Designed`)
 4. **Work Item** — capture work items in `docs/pending/<id>/workitem.md` (centralized management)
 5. **Plan** — produce `plan.md` following the guidance in `procedures/Plan.md`
 6. **Plan Review** — independent evaluation of the plan document before implementation begins
