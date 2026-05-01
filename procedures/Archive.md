@@ -9,7 +9,7 @@ Archive is a physical file system operation that follows the logical `Complete` 
 ## When to Archive
 
 - The work item's `Status` in `workitem.md` is set to `complete`.
-- The user or orchestrator explicitly requests archival to clean up the `docs/pending/` directory.
+- **Explicit Request**: The user or orchestrator explicitly requests archival. This action should NOT be performed automatically at the end of the `Complete` procedure.
 - No further near-term reference to the work item in the active directory is required.
 
 Archive is NOT appropriate when:

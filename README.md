@@ -28,7 +28,7 @@ The workflow is supported by **Agents** — automated actors that help execute s
 - `Document.md` — verify documentation accuracy after changes
 - `Reflect.md` — capture what went well, what didn't, and concrete recommendations
 - `Complete.md` — formally mark a work item as complete in `workitem.md`
-- `Archive.md` — move a completed work item folder to `docs/archive/` or a project's archive folder
+- `Archive.md` — move a completed work item folder to `docs/archive/` (by explicit request only)
 
 **Guidelines** — language/tooling-specific rules:
 - `Markdown.md` — quality gates for Markdown artifacts (link checking, structure verification, spell checking)
@@ -41,7 +41,7 @@ The workflow is supported by **Agents** — automated actors that help execute s
 ## Typical Workflow
 
 ```
-Project → Design → Design Review → Work Item → Plan → Plan Review → Implement → Code Review → Document → Reflect → Complete (→ Archive)
+Project → Design → Design Review → Work Item → Plan → Plan Review → Implement → Code Review → Document → Reflect → Complete
 ```
 
 1. **Project** — define high-level initiatives in `docs/projects/<slug>/project.md`
@@ -56,7 +56,7 @@ Project → Design → Design Review → Work Item → Plan → Plan Review → 
 10. **Reflect** — capture lessons in `reflect.md`
 11. **Complete** — update status to `complete` in `workitem.md`
 
-*Discover and Investigate are optional procedures available at any point — before Plan, between steps, or in isolation. Research is assisted by the **Discover Agent**. Archive is an optional final step to move completed items to long-term storage (either general or project-specific).*
+*Discover and Investigate are optional procedures available at any point — before Plan, between steps, or in isolation. Research is assisted by the **Discover Agent**. Archive is a maintenance step to move completed items to long-term storage and should only be performed when explicitly requested by the user.*
 
 ### Consumer Project Setup
 
