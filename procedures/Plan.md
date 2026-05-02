@@ -69,10 +69,14 @@ If no guidelines apply (e.g., a pure prose or workflow document), state that exp
 **Dependencies & Context**
 Reference related documents or prior features only when order or shared invariants matter.
 
+**Remaining Unknowns & Research Items**
+Bullet list of items that require further research, testing, or human clarification. If an unknown is resolved, move the resulting requirements to the appropriate section; otherwise, keep it here to signal risk to the implementer.
+
 ## Style Guide
 
 - Plaintext Markdown only
 - Concise, objective, precise language
+- Avoid restating context or technical details in chat that are (or should be) in the `plan.md`.
 - No code (structs, functions, declarations) appears in any planning document
 - Headings for structure (# Phase, ## Step)
 - Bullets for lists; numbered for sequences
@@ -99,6 +103,13 @@ The planning process MUST identify all applicable guidelines and document them i
 - Record each applicable guideline and its defined build/test steps in the plan's Applicable Guidelines section.
 - If a project spans multiple guidelines (e.g., Go + Docker), list all of them.
 
+### Knowledge Management
+
+- **File-First Documentation**: Aggressively add information to the plan doc as it is discovered. 
+- **Avoid Redundancy**: Do not restate context or technical details in chat that are (or should be) in the `plan.md`. Use the plan as the primary storage for all technical findings.
+- **State Management**: Use chat for coordination and intent; use the plan for specification. If you find yourself explaining "how" something works in chat, move that explanation to the plan instead.
+- **Explicit Gaps**: Always maintain a "Remaining Unknowns" section to track items that require further research or human clarification before or during implementation.
+
 ### Cross-Feature Relationships
 
 - Cross-feature dependencies and ordering principles are introduced when they become ambiguity sources; these may be deferred if not genuinely necessary for understanding individual features
@@ -115,7 +126,7 @@ These are not sequential phases — they are aspects of planning that apply thro
 
 **Assess** — review the work item, problem domain, stakeholder needs, known constraints, and current knowledge gaps. Assessment happens at the start and again whenever new information changes the picture.
 
-**Research & Elaborate** — investigate technical feasibility, domain details, data flows, security/privacy needs, resource needs, risks, and non-functional requirements. Draft high-level invariants and goals. Refine descriptive outcomes (no code). This is intended as deep scrutiny to ensure the feature plan has sufficient detail to implement confidently and correctly.
+**Research & Elaborate** — investigate technical feasibility, domain details, data flows, security/privacy needs, resource needs, risks, and non-functional requirements. Aggressively capture all findings directly into `plan.md`. Draft high-level invariants and goals. Refine descriptive outcomes (no code). This is intended as deep scrutiny to ensure the feature plan has sufficient detail to implement confidently and correctly. Avoid "double dipping" by documenting findings in the file rather than explaining them in chat.
 
 **Test (Descriptive)** — describe validation approaches: expected behaviors, failure modes, edge case scenarios, and thought experiments that confirm the plan is sound. No code or tests written — this is descriptive verification of the plan itself.
 
