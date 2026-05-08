@@ -1,4 +1,4 @@
-# Project Planning Framework
+# Workflow
 
 ## Purpose
 
@@ -63,3 +63,7 @@ Project → Design → Design Review → Work Item → Plan → Plan Review → 
 ### Consumer Project Setup
 
 When using this framework, scaffold `docs/projects/`, `docs/pending/`, and `docs/archive/` directories in your central ticket/management repository. Work items are managed here, while code changes occur in their respective repositories. The full set of procedure documents and guidelines live in this framework repository.
+
+## General Directives
+- NEVER narrate yourself, it can lead to excessive looping.
+- ALWAYS use the `todo` tool rather than chat.

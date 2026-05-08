@@ -57,7 +57,7 @@ When a prediction fails or a result contradicts the current mental model, the ag
 
 - **Protocol**:
     1. **Gap Analysis**: Explicitly document the `Expected Result` vs. `Observed Result`.
-    2. **Assumption Inventory**: Enumerate all assumptions that supported the failed expectation (e.g., "Assumed the environment variable was set," "Assumed the function returned a Promise").
+    2. **Assumption Inventory**: Enumerate and document all assumptions that supported the failed expectation (e.g., "Assumed the environment variable was set," "Assumed the function returned a Promise").
     3. **Direct Proofs**: Systematically verify each assumption with a targeted test, code inspection, log statement, or debugger inspection.
     4. **Log Results**: Document the outcome of these proofs before formulating the next hypothesis.
 - **Persistence**: For significant failures or persistent issues, record this analysis in a `debug.md` file within the current work item or investigation folder to preserve the reasoning trail without cluttering the primary log (`implementation.md` or `investigate.md`).

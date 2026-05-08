@@ -57,3 +57,8 @@ The AI has full discretion over:
 ## Usage
 Reference this file in plan document when Go is the target language.
 Follow these rules automatically unless a plan explicitly overrides them.
+
+## Testing
+- Always run `go test ./...` before making changes to verify the state of the project.
+- Always run `go test../...` after all changes are made for final verification.
+- Avoid running `go build` to test; prefer `go test`.
