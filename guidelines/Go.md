@@ -33,6 +33,7 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 - Use `go mod tidy` after adding or removing dependencies.
 - Test using `go test` (`go test ./...` or a more targeted path for specific changes).
 - Run `go vet` after all changes.
+- **Verification after Edits:** Always run `go vet` (or the project's equivalent build/verification step) after any non-trivial `replace_string_in_file` operation. This ensures that syntax errors introduced by automated edits (e.g., shell interpolation issues) are caught immediately before further implementation or testing.
 - If available run `golangci-lint` before considering changes complete.
 
 ## Coding Conventions (Defaults)
@@ -41,6 +42,18 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 - Error handling: Use `errors.Is`/`errors.As`; wrap with `fmt.Errorf("%w", err)` when adding context.
 - Testing: Prefer table-driven tests for logic with multiple cases.
 - Dependencies: Minimize external packages; prefer writing standard library code when reasonable.
+
+- **Custom Sorting (Database Level):** When sorting categorical strings (like `priority` or `status`) that have a logical order other than alphabetical, prefer using SQL `CASE` statements in the `ORDER BY` clause. This ensures consistency across different parts of the application and offloads sorting logic to the database.
+    - Example:
+      ```sql
+      ORDER BY CASE priority
+        WHEN 'Critical' THEN 1
+        WHEN 'High'     THEN 2
+        WHEN 'Medium'   THEN 3
+        WHEN 'Low'      THEN 4
+        ELSE 5
+      END ASC
+      ```
 
 ## Security & Safety Invariants
 - Never use the `unsafe` package unless explicitly required in a feature plan.

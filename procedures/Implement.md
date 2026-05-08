@@ -34,29 +34,24 @@ The purpose is to understand the full scope, constraints, and dependencies befor
 
 ### 3. Scaffold Implementation Log
 
-Create `implementation.md` in the work item folder (e.g., `docs/pending/07-investigate-pipeline-jobs/implementation.md`) with the following structure:
+Create `implementation.md` in the work item folder (e.g., `docs/pending/07-investigate-pipeline-jobs/implementation.md`).
 
-```markdown
-# Implementation Log: <work item title>
+Use the **Rich Skeleton Template** defined in `guidelines/implementation-template.md`. The log MUST contain the following sections:
 
-## Work Completed
+- **Work Completed** — append entries after each verified change. Each entry should identify which plan feature/requirement it addresses, the files modified, and current state (e.g., "verified clean build").
+- **Decisions Made** — record implementation choices where the planning documents left discretion (AI freedom sections), and why the choice was made. Record these *at the time of making the decision*, not retrospectively.
+- **Inconsistencies Found and Resolved** — note contradictions, ambiguities, or gaps discovered in the planning documents during implementation, and how they were resolved.
+- **Problems Encountered** — anything that didn't work as expected, required iteration, or deviated from the plan. Include root cause if apparent.
+- **Verification Results** — table template pre-populated with acceptance criterion rows from the ticket/plan.
 
-## Decisions Made
-
-## Inconsistencies Found
-
-## Problems Encountered
-
-## Final Status
-```
-
-This is a **mandatory gate** — do not proceed to step 4 until `implementation.md` exists with the above structure. Each section header must be present even if empty. The log is the primary artifact for session continuity: if this session is interrupted, another session (or you, in a future session) will read this file to understand what has been done and what remains. **An empty or missing `implementation.md` means implementation has not started.**
+This is a **mandatory gate** — do not proceed to step 4 until `implementation.md` exists with the required structure. The log is the primary artifact for session continuity: if this session is interrupted, another session (or you, in a future session) will read this file to understand what has been done and what remains. **An empty or missing `implementation.md` means implementation has not started.**
 
 Populate each section as work progresses:
-- **Work completed** — append entries after each verified change. Each entry should identify which plan feature/requirement it addresses, the files modified, and current state (e.g., "verified clean build").
-- **Decisions made** — record implementation choices where the planning documents left discretion (AI freedom sections), and why the choice was made. Record these *at the time of making the decision*, not retrospectively.
-- **Inconsistencies found** — note contradictions, ambiguities, or gaps discovered in the planning documents during implementation, and how they were resolved.
-- **Problems encountered** — anything that didn't work as expected, required iteration, or deviated from the plan. Include root cause if apparent.
+- **Work Completed** — append entries after each verified change. Each entry should identify which plan feature/requirement it addresses, the files modified, and current state (e.g., "verified clean build").
+- **Decisions Made** — record implementation choices where the planning documents left discretion (AI freedom sections), and why the choice was made. Record these *at the time of making the decision*, not retrospectively.
+- **Inconsistencies Found and Resolved** — note contradictions, ambiguities, or gaps discovered in the planning documents during implementation, and how they were resolved.
+- **Problems Encountered** — anything that didn't work as expected, required iteration, or deviated from the plan. Include root cause if apparent.
+- **Verification Results** — table template pre-populated with acceptance criterion rows from the ticket/plan.
 
 Keep entries concise and factual. The log must be sufficient for another session to continue without loss of context.
 
@@ -79,6 +74,7 @@ When all features are implemented:
 
 - Run the verification steps (build and test procedures) defined by the applicable guidelines identified in step 1.
 - Confirm clean results for each verification step.
+- **Increment the project version following the policy in `guidelines/Versioning.md`.**
 - Ensure `implementation.md` is up to date — every completed change must have a corresponding log entry, and "Final Status" must be populated. If entries are missing, go back and fill them before proceeding.
 
 ### 6. Document

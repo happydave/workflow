@@ -6,6 +6,8 @@ Answer a specific question about a running system's behavior by examining observ
 
 Investigation is diagnostic. It starts with a question or observation ("what is calling service X with bad input?", "why are error rates elevated?", "where is this latency coming from?") and ends with evidence-backed findings. It is not planning, implementation, or discovery of external products — it is examination of systems the team already operates.
 
+**See `guidelines/Debug.md` for AI-specific reasoning methods for interpreting evidence and generating hypotheses during investigation.**
+
 ## When to Investigate
 
 - A system is exhibiting unexpected behavior and the cause is unknown

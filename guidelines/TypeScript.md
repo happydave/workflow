@@ -51,7 +51,16 @@ Adapt as needed: add global tools the project requires (e.g., `esbuild`, test ru
 - Compile with `tsc` (via `make compile` or `make watch`).
 - Use `@types/vscode` and `@types/node` as dev dependencies for VS Code extension projects.
 - Run `make compile` after every set of changes to verify correctness before moving on. Do not batch all implementation and compile once at the end.
+- **Verification after Edits:** Always run `make compile` (or the project's equivalent build/verification step) after any non-trivial `replace_string_in_file` operation. This ensures that syntax errors introduced by automated edits (e.g., shell interpolation issues) are caught immediately before further implementation or testing.
 - If a bundler (esbuild, webpack) is needed, add it to `Dockerfile.dev` and wrap it in a Makefile target. Do not install it on the host.
+
+## Testing Guidelines
+
+- **Standard Tooling:** Projects should use established frameworks (e.g., `jest`, `mocha`). All test runs must be wrapped in a `make test` target.
+- **String Manipulation Logic:** When testing code that involves truncation, splitting, or buffering of large strings:
+    - **Structural Markers:** Ensure test data contains necessary structural markers (like newlines `\n` or delimiters) at expected intervals. Logic can fail silently or yield "zero-result" cases if the test string is a single monolithic block but the logic expects multi-line input.
+    - **Marker Density:** Verify that the "density" of markers in test strings is sufficient to exercise boundary conditions (e.g., a newline exactly at the truncation limit).
+    - **Helpers:** Use helper functions to generate structured test content (e.g., `"line\n".repeat(100)`) rather than hardcoding large strings. This ensures predictable structure and makes boundary tests easier to reason about.
 
 ## Coding Conventions (Defaults)
 
