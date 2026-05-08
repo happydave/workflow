@@ -78,6 +78,7 @@ Adapt as needed: add global tools the project requires (e.g., `esbuild`, test ru
 - **Disposal:** Register all resources (views, watchers, channels, providers) on `context.subscriptions` in `activate()`. Do not rely on `deactivate()` for cleanup of VS Code-managed resources.
 - **Diagnostics:** Use `vscode.window.createOutputChannel(name, { log: true })` to create a `LogOutputChannel`. Initialize it as the first statement in `activate()`. Use `log().info/debug/warn/error/trace()` throughout. Verbosity is controlled by the built-in "Developer: Set Log Level..." command — no custom settings needed.
 - **Configuration:** Contribute settings via `contributes.configuration` in `package.json`. Use `vscode.workspace.getConfiguration()` to read them.
+- **Configuration Scoping:** Before declaring a new variable to hold configuration (e.g., `const config = ...`), check the current function or method scope for existing configuration variables (like `config`, `configuration`, `settings`). Reuse the existing object if present to avoid redeclaration errors and ensure consistency.
 - **Commands:** Prefix all command IDs with the extension name (e.g., `cogpress.refreshBuckets`).
 
 ## Security & Safety Invariants

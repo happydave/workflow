@@ -4,17 +4,17 @@
 
 A structured approach for planning and documenting features with precise, unambiguous language that enables correct implementation on first attempt.
 
-The goal is to produce plans so detailed and clear that an AI (or another human) can implement features correctly without guesswork or misalignment, while leaving non-critical decisions open for optimal choices.
+The goal is to produce plans so detailed and clear that they can be implemented correctly without guesswork or misalignment, while leaving non-critical decisions open for optimal choices.
 
 ## About
 
 This repository contains meta-instructions — a guide for creating feature plans, not a finished software product. Think of it as the instruction manual before assembling the machine: we define a consistent, unambiguous process first.
 
-The workflow is supported by **Agents** — automated actors that help execute specific procedures. See [AGENTS.md](AGENTS.md) for the full registry of available capabilities.
+The workflow can be supported by **Agents** — automated actors that help execute specific procedures. See [AGENTS.md](AGENTS.md) for the full registry of available capabilities.
 
 ## File Layout
 
-**Actions** — step-by-step procedures for each phase:
+**Actions** — step-by-step procedures:
 - `Project.md` — initiate and manage high-level initiatives
 - `Design.md` — architectural blueprint for projects
 - `DesignReview.md` — independent evaluation of designs
@@ -39,11 +39,10 @@ The workflow is supported by **Agents** — automated actors that help execute s
 - `Evidence.md` — evidence assessment rules (Hub for Logs, Metrics, Groundcover)
 - `Debug.md` — AI agent debugging methodology (structured hypothesis generation, bias mitigation)
 
-## Typical Workflow
+## Typical Workflows
 
-```
-Project → Design → Design Review → Work Item → Plan → Plan Review → Implement → Code Review → Test → Document → Reflect → Complete
-```
+- Project: `Design → Design Review → Create Work Item(s)`
+- Work Item: `Plan → Plan Review → Implement → Code Review → Test → Document → Reflect → Complete`
 
 1. **Project** — define high-level initiatives in `docs/projects/<slug>/project.md`
 2. **Design** — architectural blueprint in `docs/projects/<slug>/design.md`
