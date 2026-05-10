@@ -8,11 +8,21 @@ This document is the central registry for the AI agents defined in this framewor
 | Agent | Target Procedure | Role | Location |
 |---|---|---|---|
 | **Work Item Agent** | `WorkItem.md` | Intake and clarify work; create `workitem.md`. | `agents/WorkItem.md` |
+| **Planner Agent** | `Plan.md` | Transform work items into actionable `plan.md` documents. | `agents/Plan.md` |
+| **Plan Reviewer Agent** | `PlanReview.md` | Critically assess `plan.md` for sufficiency; create `planreview.md`. | `agents/PlanReview.md` |
+| **Code Reviewer Agent** | `CodeReview.md` | Evaluate implemented code; run `Complete` action. | `agents/CodeReview.md` |
+| **SideQuest Agent** | `SideQuest.md` | Execute one-off tasks with minimal overhead. | `agents/SideQuest.md` |
+| **Implementer Agent** | `Implement.md` | Implement code from plan; maintain implementation log. | `agents/Implement.md` |
+| **Documenter Agent** | `Document.md` | Verify and update documentation post-implementation. | `agents/Document.md` |
+| **Reflector Agent** | `Reflect.md` | Capture lessons learned and output `reflect.md`. | `agents/Reflect.md` |
+| **Archiver Agent** | `Archive.md` | Move completed work items to `archive/`. | `agents/Archive.md` |
+| **Dispatch Agent** | `Dispatch.md` | Package context and instructions into `briefs/`. | `agents/Dispatch.md` |
 | **Tester Agent** | `Test.md` | Execute tests and verify results; create `test.md`. | `agents/Test.md` |
 | **Discover Agent** | `Discover.md` | Research domains and APIs; create `discover.md`. | `agents/Discover.md` |
+| **Claude Agent** | (External) | Delegate complex tasks to Claude Code CLI. | `agents/ClaudeCode.md` |
 | **Explore** | (Read-only) | Fast codebase exploration and Q&A. | (Built-in) |
 
-*Planned Agents: Planner (`Plan.md`), Reviewer (`PlanReview.md`), Implementer (`Implement.md`), Documenter (`Document.md`), Reflector (`Reflect.md`), Archiver (`Archive.md`), Tester (`Test.md`).*
+*Planned Agents: None.*
 
 ## Interaction Principles
 

@@ -9,6 +9,7 @@ The primary goal of this framework is to enable the production of high-quality c
 - **Centralized Workflow Definition**: The authoritative workflow sequence and structure are defined in `README.md`. Individual procedure documents (`procedures/*.md`) should focus on the internal procedure of that specific step and avoid redundantly specifying the broader workflow context.
 - **Automation-Ready**: The workflow is intended to operate within a largely automated process. Procedures and roles (Reviewer, Author) are defined to be actor-agnostic, allowing for seamless integration into automated pipelines with minimal human oversight.
 - **Durable Audit Trail**: Every action produces structured markdown artifacts (e.g., `plan.md`, `implementation.md`, `reflect.md`). This provides a clear audit trail for:
+    - **Instruction Accuracy**: The `Dispatch` procedure ensures the exact instructions and context provided to execution agents are recorded in `briefs/`.
     - **Accuracy Verification**: Confirming implementation matches planning and requirements.
     - **Troubleshooting**: Diagnosing where a process failed or where ambiguity was introduced.
     - **Continuous Improvement**: Using historical artifacts to identify patterns and refine the framework itself.

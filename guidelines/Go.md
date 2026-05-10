@@ -12,6 +12,13 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 - Only constrain what is necessary for correctness or project consistency.
 - Explicitly grant freedom on non-critical choices.
 
+## Testing
+- Never run `go build` to test; use `go test`.
+- Never run `go test -short` unless explicitly instructed in the plan.
+- Always run `go test ./...` before making changes to verify the state of the project.
+- Always run `go test../...` after all changes are made for final verification.
+- Avoid running `go build` to test; prefer `go test`.
+
 ## Module & Project Setup
 - **Module path**
   If the Go module path is unknown, stop and ask:
@@ -20,8 +27,8 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 
 - **go.mod handling**
   - Check if `go.mod` already exists in the project root.
-  - If it exists do not run `go mod init`; use the existing module.
-  - If it does not exist run `go mod init [path]` using the go path specified in the plan.
+  - If `go.mod` exists do not run `go mod init`; use the existing module.
+  - If `go.mod` does not exist run `go mod init [path]` using the go path specified in the plan.
   - Never create nested Go modules (only one `go.mod` at project root).
 
 - **Module name validation**
@@ -41,19 +48,7 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 - Exported identifiers: UpperCamelCase.
 - Error handling: Use `errors.Is`/`errors.As`; wrap with `fmt.Errorf("%w", err)` when adding context.
 - Testing: Prefer table-driven tests for logic with multiple cases.
-- Dependencies: Minimize external packages; prefer writing standard library code when reasonable.
-
-- **Custom Sorting (Database Level):** When sorting categorical strings (like `priority` or `status`) that have a logical order other than alphabetical, prefer using SQL `CASE` statements in the `ORDER BY` clause. This ensures consistency across different parts of the application and offloads sorting logic to the database.
-    - Example:
-      ```sql
-      ORDER BY CASE priority
-        WHEN 'Critical' THEN 1
-        WHEN 'High'     THEN 2
-        WHEN 'Medium'   THEN 3
-        WHEN 'Low'      THEN 4
-        ELSE 5
-      END ASC
-      ```
+- Dependencies: Minimize 3rd party imports; prefer writing standard library code when reasonable.
 
 ## Security & Safety Invariants
 - Never use the `unsafe` package unless explicitly required in a feature plan.
@@ -70,8 +65,3 @@ The AI has full discretion over:
 ## Usage
 Reference this file in plan document when Go is the target language.
 Follow these rules automatically unless a plan explicitly overrides them.
-
-## Testing
-- Always run `go test ./...` before making changes to verify the state of the project.
-- Always run `go test../...` after all changes are made for final verification.
-- Avoid running `go build` to test; prefer `go test`.

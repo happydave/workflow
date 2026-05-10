@@ -19,6 +19,8 @@ The workflow can be supported by **Agents** — automated actors that help execu
 - `Design.md` — architectural blueprint for projects
 - `DesignReview.md` — independent evaluation of designs
 - `WorkItem.md` — intake for work items (keep them short)
+- `SideQuest.md` — execute and document one-off tasks with minimal overhead
+- `Dispatch.md` — package context and instructions for a specialized agent session
 - `Discover.md` — investigate products, APIs, or technology domains
 - `Investigate.md` — diagnose runtime system behavior using observability data
 - `Plan.md` — produce a feature plan with enough detail for correct first-pass implementation
@@ -48,7 +50,8 @@ The workflow can be supported by **Agents** — automated actors that help execu
 2. **Design** — architectural blueprint in `docs/projects/<slug>/design.md`
 3. **Design Review** — evaluate design against project goals (Gate: status → `Designed`)
 4. **Work Item** — capture work items in `docs/pending/<id>/workitem.md` (centralized management)
-5. **Plan** — produce `plan.md` following the guidance in `procedures/Plan.md`
+5. **Dispatch** — package context and instructions in `briefs/` for the specific task
+6. **Plan** — produce `plan.md` following the guidance in `procedures/Plan.md`
 6. **Plan Review** — independent evaluation of the plan document before implementation begins
 7. **Implement** — build incrementally per plan, log decisions in `implementation.md`
 8. **Code Review** — cooperative human+AI review of merge requests after implementation
@@ -58,6 +61,10 @@ The workflow can be supported by **Agents** — automated actors that help execu
 12. **Complete** — update status to `complete` in `workitem.md`
 
 *Discover and Investigate are optional procedures available at any point — before Plan, between steps, or in isolation. Research is assisted by the **Discover Agent**. Archive is a maintenance step to move completed items to long-term storage and should only be performed when explicitly requested by the user.*
+
+### Workflow Architecture
+
+A detailed Mermaid diagram is available for visual representation here: [Workflow Architecture](knowledge/WorkflowArchitecture.md).
 
 ### Consumer Project Setup
 
