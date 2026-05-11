@@ -16,8 +16,8 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 - Never run `go build` to test; use `go test`.
 - Never run `go test -short` unless explicitly instructed in the plan.
 - Always run `go test ./...` before making changes to verify the state of the project.
-- Always run `go test../...` after all changes are made for final verification.
-- Avoid running `go build` to test; prefer `go test`.
+- Always run `go test ./...` after all changes are made for final verification.
+- Never use `go build` to test; use `go test` (or `go run` if you want to interact with a running instance).
 
 ## Module & Project Setup
 - **Module path**
