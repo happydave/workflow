@@ -14,11 +14,11 @@ The workflow can be supported by **Agents** — automated actors that help execu
 
 ## File Layout
 
-**Actions** — step-by-step procedures:
-- `Project.md` — initiate and manage high-level initiatives
+**procedures**
+- `Project.md` — create and manage high-level initiatives
 - `Design.md` — architectural blueprint for projects
 - `DesignReview.md` — independent evaluation of designs
-- `WorkItem.md` — intake for work items (keep them short)
+- `WorkItem.md` — create and manage work items
 - `SideQuest.md` — execute and document one-off tasks with minimal overhead
 - `Dispatch.md` — package context and instructions for a specialized agent session
 - `Discover.md` — investigate products, APIs, or technology domains
@@ -31,9 +31,9 @@ The workflow can be supported by **Agents** — automated actors that help execu
 - `Document.md` — verify documentation accuracy after changes
 - `Reflect.md` — capture what went well, what didn't, and concrete recommendations
 - `Complete.md` — formally mark a work item as complete in `workitem.md`
-- `Archive.md` — move a completed work item folder to `docs/archive/` (by explicit request only)
+- `Archive.md` — archive a completed work item (by explicit request only)
 
-**Guidelines** — language/tooling-specific rules:
+**guidelines**
 - `Markdown.md` — quality gates for Markdown artifacts (link checking, structure verification, spell checking)
 - `TypeScript.md` — VS Code extension / Node.js conventions (Docker-based builds)
 - `Go.md` — Go module setup, tooling, conventions
@@ -41,26 +41,10 @@ The workflow can be supported by **Agents** — automated actors that help execu
 - `Evidence.md` — evidence assessment rules (Hub for Logs, Metrics, Groundcover)
 - `Debug.md` — AI agent debugging methodology (structured hypothesis generation, bias mitigation)
 
-## Typical Workflows
+## Typical Pipelines
 
-- Project: `Design → Design Review → Create Work Item(s)`
+- Project: `Create Project → Discover → Design → Design Review → Create Work Item(s)`
 - Work Item: `Plan → Plan Review → Implement → Code Review → Test → Document → Reflect → Complete`
-
-1. **Project** — define high-level initiatives in `docs/projects/<slug>/project.md`
-2. **Design** — architectural blueprint in `docs/projects/<slug>/design.md`
-3. **Design Review** — evaluate design against project goals (Gate: status → `Designed`)
-4. **Work Item** — capture work items in `docs/pending/<id>/workitem.md` (centralized management)
-5. **Dispatch** — package context and instructions in `briefs/` for the specific task
-6. **Plan** — produce `plan.md` following the guidance in `procedures/Plan.md`
-6. **Plan Review** — independent evaluation of the plan document before implementation begins
-7. **Implement** — build incrementally per plan, log decisions in `implementation.md`
-8. **Code Review** — cooperative human+AI review of merge requests after implementation
-9. **Test** — verify implementation against plan and guidelines (produces `test.md`)
-10. **Document** — verify documentation accuracy and consistency after changes
-11. **Reflect** — capture lessons in `reflect.md`
-12. **Complete** — update status to `complete` in `workitem.md`
-
-*Discover and Investigate are optional procedures available at any point — before Plan, between steps, or in isolation. Research is assisted by the **Discover Agent**. Archive is a maintenance step to move completed items to long-term storage and should only be performed when explicitly requested by the user.*
 
 ### Workflow Architecture
 
