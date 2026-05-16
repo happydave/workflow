@@ -25,6 +25,8 @@ Code Review is a cooperative process: the AI performs exhaustive mechanical scan
 - Scans exhaustively for mechanical issues across all files, including large and repetitive changesets
 - Surfaces subtle issues that are easy to miss at scale: misspellings, shadowed variables, variable name mismatches, copy-paste errors, inconsistent changes across similar files
 - Distinguishes linter-class changes (whitespace, comment formatting, trivial rewordings) from substantive changes, so the human can focus attention appropriately
+- **Fixes minor issues directly** (e.g., typos, linter-class problems, trivially-wrong references) rather than reporting them as findings
+- For issues that are substantive, safety-relevant, or unreasonably complex to resolve without additional context, stops and notifies the requester rather than attempting a fix
 - Evaluates each change against the dimensions below and reports findings with enough specificity for the human to act on them
 
 ## Procedure

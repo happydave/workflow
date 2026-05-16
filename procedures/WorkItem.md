@@ -66,4 +66,5 @@ When work is fully implemented and verified, follow the procedure in `procedures
 - Do not duplicate external issue trackers verbatim. Summarize the relevant context in the project's own terms.
 - When a work item is promoted to a plan (via the Plan action), a `plan.md` is added to the folder — the `workitem.md` remains unchanged.
 - Acceptance criteria in work items are intentionally lighter than in feature plans. They answer "how would we know this is done?" not "what are all the edge cases?"
+- Do not invent acceptance criteria that were not requested or are not obviously implied by the description. Arbitrary criteria add scope without adding value and distort planning later.
 - When Complete determines the work item is finished, no further active development is expected for this work item.

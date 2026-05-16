@@ -34,6 +34,7 @@ Review the implementation and determine which documentation surfaces could be af
 - **Inline help text** — CLI help strings, UI labels, tooltip text, error messages
 - **Configuration documentation** — environment variables, config files, options
 - **Contribution or development guides** — build steps, test instructions, architecture notes
+- **Agent and capability registries** — AGENTS.md and similar files that describe available agents, tools, or automated capabilities
 
 ### 3. Check Each Surface for Accuracy
 

@@ -18,6 +18,8 @@ Plan Review is an *external* quality gate that provides an independent evaluatio
 - **Prerequisites**: Access to the originating `workitem.md` (for Scope Alignment), access to applicable guideline documents identified during evaluation, and knowledge of any project-specific constraints stated in the plan's Dependencies & Context or Explicit AI Freedom sections.
 - Systematically evaluates the plan across five dimensions: Completeness, Coherence, Precision, Scope, and Compliance.
 - Identifies contradictions, ambiguities, and scope inflation.
+- **Fixes minor issues directly** (e.g., typos, minor wording ambiguity, trivially-wrong references) rather than reporting them as findings.
+- For issues that are substantive or unreasonably complex to resolve without additional context, stops and notifies the requester rather than attempting a fix.
 - Organizes findings into tiered categories with section-level precision.
 - Produces a structure summary confirming which required sections are substantive.
 - Delivers the final Status and posts structured feedback.

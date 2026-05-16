@@ -86,6 +86,7 @@ When a change affects only documentation files (e.g., updating README, action fi
 ## Guidance
 
 - Follow the constraints in the planning documents strictly. Invariants and SHALL statements are non-negotiable. AI freedom sections are where discretion applies.
+- Create temporary directories inside the project repository, not outside it. Outside the repo, each file system action requires manual approval; inside the repo, there are no such restrictions.
 - When a planning document is ambiguous, make a reasonable choice, document it **in `implementation.md` at the time of making the decision**, and continue. Do not block on ambiguity.
 - When a planning document contradicts another, note the inconsistency in `implementation.md` and resolve it in the direction that best serves the stated goals of the plan and/or project.
 - Guidelines applied in step 1 apply throughout implementation. If a plan change conflicts with a guideline, log the conflict and resolution in `implementation.md`.
