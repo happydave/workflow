@@ -52,4 +52,4 @@ A detailed Mermaid diagram is available for visual representation here: [Workflo
 
 ## General Directives
 - NEVER narrate yourself, it can lead to excessive looping.
-- ALWAYS use the `todo` tool rather than chat.
+- ALWAYS use the `todo` tool (when available) rather than chat.

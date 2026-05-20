@@ -4,11 +4,11 @@
 
 Formally archive a completed work item by moving its folder from `docs/pending/` to `docs/archive/`. This action cleans up the active work directory and moves the auditable trail of the work item to long-term storage.
 
-Archive is a physical file system operation that follows the logical `Complete` action.
+Archive follows the logical `Complete` action.
 
 ## When to Archive
 
-- The work item's `Status` in `workitem.md` is set to `complete`.
+- The work item's status is `complete`.
 - **Explicit Request**: The user or orchestrator explicitly requests archival. This action should NOT be performed automatically at the end of the `Complete` procedure.
 - No further near-term reference to the work item in the active directory is required.
 
@@ -24,17 +24,11 @@ Archive is NOT appropriate when:
 
 ### 1. Verify Completion Status
 
-Check the `workitem.md` inside the work item folder. Verify that the `Status` field is set to `complete`. If the status is not `complete`, stop and inform the user that the work item must be finalized via the `Complete` action first.
+Verify that the work item's status is `complete` by reading the `Status` field in `workitem.md`. If the status is not `complete`, stop and inform the user that the work item must be finalized via the `Complete` action first.
 
 ### 2. Execute Move
 
-Move the entire work item folder atomically from `docs/pending/` to `docs/archive/`:
-
-```
-mv docs/pending/<id>-<name>/ docs/archive/
-```
-
-This is a single directory-level operation. Individual files must not be copied or moved separately. The entire work item folder — including all artifacts produced during the workflow — moves together.
+Move the entire work item folder from `docs/pending/` to `docs/archive/`. Individual files must not be copied or moved separately — the entire folder moves together.
 
 ## Guidance
 

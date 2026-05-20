@@ -15,7 +15,7 @@ Design is broader than Planning. While a Plan (`plan.md`) details changes for a 
 
 ## Document Storage & Naming
 
-The design document lives within the Project's folder:
+The design document (a prose artifact) lives within the project folder in all modes:
 
 - `docs/projects/<slug>/design.md`
 

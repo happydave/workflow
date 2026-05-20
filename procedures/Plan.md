@@ -86,10 +86,9 @@ Bullet list of items that require further research, testing, or human clarificat
 
 ## Document Storage & Naming
 
-Feature plans live inside the work item folder that originated them. When a work item is promoted to a plan, create `plan.md` in the folder:
+Feature plans (prose artifacts) live inside the work item folder. When a work item is promoted to a plan, create `plan.md` in the folder:
 
-- `docs/pending/07-investigate-pipeline-jobs/plan.md`
-- `docs/pending/PROJ-123-investigate-pipeline-jobs/plan.md`
+- `docs/pending/<id>-<name>/plan.md`
 
 The presence of `plan.md` in a work item folder indicates the item has been planned. The absence of `plan.md` indicates it has not.
 

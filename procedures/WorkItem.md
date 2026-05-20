@@ -18,22 +18,11 @@ Do not defer capture. A brief work item written now is more valuable than a deta
 
 ## Document Storage & Naming
 
-Work items are stored in a central management repository (e.g., `tickets`), not in individual code repositories.
-
-Each work item gets its own folder under `docs/pending/`, named with an identifier and short description in kebab-case. The intake document inside is always named `workitem.md`.
-
-Two naming conventions are supported for the folder:
-
-- **Sequential numbering** (default): `docs/pending/07-investigate-pipeline-jobs/workitem.md`
-- **External identifier** (when available): `docs/pending/PROJ-123-investigate-pipeline-jobs/workitem.md`
-
-Sequential numbers use two-digit prefixes and reflect creation order, not priority or implementation order. When an external system (issue tracker, project board) provides an identifier, use it as the prefix instead.
-
-The folder is the home for all artifacts related to this work item. As the work progresses through planning and implementation, additional files are added to the same folder (see Plan and Implement actions). When work is complete, the entire folder moves from `docs/pending/` to `docs/archive/` following the procedure in Archive.
+Work items are stored in a central management repository (e.g., `tickets`), not in individual code repositories. Each work item has a folder at `docs/pending/<id>-<name>/` — use sequential numbering for `<id>`. The folder is the home for all artifacts related to that work item. As work progresses through planning and implementation, additional files are added to the same folder (see Plan and Implement procedures). When work is complete, the entire folder moves to `docs/archive/` following the Archive procedure.
 
 ## Required Content
 
-Every `workitem.md` must include:
+Every work item record must include:
 
 - **Title** — a concise description of the work item.
 - **Status** — the current state of the work item (e.g., `pending`, `complete`).
@@ -51,9 +40,8 @@ Include these when they are known and useful. Omit them when they are not:
 
 ## Procedure
 
-1. **Capture** — create the work item folder and `workitem.md` with at minimum the Title and Description. Err on the side of writing it down quickly rather than crafting it perfectly.
+1. **Capture** — create `docs/pending/<id>-<name>/workitem.md` with at minimum the Title and Description. Err on the side of writing it down quickly rather than crafting it perfectly.
 2. **Contextualize** — if immediately obvious, add proposed changes and acceptance criteria. If not, leave them out — they belong in the planning phase, not the work item.
-3. **File it** — commit the work item to the repository so it is not lost.
 
 ## Completion
 

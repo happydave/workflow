@@ -34,7 +34,7 @@ The purpose is to understand the full scope, constraints, and dependencies befor
 
 ### 3. Scaffold Implementation Log
 
-Create `implementation.md` in the work item folder (e.g., `docs/pending/07-investigate-pipeline-jobs/implementation.md`).
+Create `implementation.md` in the work item folder (e.g. `docs/pending/07-investigate-pipeline-jobs/implementation.md`).
 
 Use the **Rich Skeleton Template** defined in `guidelines/implementation-template.md`. The log MUST contain the following sections:
 

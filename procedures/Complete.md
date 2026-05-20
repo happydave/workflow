@@ -2,7 +2,7 @@
 
 ## Intent
 
-Formally mark a work item as complete by updating its status in `workitem.md`. This represents the conclusion of all creative and technical work (planning, implementation, review, documentation) and signals that the work item is ready for archival.
+Formally mark a work item as complete by updating its status. This represents the conclusion of all creative and technical work (planning, implementation, review, documentation) and signals that the work item is ready for archival.
 
 Completion is the logical end of the active workflow. It ensures that the state of the work item is explicitly recorded within the artifact itself.
 
@@ -29,7 +29,6 @@ Complete is NOT appropriate when:
 
 Check the work item folder for required artifacts:
 
-- [ ] `workitem.md` — must be present.
 - [ ] `plan.md` — must be present if the work item was promoted to a plan.
 - [ ] `implementation.md` — must be present if the work item involved implementation.
 - [ ] `test.md` — must be present if the work item involved implementation.
@@ -37,7 +36,7 @@ Check the work item folder for required artifacts:
 
 ### 2. Update Status
 
-Update the `Status` field in `workitem.md` from `pending` (or its current state) to `complete`. 
+Update the `Status` field in `workitem.md` to `complete`.
 
 If a `Completed Date` or similar metadata field is used in the project, update that as well.
 
