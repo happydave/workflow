@@ -18,7 +18,7 @@ Do not defer capture. A brief work item written now is more valuable than a deta
 
 ## Document Storage & Naming
 
-Work items are stored in a central management repository (e.g., `tickets`), not in individual code repositories. Each work item has a folder at `docs/pending/<id>-<name>/` — use sequential numbering for `<id>`. The folder is the home for all artifacts related to that work item. As work progresses through planning and implementation, additional files are added to the same folder (see Plan and Implement procedures). When work is complete, the entire folder moves to `docs/archive/` following the Archive procedure.
+Work items are stored in a central management repository (e.g., `tickets`), not in individual code repositories. Each work item has a folder at `docs/pending/<id>-<name>/`. The ID is assigned by reading `docs/pending/next` and incrementing it before creating any files — see the Procedure section for the full sequence. The folder is the home for all artifacts related to that work item. As work progresses through planning and implementation, additional files are added to the same folder (see Plan and Implement procedures). When work is complete, the entire folder moves to `docs/archive/` following the Archive procedure.
 
 ## Required Content
 
@@ -40,8 +40,9 @@ Include these when they are known and useful. Omit them when they are not:
 
 ## Procedure
 
-1. **Capture** — create `docs/pending/<id>-<name>/workitem.md` with at minimum the Title and Description. Err on the side of writing it down quickly rather than crafting it perfectly.
-2. **Contextualize** — if immediately obvious, add proposed changes and acceptance criteria. If not, leave them out — they belong in the planning phase, not the work item.
+1. **Assign an ID** — read `docs/pending/next` to obtain the next available ID `N`. Write `N + 1` back to `docs/pending/next` before creating any files. If `docs/pending/next` does not exist, determine `N` by finding the highest-numbered existing folder in `docs/pending/` and adding one, then write `N + 1` to `docs/pending/next` before proceeding.
+2. **Capture** — create `docs/pending/<N>-<name>/workitem.md` with at minimum the Title and Description. Err on the side of writing it down quickly rather than crafting it perfectly.
+3. **Contextualize** — if immediately obvious, add proposed changes and acceptance criteria. If not, leave them out — they belong in the planning phase, not the work item.
 
 ## Completion
 
