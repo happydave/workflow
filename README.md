@@ -19,6 +19,7 @@ The workflow can be supported by **Agents** — automated actors that help execu
 - `Design.md` — architectural blueprint for projects
 - `DesignReview.md` — independent evaluation of designs
 - `WorkItem.md` — create and manage work items
+- `GitMerge.md` — plan and execute branch merges: survey divergence, select strategy, execute, record outcome
 - `SideQuest.md` — execute and document one-off tasks with minimal overhead
 - `Dispatch.md` — package context and instructions for a specialized agent session
 - `Discover.md` — investigate products, APIs, or technology domains

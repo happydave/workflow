@@ -42,7 +42,7 @@ Include these when they are known and useful. Omit them when they are not:
 
 1. **Assign an ID** — read `docs/pending/next` to obtain the next available ID `N`. Write `N + 1` back to `docs/pending/next` before creating any files. If `docs/pending/next` does not exist, determine `N` by finding the highest-numbered existing folder in `docs/pending/` and adding one, then write `N + 1` to `docs/pending/next` before proceeding.
 2. **Capture** — create `docs/pending/<N>-<name>/workitem.md` with at minimum the Title and Description. Err on the side of writing it down quickly rather than crafting it perfectly.
-3. **Contextualize** — if immediately obvious, add proposed changes and acceptance criteria. If not, leave them out — they belong in the planning phase, not the work item.
+3. **Contextualize** — if immediately obvious, add proposed changes and acceptance criteria. If not, leave them out — they belong in the planning phase, not the work item. **Do not invent acceptance criteria that were not stated or are not directly implied by the description.** Criteria not grounded in the description add scope without adding value and distort planning later.
 
 ## Completion
 
@@ -55,5 +55,4 @@ When work is fully implemented and verified, follow the procedure in `procedures
 - Do not duplicate external issue trackers verbatim. Summarize the relevant context in the project's own terms.
 - When a work item is promoted to a plan (via the Plan action), a `plan.md` is added to the folder — the `workitem.md` remains unchanged.
 - Acceptance criteria in work items are intentionally lighter than in feature plans. They answer "how would we know this is done?" not "what are all the edge cases?"
-- Do not invent acceptance criteria that were not requested or are not obviously implied by the description. Arbitrary criteria add scope without adding value and distort planning later.
 - When Complete determines the work item is finished, no further active development is expected for this work item.
