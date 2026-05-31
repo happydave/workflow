@@ -20,10 +20,17 @@ Example: Enable users to securely register, verify their email, and log in so th
 
 **Invariants & Hard Constraints**
 Bullet list of non-negotiable truths that must always hold. Keep this list short and provable. Include only items that, if violated, break correctness, security, or compliance.
-Examples:
+
+Each invariant must be traceable to an explicit statement or direct implication in the work item. Before adding an invariant, identify which sentence or requirement it derives from. Invariants with no traceable origin must not be added.
+
+Good examples:
 - Passwords are never stored in plain text or reversible form.
 - All authentication tokens expire and cannot be used after revocation.
 - Personally identifiable data is encrypted at rest using AES-256 or stronger.
+
+Bad example (do not add invariants like this):
+- Must handle concurrent requests. *(Untraceable — the work item says nothing about concurrency; this is an invented constraint.)*
+
 (For project-wide security rules — e.g., OWASP Top 10 mitigation, no plain-text secrets in logs — reference a central security.md or include critical ones here.)
 
 **Required Behaviors & Verifications**
@@ -81,8 +88,9 @@ Bullet list of items that require further research, testing, or human clarificat
 - Headings for structure (# Phase, ## Step)
 - Bullets for lists; numbered for sequences
 - Strong descriptive text of expected behavior, data flows, edge cases, invariants — enough to eliminate ambiguity for implementation
-- Invariant section must contain: each invariant provably true given fundamental constraints, no unstated assumptions or dependencies, no implicit contradictions
+- Invariant section must contain: each invariant provably true given fundamental constraints, traceable to an explicit statement or direct implication in the work item, no unstated assumptions or dependencies, no implicit contradictions
 - This framework assumes invariants will be scrutinized during the Critically Assess step
+- Heading hierarchy wording: avoid directional terms like "higher level" or "lower level" when describing markdown heading structure — these are ambiguous because H1 is simultaneously highest in document hierarchy and lowest in heading number. Use level-number comparisons instead: "a heading whose level number is ≤ N" or "a heading at depth ≤ the matched heading."
 
 ## Document Storage & Naming
 

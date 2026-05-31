@@ -41,7 +41,17 @@ Before the AI reads the diff, provide:
 
 If the MR description is absent or insufficient, note this — it is itself a finding. A reviewable MR should be self-describing.
 
-### 2. AI: Read and Categorize the Diff
+### 2. AI: Verify Implementation Log
+
+Before reading the diff, locate the work item folder for this MR. Check for the presence and completeness of `implementation.md`:
+
+- **Missing** — `implementation.md` does not exist in the work item folder. This is a **blocking finding**. Report it and do not proceed until the file is provided.
+- **Empty or scaffolding-only** — `implementation.md` exists but contains only template placeholders (e.g., all sections consist solely of HTML comment content with no substantive entries). This is a **blocking finding**. Report it and do not proceed.
+- **Present and substantive** — `implementation.md` exists and contains real log entries. Continue to step 3.
+
+If no work item folder can be identified from the MR context, note the absence as an advisory observation and proceed — the check cannot be performed without a work item reference.
+
+### 3. AI: Read and Categorize the Diff
 
 Read all changed files in full. Do not skim. For each file, identify:
 
@@ -50,7 +60,7 @@ Read all changed files in full. Do not skim. For each file, identify:
 
 Produce a brief **change summary** grouping files by category. This orients the human and makes clear where scrutiny is most needed. Large volumes of mechanical changes should be called out explicitly so the human is not lulled into treating them as low-risk without confirmation.
 
-### 3. AI: Evaluate
+### 4. AI: Evaluate
 
 Assess all substantive changes across these dimensions:
 
@@ -74,7 +84,7 @@ Also scan exhaustively for mechanical issues regardless of change category:
 - Copy-paste errors in repeated blocks
 - Inconsistent application of a change across files that should be identical
 
-### 4. AI: Report Findings
+### 5. AI: Report Findings
 
 Organize findings into three tiers:
 
@@ -86,7 +96,7 @@ For each blocking and non-blocking finding: state what it is, where it is, and w
 
 Flag findings as **uncertain** when the concern depends on intent or system context the AI cannot fully determine. These are handed to the human for judgment rather than presented as definitive.
 
-### 5. Human: Review Findings and Decide
+### 6. Human: Review Findings and Decide
 
 Review the AI's findings:
 
@@ -94,7 +104,7 @@ Review the AI's findings:
 - Reclassify any findings where the AI's blocking/non-blocking judgment does not match the team's standards
 - Identify anything the AI missed that requires manual scrutiny (integration behavior, deployment implications, operational concerns)
 
-### 6. Human: Deliver the Review
+### 7. Human: Deliver the Review
 
 Post feedback to the MR. Inline comments for findings tied to specific lines; a top-level summary comment for the overall verdict and any general observations.
 

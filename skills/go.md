@@ -53,6 +53,7 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 - Error handling: Use `errors.Is`/`errors.As`; wrap with `fmt.Errorf("%w", err)` when adding context.
 - Testing: Prefer table-driven tests for logic with multiple cases.
 - Dependencies: Minimize 3rd party imports; prefer writing standard library code when reasonable.
+- JSON slice initialization: When a function returns a slice that will be marshalled to JSON, initialize it with `make([]T, 0)` rather than `var s []T`. An uninitialized slice marshals to JSON `null`; `make([]T, 0)` marshals to `[]`, which is the expected form for JSON arrays in MCP tool responses and most API contracts.
 
 ## Security & Safety Invariants
 - Never use the `unsafe` package unless explicitly required in a feature plan.
