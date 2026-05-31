@@ -1,3 +1,7 @@
+---
+name: evidence
+description: Evidence assessment and confidence labeling framework for investigations
+---
 # Evidence Assessment
 
 Rules for evaluating the reliability and decisiveness of evidence during investigation. This document defines the core principles and confidence framework used across all observability data.
@@ -40,9 +44,9 @@ Resist the temptation to produce a "root cause" without evidence. Documenting wh
 
 ## Specific Evidence Guidelines
 For detailed rules on specific data types, refer to the following:
-- [Logs Evidence](Evidence/Logs.md)
-- [Metrics Evidence](Evidence/Metrics.md)
-- [Groundcover & Traces](Evidence/Groundcover.md)
+- [Logs Evidence](evidence/Logs.md)
+- [Metrics Evidence](evidence/Metrics.md)
+- [Groundcover & Traces](evidence/Groundcover.md)
 
 ## Usage
 Reference this hub document in all investigation plans.

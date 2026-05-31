@@ -1,3 +1,7 @@
+---
+name: docker
+description: Docker-based build environment patterns and container conventions
+---
 # Docker Build Environment Guidelines
 
 ## Purpose

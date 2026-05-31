@@ -1,3 +1,7 @@
+---
+name: claude-code
+description: Claude Code CLI usage reference for task delegation and automated operations
+---
 # Claude Code CLI Guidelines
 
 ## Purpose
@@ -45,7 +49,7 @@ By default, Claude Code resumes the "most recent" session in a directory. To pre
 ### Task Delegation
 When a task is too complex or requires a specialized agent, delegate it to Claude Code:
 ```bash
-claude "Implement the logic for X in file Y, following guidelines/Go.md" --print
+claude "Implement the logic for X in file Y, following skills/go.md" --print
 ```
 
 ### Automated Code Review

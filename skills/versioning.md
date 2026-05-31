@@ -1,3 +1,7 @@
+---
+name: versioning
+description: Version increment policy: one ticket, one patch
+---
 # Versioning Guidelines
 
 ## Purpose

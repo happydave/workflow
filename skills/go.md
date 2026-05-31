@@ -1,3 +1,7 @@
+---
+name: go
+description: Go language conventions, tooling, and testing rules
+---
 # Go Language Guidelines
 
 ## Purpose

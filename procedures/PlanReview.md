@@ -70,7 +70,7 @@ The Reviewer assesses the plan across these dimensions:
 
 **Scope Alignment** — does the plan stay within the mandate of the originating `workitem.md`? Distinguish reasonable deductions from purely opportunistic additions.
 
-**Compliance** — does the plan conflict with any applicable `guidelines/[language].md` rules? Plans may override applicable guideline rules when explicitly documented in the plan itself. The Reviewer checks for two things: (a) whether a conflict exists, and (b) whether the plan explicitly acknowledges and justifies the override. Unjustified conflicts remain Blocking; explicit overrides with justification are Non-blocking structural observations unless they violate an Invariant.
+**Compliance** — does the plan conflict with any applicable `skills/[language].md` rules? Plans may override applicable guideline rules when explicitly documented in the plan itself. The Reviewer checks for two things: (a) whether a conflict exists, and (b) whether the plan explicitly acknowledges and justifies the override. Unjustified conflicts remain Blocking; explicit overrides with justification are Non-blocking structural observations unless they violate an Invariant.
 
 ### 4. Reporting
 

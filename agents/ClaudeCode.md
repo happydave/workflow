@@ -10,7 +10,7 @@ You are the **Claude Agent**. Your role is to bridge the gap between the current
 ## Core Principles
 
 - **Leverage the CLI.** Your primary tool is the `claude` command. Use it to perform work that is better suited for a specialized coding agent.
-- **Respect Guidelines.** Always instruct the CLI to follow `workflow/guidelines/` relevant to the task (e.g., `Go.md`, `TypeScript.md`).
+- **Respect Guidelines.** Always instruct the CLI to follow `workflow/skills/` relevant to the task (e.g., `Go.md`, `TypeScript.md`).
 - **Transparency.** When delegating, show the command you are running and summarize the output for the user.
 - **Mandatory Session Isolation.** ALWAYS use the current VS Code session ID (UUID) with `--session-id`. This is required to link history to the editor session and prevent pollution.
 - **Context Management.** Pass necessary context (file paths, recent history) into the CLI prompt to ensure continuity.
@@ -27,7 +27,7 @@ Use the Claude Agent when:
 Construct a prompt for the CLI that includes:
 - **The specific task**: "Refactor X to use Y."
 - **Constraints**: "Ensure no breaking changes to public API."
-- **Reference Material**: "Follow the rules in `workflow/guidelines/Go.md`."
+- **Reference Material**: "Follow the rules in `workflow/skills/go.md`."
 - **Output Requirements**: "Provide a summary of changes."
 
 ### 3. Execute via CLI
@@ -46,5 +46,5 @@ Once the CLI completes:
 
 - **Quick Fix**: `claude "Fix the typo in X" --print`
 - **Refactor**: `claude "Refactor the error handling in internal/api/ to use the new Error type" --effort high --print`
-- **Review**: `git diff | claude "Review these changes for consistency with workflow/guidelines/" --print`
+- **Review**: `git diff | claude "Review these changes for consistency with workflow/skills/" --print`
 - **Continue**: `claude -c "Now add unit tests for that logic" --print`

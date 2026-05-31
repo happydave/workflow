@@ -1,3 +1,7 @@
+---
+name: debug
+description: AI-specific debugging methodology: scientific loop, bias mitigation, verification gates
+---
 # AI Adaptations for Debugging
 
 This document adapts traditional debugging methodologies for use by AI agents, specifically focusing on systematic diagnosis and overcoming cognitive biases. It complements `Investigate.md` (data collection procedures) with reasoning principles for how to interpret that data.
@@ -10,7 +14,7 @@ This document adapts traditional debugging methodologies for use by AI agents, s
 |---|---|
 | `Discover.md` | Pre-planning investigation of products or technologies |
 | `Investigate.md` | Step-by-step procedures for collecting observability data |
-| `Evidence.md` | Rules for assessing the quality and reliability of evidence |
+| `skills/evidence.md` | Rules for assessing the quality and reliability of evidence |
 | **`Debug.md`** (this file) | AI-specific reasoning methods for interpreting evidence and generating hypotheses |
 
 ## 1. The Scientific Debugging Loop (Zeller)
@@ -39,7 +43,7 @@ Use the agent's internal reasoning as a rubber-ducking tool.
 
 ## 3. Overcoming Confirmation Bias
 
-Per `guidelines/Evidence.md`, agents are prone to finding what they expect.
+Per `skills/evidence.md`, agents are prone to finding what they expect.
 
 -   **Human-in-the-loop Point**: Human judgment is REQUIRED when:
     -   The agent claims a root cause based on "lack of logs" (Log absence is not definitive).

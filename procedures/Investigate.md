@@ -6,7 +6,7 @@ Answer a specific question about a running system's behavior by examining observ
 
 Investigation is diagnostic. It starts with a question or observation ("what is calling service X with bad input?", "why are error rates elevated?", "where is this latency coming from?") and ends with evidence-backed findings. It is not planning, implementation, or discovery of external products — it is examination of systems the team already operates.
 
-**See `guidelines/Debug.md` for AI-specific reasoning methods for interpreting evidence and generating hypotheses during investigation.**
+**See `skills/debug.md` for AI-specific reasoning methods for interpreting evidence and generating hypotheses during investigation.**
 
 ## When to Investigate
 
@@ -51,11 +51,11 @@ Document the methodology as you go — what was queried, what filters were appli
 
 ### 3. Verify Evidence
 
-Before writing findings, verify the evidence meets the threshold for the claims you intend to make. Follow the rules in `guidelines/Evidence.md`. The key checks:
+Before writing findings, verify the evidence meets the threshold for the claims you intend to make. Follow the rules in `skills/evidence.md`. The key checks:
 
 - **Baseline comparison**: For any metric claimed to be abnormal, confirm what the metric looked like *before* the event under investigation. If the before and after values are similar, the metric is not evidence — regardless of how large the absolute values look.
 - **Visual verification**: For any metric-based finding that claims a pattern, trend, or anomaly, generate a visual (chart link, dashboard view) and verify it before writing the finding. Include the visual reference in the document. If you cannot produce a visual, flag the finding explicitly as unverified.
-- **Evidence reliability**: Apply the evidence-type rules from `guidelines/Evidence.md` — understand what each type of evidence can and cannot prove (e.g., log absence ≠ event absence; metric absence ≠ normal operation; a single decisive log may be sufficient).
+- **Evidence reliability**: Apply the evidence-type rules from `skills/evidence.md` — understand what each type of evidence can and cannot prove (e.g., log absence ≠ event absence; metric absence ≠ normal operation; a single decisive log may be sufficient).
 - **Time window adequacy**: Confirm the observation window covers the relevant period, includes baseline, and spans enough cycles for periodic phenomena.
 - **Confirmation bias check**: Before concluding a hypothesis is confirmed, actively look for evidence that contradicts it. If the first signal you checked seemed to confirm the hypothesis, check at least two more independent signals.
 
@@ -66,7 +66,7 @@ This step is not optional. Findings that skip verification must be labeled "Hypo
 For each significant finding, evaluate:
 
 - What does the evidence show? State facts before interpretations.
-- How confident is the conclusion? Use the confidence labels from `guidelines/Evidence.md`:
+- How confident is the conclusion? Use the confidence labels from `skills/evidence.md`:
   - **Confirmed** = visually verified + before/after comparison, or corroborated by multiple independent signals
   - **Supported** = consistent with hypothesis, backed by data, not independently confirmed
   - **Hypothesis** = plausible, not tested against alternatives or visually verified
@@ -108,4 +108,4 @@ Include when relevant, omit when not:
 - **Record methodology so the investigation is reproducible.** Another person (or AI) should be able to re-run the same queries to verify findings or check whether the situation has changed.
 - **Investigation may answer the original question and raise new ones.** Note new questions explicitly rather than leaving them implicit in the findings.
 - **Not every investigation leads to action.** Sometimes the answer is "this is expected behavior" or "the impact is negligible." That is a valid and useful finding.
-- **Follow `guidelines/Evidence.md`.** The evidence assessment rules apply to all investigations. They are not suggestions — they are the standard for what counts as verified evidence versus hypothesis.
+- **Follow `skills/evidence.md`.** The evidence assessment rules apply to all investigations. They are not suggestions — they are the standard for what counts as verified evidence versus hypothesis.

@@ -41,7 +41,7 @@ Create `discover.md` immediately. Clarify what is being investigated and why. Fi
 - **Status** — start with `scoping`.
 - **Subject** — the product, API, technology, methodology, or domain under investigation.
 - **Motivation** — what decision or work this discovery is meant to inform.
-- **Scope** — explicit boundaries, quality gates for sources, and evidence calibration (how `guidelines/Evidence.md` applies to this research).
+- **Scope** — explicit boundaries, quality gates for sources, and evidence calibration (how `skills/evidence.md` applies to this research).
 
 For high-complexity tasks, submit the `discover.md` for review and move Status to `pending-approval` before starting deep investigation.
 
@@ -67,7 +67,7 @@ For each significant capability or finding, evaluate:
 - What are the constraints, limitations, or risks?
 - What is missing or unclear that would need further investigation?
 
-Separate what is confirmed from what is inferred or uncertain using confidence labels adapted from `guidelines/Evidence.md`:
+Separate what is confirmed from what is inferred or uncertain using confidence labels adapted from `skills/evidence.md`:
 - **Confirmed** — Cross-referenced across multiple independent industry standards, peer-reviewed sources, or official documentation.
 - **Supported** — Consistent with industry practice and found in reliable sources, but not independently cross-verified.
 - **Hypothesis** — Plausible interpretation or single-source opinion that has not been validated.

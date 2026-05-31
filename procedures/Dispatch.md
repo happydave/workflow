@@ -27,7 +27,7 @@ The Dispatcher SHALL determine the minimum necessary files required for the task
 - The **Work Item** (`workitem.md`).
 - The **Project** or **Design** (if applicable).
 - Relevant **Code** or **Config** files (provide full absolute paths).
-- Any **Guidelines** (`guidelines/Go.md`, etc.) that apply to the task.
+- Any **Guidelines** (`skills/go.md`, etc.) that apply to the task.
 
 ### 3. Construct the Prompt
 Generate a comprehensive, single-block prompt in Markdown format. The prompt must:

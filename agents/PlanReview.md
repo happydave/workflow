@@ -29,7 +29,7 @@ Follow this sequence exactly:
 3. **Coherence**: Are there internal contradictions? Are invariants provable?
 4. **Precision**: Are terms unambiguous? (Flag "appropriate", "as needed", etc. in critical sections).
 5. **Scope Alignment**: Does the plan align with the original `workitem.md`?
-6. **Compliance**: Does the plan conflict with applicable guidelines (`guidelines/*.md`) without justification?
+6. **Compliance**: Does the plan conflict with applicable guidelines (`skills/`) without justification?
 
 ### Step 3: Produce Report
 Create a `planreview.md` file in the work item folder with the following structure:

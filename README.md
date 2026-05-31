@@ -33,13 +33,19 @@ The workflow can be supported by **Agents** — automated actors that help execu
 - `Complete.md` — formally mark a work item as complete in `workitem.md`
 - `Archive.md` — archive a completed work item (by explicit request only)
 
-**guidelines**
-- `Markdown.md` — quality gates for Markdown artifacts (link checking, structure verification, spell checking)
-- `TypeScript.md` — VS Code extension / Node.js conventions (Docker-based builds)
-- `Go.md` — Go module setup, tooling, conventions
-- `Docker.md` — container-first build environment (`Dockerfile.dev` + `Makefile` pattern)
-- `Evidence.md` — evidence assessment rules (Hub for Logs, Metrics, Groundcover)
-- `Debug.md` — AI agent debugging methodology (structured hypothesis generation, bias mitigation)
+**skills**
+- `go.md` — Go module setup, tooling, conventions
+- `typescript.md` — VS Code extension / Node.js conventions (Docker-based builds)
+- `docker.md` — container-first build environment (`Dockerfile.dev` + `Makefile` pattern)
+- `markdown.md` — quality gates for Markdown artifacts (link checking, structure verification, spell checking)
+- `sql.md` — SQL conventions for queries, schema, and migrations
+- `versioning.md` — version increment policy: one ticket, one patch
+- `claude-code.md` — Claude Code CLI usage reference for task delegation and automated operations
+- `debug.md` — AI agent debugging methodology (structured hypothesis generation, bias mitigation)
+- `evidence.md` — evidence assessment rules (Hub for Logs, Metrics, Groundcover)
+
+**templates**
+- `implementation-template.md` — rich skeleton template for implementation logs
 
 ## Typical Pipelines
 

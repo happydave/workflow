@@ -24,12 +24,12 @@ Follow this sequence exactly:
 3. Read the authoritative procedure at `procedures/Implement.md`.
 
 ### Step 2: Read Applicable Guidelines
-1. Identify all framework guidelines (`guidelines/*.md`) listed in the plan.
+1. Identify all framework guidelines (`skills/`) listed in the plan.
 2. Read those guidelines to understand the required build and test procedures.
 
 ### Step 3: Scaffold Implementation Log
 1. Check if `implementation.md` exists in the work item folder.
-2. If it does not exist, create it using the Rich Skeleton Template found at `guidelines/implementation-template.md`.
+2. If it does not exist, create it using the Rich Skeleton Template found at `templates/implementation-template.md`.
 3. Do not proceed until the log exists with the correct sections (Work Completed, Decisions Made, Inconsistencies Found and Resolved, Problems Encountered, Verification Results).
 
 ### Step 4: Implement Incrementally

@@ -16,7 +16,7 @@ The plan lives in the work item folder and specifies what to read, what to imple
 
 Before implementing the plan, identify which guidelines apply to this project:
 
-- Look at the `plan.md` for this work item. The plan's **Applicable Guidelines** section lists which `guidelines/*.md` documents apply and what each defines as the **build** and **test** steps for this project.
+- Look at the `plan.md` for this work item. The plan's **Applicable Guidelines** section lists which `skills/` documents apply and what each defines as the **build** and **test** steps for this project.
 - If `plan.md` does not exist, or if it exists but is missing the **Applicable Guidelines** section, **stop immediately** and inform the requester: the plan is missing or incomplete. Do not proceed with implementation until a valid plan with an Applicable Guidelines section is provided.
 
 Read all identified guidelines before proceeding. These guidelines are not optional unless a plan explicitly opts out.
@@ -36,7 +36,7 @@ The purpose is to understand the full scope, constraints, and dependencies befor
 
 Create `implementation.md` in the work item folder (e.g. `docs/pending/07-investigate-pipeline-jobs/implementation.md`).
 
-Use the **Rich Skeleton Template** defined in `guidelines/implementation-template.md`. The log MUST contain the following sections:
+Use the **Rich Skeleton Template** defined in `templates/implementation-template.md`. The log MUST contain the following sections:
 
 - **Work Completed** — append entries after each verified change. Each entry should identify which plan feature/requirement it addresses, the files modified, and current state (e.g., "verified clean build").
 - **Decisions Made** — record implementation choices where the planning documents left discretion (AI freedom sections), and why the choice was made. Record these *at the time of making the decision*, not retrospectively.
@@ -74,7 +74,7 @@ When all features are implemented:
 
 - Run the verification steps (build and test procedures) defined by the applicable guidelines identified in step 1.
 - Confirm clean results for each verification step.
-- **Increment the project version following the policy in `guidelines/Versioning.md`.**
+- **Increment the project version following the policy in `skills/versioning.md`.**
 - Ensure `implementation.md` is up to date — every completed change must have a corresponding log entry, and "Final Status" must be populated. If entries are missing, go back and fill them before proceeding.
 
 ### 6. Document

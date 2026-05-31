@@ -1,3 +1,7 @@
+---
+name: typescript
+description: TypeScript and Node.js conventions for VS Code extensions and tooling
+---
 # TypeScript Language Guidelines
 
 ## Purpose
@@ -11,9 +15,9 @@ These guidelines ensure consistent, correct TypeScript code when the project use
 
 ## Build Environment
 
-**TypeScript projects use the Docker-based build environment defined in `guidelines/Docker.md`.** Node.js, npm, and all related tooling run inside Docker containers — never on the host.
+**TypeScript projects use the Docker-based build environment defined in `skills/docker.md`.** Node.js, npm, and all related tooling run inside Docker containers — never on the host.
 
-Key rules (see `guidelines/Docker.md` for full details):
+Key rules (see `skills/docker.md` for full details):
 - Never run `npm install`, `npm run`, `npx`, `node`, or any Node.js tooling directly on the host.
 - All build commands go through `make` targets that wrap Docker invocations.
 - `node_modules/` is written to the host via volume mount so that editor tooling (IntelliSense, language servers) can use it.

@@ -1,3 +1,7 @@
+---
+name: markdown
+description: Markdown quality rules: link checking, structure verification, spell checking
+---
 # Markdown Guidelines
 
 ## Purpose

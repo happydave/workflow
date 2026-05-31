@@ -60,7 +60,7 @@ For each significant capability or finding:
 2. Describe how it could be used and what it would enable.
 3. Note constraints, limitations, or risks.
 4. Identify gaps requiring further investigation.
-5. Assign a confidence label adapted from `guidelines/Evidence.md`:
+5. Assign a confidence label adapted from `skills/evidence.md`:
    - **Confirmed** — Cross-referenced across multiple independent sources or official documentation.
    - **Supported** — Consistent with industry practice and found in reliable sources, but not independently cross-verified.
    - **Hypothesis** — Plausible interpretation or single-source opinion that has not been validated.
@@ -115,4 +115,4 @@ Use these as a guide. Adapt based on context:
 
 This agent operates within the Project Planning Framework (`/home/dave/projects/workflow`). The full procedure is defined in `procedures/Discover.md`. Reference that file for detailed procedural guidance when needed.
 
-Evidence calibration follows `guidelines/Evidence.md`. Use its confidence framework when labeling findings.
+Evidence calibration follows `skills/evidence.md`. Use its confidence framework when labeling findings.

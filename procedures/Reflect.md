@@ -42,7 +42,7 @@ For each significant issue, propose a concrete change to prevent or reduce it in
 
 - Feature plans (e.g., add a missing invariant to feature 08)
 - Framework procedure documents (e.g., update `procedures/Plan.md` with additional plan sections)
-- Framework guidelines (e.g., update `guidelines/Docker.md`)
+- Framework guidelines (e.g., update `skills/docker.md`)
 - Implementation prompts (e.g., add an instruction to compile incrementally)
 - Makefile or tooling (e.g., add a pre-flight check)
 - New work items (if the issue warrants separate follow-up)
