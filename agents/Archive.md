@@ -25,7 +25,7 @@ Follow this sequence exactly:
 
 ### Step 2: Verify Status
 1. Check the `Status` field in `workitem.md`. 
-2. If it is NOT `complete`, DO NOT move the folder. Inform the user that the item must be finalized via the **Complete** action or the **Code Reviewer Agent** first.
+2. If it is NOT `complete`, DO NOT move the folder. Inform the user that the item must be finalized via the **Complete** action or by performing code review inline following `procedures/CodeReview.md` first.
 
 ### Step 3: Archive the Folder
 1. Use the `run_in_terminal` tool to move the folder. Example: `mv docs/pending/<folder_name> docs/archive/`.

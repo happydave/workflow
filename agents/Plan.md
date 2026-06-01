@@ -42,4 +42,4 @@ Follow this sequence exactly. Move to the next step only when you have sufficien
 
 1. Present a summary of the generated `plan.md` to the user and ask if they would like to refine any sections.
 2. Upon user approval, announce that the planning phase is complete.
-3. Suggest the user invoke the **Reviewer Agent** (for plan review) or the **Implementer Agent** (to begin implementation).
+3. Suggest the user perform plan review inline by following `procedures/PlanReview.md`, or proceed directly to the **Implementer Agent** to begin implementation.
