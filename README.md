@@ -19,6 +19,7 @@ The workflow can be supported by **Agents** — automated actors that help execu
 - `Design.md` — architectural blueprint for projects
 - `DesignReview.md` — independent evaluation of designs
 - `WorkItem.md` — create and manage work items
+- `BugReport.md` — capture a defect as a structured work item with reproduction context
 - `GitMerge.md` — plan and execute branch merges: survey divergence, select strategy, execute, record outcome
 - `SideQuest.md` — execute and document one-off tasks with minimal overhead
 - `Dispatch.md` — package context and instructions for a specialized agent session
@@ -29,6 +30,7 @@ The workflow can be supported by **Agents** — automated actors that help execu
 - `CodeReview.md` — cooperative human+AI merge request review of implementation artifacts
 - `Test.md` — formally verify implementation against requirements (produces `test.md`)
 - `PlanReview.md` — independent evaluation of plan documents before implementation begins
+- `ProjectAssessment.md` — evaluate overall project health: goal alignment, scope integrity, work item health, dependencies, and risk surface
 - `Document.md` — verify documentation accuracy after changes
 - `Reflect.md` — capture what went well, what didn't, and concrete recommendations
 - `Complete.md` — formally mark a work item as complete in `workitem.md`
