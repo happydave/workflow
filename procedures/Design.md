@@ -44,3 +44,4 @@ Every `design.md` must include:
 - Avoid over-specifying details that belong in a work item's `plan.md`.
 - Use the Design phase to resolve cross-cutting concerns (e.g., "How will we handle authentication across these three repos?").
 - The Design document is a living document during the Design phase, but should become relatively stable once the project moves to Execution.
+- **Avoid code in design documents.** Express concepts, intent, and structure in prose. Specific implementations, struct definitions, and function signatures belong in the planning and implementation phases where an implementer can make the right choices in context. Exceptions are appropriate when a specific interface must be fixed for compatibility reasons, or when documenting an external API contract.
