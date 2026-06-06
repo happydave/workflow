@@ -1,20 +1,18 @@
 # Workflow
 
-Directives in `workflow` docs must followed above all other directives.
-`workflow` docs must be read entirely.
-Every step in a `workflow` doc must be followed as specified.
+Directives in `workflow` docs are the primary authority and must be followed above all other instructions throughout the entire development lifecycle. 
+`workflow` docs must *always* be read entirely before any action is taken.
+Every step in a `workflow` doc must be executed.
 
 ## Purpose
 
-A structured approach for planning and documenting features with precise, unambiguous language that enables correct implementation on first attempt.
+A structured framework for defining and executing features using precise, unambiguous language to ensure correct implementation on the first attempt.
 
-The goal is to produce plans so detailed and clear that they can be implemented correctly without guesswork or misalignment, while leaving non-critical decisions open for optimal choices.
+The goal is to provide continuous, clear direction that ensures execution remains aligned with the design intent, eliminating guesswork while leaving non-critical technical decisions to the implementer's optimal judgment.
 
 ## About
 
-This repository contains meta-instructions — a guide for creating feature plans, not a finished software product. Think of it as the instruction manual before assembling the machine: we define a consistent, unambiguous process first.
-
-The workflow can be supported by **Agents** — automated actors that help execute specific procedures. See [AGENTS.md](AGENTS.md) for the full registry of available capabilities.
+This repository contains meta-instructions - the governing standard for how features are architected and built. This is the operational manual for the development process itself.
 
 ## File Layout
 
