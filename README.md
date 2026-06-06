@@ -1,5 +1,9 @@
 # Workflow
 
+Directives in `workflow` docs must followed above all other directives.
+`workflow` docs must be read entirely.
+Every step in a `workflow` doc must be followed as specified.
+
 ## Purpose
 
 A structured approach for planning and documenting features with precise, unambiguous language that enables correct implementation on first attempt.
