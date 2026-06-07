@@ -6,12 +6,6 @@ Critically assess a plan document to ensure it is sufficient to guide correct im
 
 Plan Review is an *external* quality gate that provides an independent evaluation of the plan document before implementation begins.
 
-## Triggering Conditions
-
-- A plan document has been produced following the `Plan` action and is awaiting evaluation.
-- An independent quality check is required before implementation begins.
-- A stakeholder wants validation that the plan is ready for the `Implement` action.
-
 ## Roles
 
 **Reviewer:**

@@ -37,6 +37,7 @@ Include these when they are known and useful. Omit them when they are not:
 - **Acceptance Criteria** — conditions that would confirm the work is done. Keep these outcome-oriented, not implementation-specific.
 - **Target Project** — which project will contain the implementation work; defaults to the capturing project when omitted or empty. Supports multiple targets via comma-separated listing, though one work item per project is recommended for clarity. This field can be safely omitted when the work item originates inside the target project.
 - **Source** — where the work item originated (external issue URL, implementation log reference, conversation summary) if it helps preserve context.
+- **Reference Docs** - API documentation or similar if available.
 
 ## Procedure
 
@@ -44,15 +45,10 @@ Include these when they are known and useful. Omit them when they are not:
 2. **Capture** — create `docs/pending/<N>-<name>/workitem.md` with at minimum the Title and Description. Err on the side of writing it down quickly rather than crafting it perfectly.
 3. **Contextualize** — if immediately obvious, add proposed changes and acceptance criteria. If not, leave them out — they belong in the planning phase, not the work item. **Do not invent acceptance criteria that were not stated or are not directly implied by the description.** Criteria not grounded in the description add scope without adding value and distort planning later.
 
-## Completion
-
-When work is fully implemented and verified, follow the procedure in `procedures/Complete.md` to formally mark the work item as complete.
-
 ## Guidance
 
 - Work items are not plans. They do not need to meet the standard of a feature plan document. They exist to prevent ideas and problems from falling through the cracks.
 - Keep work items short. A work item that takes more than five minutes to write is probably trying to be a plan.
 - Do not duplicate external issue trackers verbatim. Summarize the relevant context in the project's own terms.
-- When a work item is promoted to a plan (via the Plan action), a `plan.md` is added to the folder — the `workitem.md` remains unchanged.
 - Acceptance criteria in work items are intentionally lighter than in feature plans. They answer "how would we know this is done?" not "what are all the edge cases?"
-- When Complete determines the work item is finished, no further active development is expected for this work item.
+- When Status is `complete`, no further active development is expected for this work item.

@@ -8,15 +8,18 @@ The plan lives in the work item folder and specifies what to read, what to imple
 
 ## Prerequisites
 
-- A plan (typically plan.md)
+- A work item (workitem.md)
+- A plan (plan.md)
+
+- If `plan.md` does not exist, it is not possible to successfully complete the Implement procedure, therefore **stop immediately**.
 
 ## Procedure
 
-### 1. Identify Applicable Guidelines
+### 1. Read Applicable Skills and Guidelines
 
 Before implementing the plan, identify which guidelines apply to this project:
 
-- Look at the `plan.md` for this work item. The plan's **Applicable Guidelines** section lists which `skills/` documents apply and what each defines as the **build** and **test** steps for this project.
+- Look at the `plan.md` for this work item. The plan's **Applicable Guidelines** section lists which skills and guidelines documents apply.  Fully read each listed document.
 - If `plan.md` does not exist, or if it exists but is missing the **Applicable Guidelines** section, **stop immediately** and inform the requester: the plan is missing or incomplete. Do not proceed with implementation until a valid plan with an Applicable Guidelines section is provided.
 
 Read all identified guidelines before proceeding. These guidelines are not optional unless a plan explicitly opts out.
@@ -34,17 +37,9 @@ The purpose is to understand the full scope, constraints, and dependencies befor
 
 ### 3. Scaffold Implementation Log
 
+**The implementation log is the handoff artifact** and implementation is not complete until implementation log is complete.
+
 Create `implementation.md` in the work item folder (e.g. `docs/pending/07-investigate-pipeline-jobs/implementation.md`).
-
-Use the **Rich Skeleton Template** defined in `templates/implementation-template.md`. The log MUST contain the following sections:
-
-- **Work Completed** — append entries after each verified change. Each entry should identify which plan feature/requirement it addresses, the files modified, and current state (e.g., "verified clean build").
-- **Decisions Made** — record implementation choices where the planning documents left discretion (AI freedom sections), and why the choice was made. Record these *at the time of making the decision*, not retrospectively.
-- **Inconsistencies Found and Resolved** — note contradictions, ambiguities, or gaps discovered in the planning documents during implementation, and how they were resolved.
-- **Problems Encountered** — anything that didn't work as expected, required iteration, or deviated from the plan. Include root cause if apparent.
-- **Verification Results** — table template pre-populated with acceptance criterion rows from the ticket/plan.
-
-This is a **mandatory gate** — do not proceed to step 4 until `implementation.md` exists with the required structure. The log is the primary artifact for session continuity: if this session is interrupted, another session (or you, in a future session) will read this file to understand what has been done and what remains. **An empty or missing `implementation.md` means implementation has not started.**
 
 Populate each section as work progresses:
 - **Work Completed** — append entries after each verified change. Each entry should identify which plan feature/requirement it addresses, the files modified, and current state (e.g., "verified clean build").
@@ -53,7 +48,7 @@ Populate each section as work progresses:
 - **Problems Encountered** — anything that didn't work as expected, required iteration, or deviated from the plan. Include root cause if apparent.
 - **Verification Results** — table template pre-populated with acceptance criterion rows from the ticket/plan.
 
-Keep entries concise and factual. The log must be sufficient for another session to continue without loss of context.
+Keep entries concise and factual. The log must be sufficient for another session to continue if interrupted.
 
 ### 4. Implement Incrementally
 
@@ -76,12 +71,6 @@ When all features are implemented:
 - Confirm clean results for each verification step.
 - **Increment the project version following the policy in `skills/versioning.md`.**
 - Ensure `implementation.md` is up to date — every completed change must have a corresponding log entry, and "Final Status" must be populated. If entries are missing, go back and fill them before proceeding.
-
-### 6. Document
-
-Follow the procedure in `procedures/Document.md` to verify that the project's documentation (README, code comments, help text, etc.) is accurate and consistent with the changes just made.
-
-When a change affects only documentation files (e.g., updating README, action files), there is no code-level drift between implementation and documentation to detect. In such cases the Document pass may be minimal — confirming "no drift detected" rather than producing corrections. The Document action is still performed; its output is simply lightweight.
 
 ## Guidance
 
