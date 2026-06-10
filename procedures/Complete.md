@@ -29,3 +29,7 @@ Check the work item folder for required artifacts:
 Update the `Status` field in `workitem.md` to `complete`.
 
 If a `Completed Date` or similar metadata field is used in the project, update that as well.
+
+### 3. Update Project
+
+Update the work item status in the project doc (if a project is specified).

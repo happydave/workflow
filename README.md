@@ -55,7 +55,7 @@ This repository contains meta-instructions - the governing standard for how feat
 ## Typical Pipelines
 
 - Project: `Create Project → Discover → Design → Design Review → Create Work Item(s)`
-- Work Item: `Plan → Plan Review → Implement → Code Review → Test → Document → Reflect → Complete`
+- Work Item: `Plan → Plan Review → Implement → Code Review → Test → Document → Reflect → Git Merge → Complete`
 
 ### Workflow Architecture
 
