@@ -6,7 +6,7 @@ This document records the design principles, naming conventions, and structural 
 
 The primary goal of this framework is to enable the production of high-quality code with high confidence in implementation accuracy and integrity. To achieve this, the design follows these principles:
 
-- **Centralized Workflow Definition**: The authoritative workflow sequence and structure are defined in `README.md`. Individual procedure documents (`procedures/*.md`) should focus on the internal procedure of that specific step and avoid redundantly specifying the broader workflow context.
+- **Centralized Workflow Definition**: The authoritative workflow sequence and structure are defined in `AGENTS.md`. Individual procedure documents (`procedures/*.md`) should focus on the internal procedure of that specific step and avoid redundantly specifying the broader workflow context.
 - **Automation-Ready**: The workflow is intended to operate within a largely automated process. Procedures and roles (Reviewer, Author) are defined to be actor-agnostic, allowing for seamless integration into automated pipelines with minimal human oversight.
 - **Durable Audit Trail**: Every action produces structured markdown artifacts (e.g., `plan.md`, `implementation.md`, `reflect.md`). This provides a clear audit trail for:
     - **Instruction Accuracy**: The `Dispatch` procedure ensures the exact instructions and context provided to execution agents are recorded in `briefs/`.

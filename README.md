@@ -1,66 +1,41 @@
 # Workflow
 
-Directives in `workflow` docs are the primary authority and must be followed above all other instructions throughout the entire development lifecycle. 
-`workflow` docs must *always* be read entirely before any action is taken.
-Every step in a `workflow` doc must be executed.
+A structured framework for defining and executing software features using precise, unambiguous language. Designed to be operated by AI coding agents (Claude Code, Copilot, etc.) under human direction.
 
-## Purpose
+## What It Is
 
-A structured framework for defining and executing features using precise, unambiguous language to ensure correct implementation on the first attempt.
+This repository contains the meta-instructions that govern how features are architected and built. It is the operational manual for the development process itself — not a code repository.
 
-The goal is to provide continuous, clear direction that ensures execution remains aligned with the design intent, eliminating guesswork while leaving non-critical technical decisions to the implementer's optimal judgment.
+## How It Works
 
-## About
+**`AGENTS.md`** is the entry point for AI agents. It contains the authoritative directives, procedure index, and pipeline definitions that agents must follow.
 
-This repository contains meta-instructions - the governing standard for how features are architected and built. This is the operational manual for the development process itself.
+Point your agent at it by adding to your `CLAUDE.md` (or equivalent):
 
-## File Layout
+```
+@/path/to/workflow/AGENTS.md
+```
 
-**procedures**
-- `Project.md` — create and manage high-level initiatives
-- `Design.md` — architectural blueprint for projects
-- `DesignReview.md` — independent evaluation of designs
-- `WorkItem.md` — create and manage work items
-- `BugReport.md` — capture a defect as a structured work item with reproduction context
-- `GitMerge.md` — plan and execute branch merges: survey divergence, select strategy, execute, record outcome
-- `SideQuest.md` — execute and document one-off tasks with minimal overhead
-- `Dispatch.md` — package context and instructions for a specialized agent session
-- `Discover.md` — investigate products, APIs, or technology domains
-- `Investigate.md` — diagnose runtime system behavior using observability data
-- `Plan.md` — produce a feature plan with enough detail for correct first-pass implementation
-- `Implement.md` — implement incrementally from plans, maintaining an implementation log
-- `CodeReview.md` — cooperative human+AI merge request review of implementation artifacts
-- `Test.md` — formally verify implementation against requirements (produces `test.md`)
-- `PlanReview.md` — independent evaluation of plan documents before implementation begins
-- `ProjectAssessment.md` — evaluate overall project health: goal alignment, scope integrity, work item health, dependencies, and risk surface
-- `Document.md` — verify documentation accuracy after changes
-- `Reflect.md` — capture what went well, what didn't, and concrete recommendations
-- `Complete.md` — formally mark a work item as complete in `workitem.md`
-- `Archive.md` — archive a completed work item (by explicit request only)
+The agent reads `AGENTS.md` at the start of each session and consults the referenced procedures as work progresses.
 
-**skills**
-- `go.md` — Go module setup, tooling, conventions
-- `typescript.md` — VS Code extension / Node.js conventions (Docker-based builds)
-- `docker.md` — container-first build environment (`Dockerfile.dev` + `Makefile` pattern)
-- `markdown.md` — quality gates for Markdown artifacts (link checking, structure verification, spell checking)
-- `sql.md` — SQL conventions for queries, schema, and migrations
-- `versioning.md` — version increment policy: one ticket, one patch
-- `claude-code.md` — Claude Code CLI usage reference for task delegation and automated operations
-- `debug.md` — AI agent debugging methodology (structured hypothesis generation, bias mitigation)
-- `evidence.md` — evidence assessment rules (Hub for Logs, Metrics, Groundcover)
+## Directory Layout
 
-**templates**
-- `implementation-template.md` — rich skeleton template for implementation logs
+| Directory | Contents |
+|-----------|----------|
+| `procedures/` | Step-by-step process documents (Plan, Implement, Review, etc.) |
+| `skills/` | Language and tooling conventions (Go, TypeScript, SQL, etc.) |
+| `templates/` | Starter document skeletons |
+| `knowledge/` | Reference material (architecture diagrams, integration guides) |
+| `internal/` | Design docs for the workflow system itself |
 
 ## Typical Pipelines
 
-- Project: `Create Project → Discover → Design → Design Review → Create Work Item(s)`
-- Work Item: `Plan → Plan Review → Implement → Code Review → Test → Document → Reflect → Git Merge → Complete`
+**New project:** Create Project → Discover → Design → Design Review → Create Work Items
 
-### Workflow Architecture
+**Work item:** Plan → Plan Review → Implement → Code Review → Test → Document → Reflect → Git Merge → Complete
 
-A detailed Mermaid diagram is available for visual representation here: [Workflow Architecture](knowledge/WorkflowArchitecture.md).
+**Quick chore:** SideQuest (single execution + audit doc, no planning phase)
 
-## General Directives
-- NEVER narrate yourself, it can lead to excessive looping.
-- ALWAYS use the `todo` tool (when available) rather than chat.
+## License
+
+UNLICENSE — see `UNLICENSE`.
