@@ -6,7 +6,7 @@ Package all necessary context, instructions, and guidance into a single, compreh
 Dispatching is the bridge between **orchestration** (tracking what needs to be done) and **execution** (actually doing the work).
 
 ## When to Dispatch
-- Before starting a new non-trivial task (Plan, Implement, Test, etc.).
+- Before starting a new non-trivial task (Plan, Code, Test, etc.).
 - When handing off work from an orchestrator to a specialized model/agent.
 - When starting a new session to ensure continuity without manual context re-attachment.
 
@@ -19,7 +19,7 @@ Briefings are persisted in the work item's folder to provide a durable audit tra
 ## Procedure
 
 ### 1. Identify Target Task & Environment
-Determine exactly which procedure is being dispatched (e.g., `Plan.md`, `Implement.md`) and where it will be executed (e.g., `Claude CLI`, `VS Code Chat`).
+Determine exactly which procedure is being dispatched (e.g., `Plan.md`, `Code.md`) and where it will be executed (e.g., `Claude CLI`, `VS Code Chat`).
 
 ### 2. Assemble Context
 The Dispatcher SHALL determine the minimum necessary files required for the task. This typically includes:

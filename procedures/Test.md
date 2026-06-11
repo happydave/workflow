@@ -6,7 +6,7 @@ Formally verify the implementation against requirements, acceptance criteria, an
 
 ## When to Test
 
-- Implementation is complete and documented in `implementation.md`.
+- Implementation is complete and documented in `code.md`.
 - Code review has been finalized (or is being conducted in parallel with testing).
 - The changes are ready for final verification before documentation and completion.
 

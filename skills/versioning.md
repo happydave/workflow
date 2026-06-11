@@ -12,7 +12,7 @@ For most projects (see Exemptions below), every completed work item SHALL result
 
 - **Trigger**: Successful completion of all implementation and verification steps for a work item.
 - **Increment**: Increment the patch version (e.g., `1.2.3` -> `1.2.4`).
-- **Timing**: The version bump should be the final change made during the **Implement** phase, just before closing the work item.
+- **Timing**: The version bump should be the final change made during the **Code** phase, just before closing the work item.
 
 ## Project-Specific Implementation
 The exact mechanism for versioning depends on the project's language and tooling:

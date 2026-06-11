@@ -18,7 +18,7 @@ Do not defer capture. A brief work item written now is more valuable than a deta
 
 ## Document Storage & Naming
 
-Work items are stored in a central management repository (e.g., `tickets`), not in individual code repositories. Each work item has a folder at `docs/pending/<id>-<name>/`. The ID is assigned by reading `docs/pending/next` and incrementing it before creating any files — see the Procedure section for the full sequence. The folder is the home for all artifacts related to that work item. As work progresses through planning and implementation, additional files are added to the same folder (see Plan and Implement procedures). When work is complete, the entire folder moves to `docs/archive/` following the Archive procedure.
+Work items are stored in a central management repository (e.g., `tickets`), not in individual code repositories. Each work item has a folder at `docs/pending/<id>-<name>/`. The ID is assigned by reading `docs/pending/next` and incrementing it before creating any files — see the Procedure section for the full sequence. The folder is the home for all artifacts related to that work item. As work progresses through planning and implementation, additional files are added to the same folder (see Plan and Code procedures). When work is complete, the entire folder moves to `docs/archive/` following the Archive procedure.
 
 ## Required Content
 

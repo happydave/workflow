@@ -8,7 +8,7 @@ The primary goal of this framework is to enable the production of high-quality c
 
 - **Centralized Workflow Definition**: The authoritative workflow sequence and structure are defined in `AGENTS.md`. Individual procedure documents (`procedures/*.md`) should focus on the internal procedure of that specific step and avoid redundantly specifying the broader workflow context.
 - **Automation-Ready**: The workflow is intended to operate within a largely automated process. Procedures and roles (Reviewer, Author) are defined to be actor-agnostic, allowing for seamless integration into automated pipelines with minimal human oversight.
-- **Durable Audit Trail**: Every action produces structured markdown artifacts (e.g., `plan.md`, `implementation.md`, `reflect.md`). This provides a clear audit trail for:
+- **Durable Audit Trail**: Every action produces structured markdown artifacts (e.g., `plan.md`, `code.md`, `reflect.md`). This provides a clear audit trail for:
     - **Instruction Accuracy**: The `Dispatch` procedure ensures the exact instructions and context provided to execution agents are recorded in `briefs/`.
     - **Accuracy Verification**: Confirming implementation matches planning and requirements.
     - **Troubleshooting**: Diagnosing where a process failed or where ambiguity was introduced.
@@ -21,7 +21,7 @@ The primary goal of this framework is to enable the production of high-quality c
 - **Projects vs. Work Items**: 
     - **Projects** are high-level initiatives tracked in `docs/projects/<slug>/project.md`. 
     - **Work Items** are tactical units of work tracked in `docs/pending/<id>/workitem.md`. 
-- **Work Items vs. Tickets**: We use the term **Work Item** to describe the conceptual unit of work (feature, bug, task). The term **Ticket** is reserved for the physical reference identifier. Files created within specific work item folders must use **lowercase-kebab-case** and the intake document is always named `workitem.md` (e.g., `workitem.md`, `plan.md`, `implementation.md`, `debug.md`). This makes them visually distinct from the framework files.
+- **Work Items vs. Tickets**: We use the term **Work Item** to describe the conceptual unit of work (feature, bug, task). The term **Ticket** is reserved for the physical reference identifier. Files created within specific work item folders must use **lowercase-kebab-case** and the intake document is always named `workitem.md` (e.g., `workitem.md`, `plan.md`, `code.md`, `debug.md`). This makes them visually distinct from the framework files.
 
 ### Referencing
 - When a document refers to a framework file, use the capitalized name: "Follow the steps in `Plan.md`."

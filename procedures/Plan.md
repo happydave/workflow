@@ -67,7 +67,7 @@ Identify which `skills/` documents apply to this project and record them in the 
 - What that guideline defines as the **build** step(s) — any procedure that compiles, formats, lints, or otherwise transforms source artifacts into verified output.
 - What that guideline defines as the **test** step(s) — any procedure that validates correctness against specified behavior.
 
-Reference these guidelines in the plan's **Required Behaviors & Verifications** section wherever build or test context is relevant. This information drives the Implement and Document actions: implementers look here first rather than inferring guidelines from project structure.
+Reference these guidelines in the plan's **Required Behaviors & Verifications** section wherever build or test context is relevant. This information drives the Code and Document actions: implementers look here first rather than inferring guidelines from project structure.
 
 Examples of applicable guidelines: `skills/go.md`, `skills/typescript.md`, `skills/docker.md`, `skills/markdown.md`.
 
@@ -104,7 +104,7 @@ The presence of `plan.md` in a work item folder indicates the item has been plan
 
 ### Language-Specific Guidelines
 
-The planning process MUST identify all applicable guidelines and document them in the feature plan's **Applicable Guidelines** section. This is mandatory, not optional. Guidelines from `skills/[name].md` define the build and test procedures that Implement and Document actions will use — they cannot be applied correctly if they are not named in the plan.
+The planning process MUST identify all applicable guidelines and document them in the feature plan's **Applicable Guidelines** section. This is mandatory, not optional. Guidelines from `skills/[name].md` define the build and test procedures that Code and Document actions will use — they cannot be applied correctly if they are not named in the plan.
 
 - Inspect the project root and purpose to determine which guidelines apply (e.g., `skills/go.md` for Go projects, `skills/typescript.md` for Node.js/VS Code extension projects, `skills/docker.md` for Docker-based builds, `skills/markdown.md` for documentation-heavy projects).
 - Record each applicable guideline and its defined build/test steps in the plan's Applicable Guidelines section.
@@ -151,7 +151,7 @@ This process is conducted closely with a human. If scrutiny reveals intractable 
 
 **After refinement complete (feature plan ready):**
 - Record any major decisions or adjustments in the plan
-- Proceed to implementation via the Implement action
+- Proceed to implementation via the Code action
 
 **Planning Mini-Retrospective**  
 A brief, lightweight note on the planning process itself — not a full reflection (that happens after implementation via the Reflect action). List significant problems, research gaps, extra iterations, unplanned human interventions, or items warranting framework changes. A few bullet points is sufficient.

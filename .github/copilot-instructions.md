@@ -8,7 +8,7 @@ description: "Always use when: performing tasks related to planning, implementat
 This workspace follows the structured planning and implementation framework defined in the `workflow` directory.
 
 ## Core Directives
-1. **Procedural First**: Before performing any task (Design, Work Item, Plan, Implement, Test, etc.), search for the corresponding procedure in `workflow/procedures/` (e.g., `Plan.md`, `Implement.md`, `WorkItem.md`).
+1. **Procedural First**: Before performing any task (Design, Work Item, Plan, Code, Test, etc.), search for the corresponding procedure in `workflow/procedures/` (e.g., `Plan.md`, `Code.md`, `WorkItem.md`).
 2. **Follow Artifact Patterns**: Artifacts (plans, work items, implementation logs) MUST follow the naming conventions and structures defined in their respective procedures.
 3. **Centralized Management**: All management artifacts live in the `tickets` repository under `docs/pending/`, `docs/projects/`, or `docs/archive/`.
 4. **No Code in Plans**: Ensure `plan.md` files describe behavior and invariants without containing code snippets (structs, functions).
@@ -17,7 +17,7 @@ This workspace follows the structured planning and implementation framework defi
 ## Procedures Reference
 - **Initiating Work**: Use `WorkItem.md` to capture new tasks in `docs/pending/`.
 - **Planning**: Follow `Plan.md` and `PlanReview.md` before implementation begins.
-- **Implementation**: Follow `Implement.md` and maintain incremental `implementation.md` logs.
+- **Implementation**: Follow the `Code` procedure and maintain incremental `code.md` logs.
 - **Verification**: Follow `Test.md` and produce formal `test.md` artifacts.
 - **Completion**: Use `Complete.md` to update status and `Archive.md` for cleanup.
 

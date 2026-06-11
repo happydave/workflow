@@ -20,12 +20,8 @@ Plan Review is an *external* quality gate that provides an independent evaluatio
 
 **Author:**
 - Provides the plan and any context not captured within it (stakeholder constraints, technical limitations, etc.).
+- Clarifies uncertain findings the Reviewer cannot resolve from the plan alone.
 - Addresses findings and revises the plan until it reaches a Complete state.
-
-**Human Oversight (as needed):**
-- Clarifies findings the Reviewer flags as uncertain.
-- Judges findings based on domain knowledge when automated logic is insufficient.
-- Reclassifies findings where blocking/non-blocking status does not match project standards.
 
 ## Procedure
 
@@ -81,9 +77,8 @@ Flag findings as **uncertain** when they depend on intent or context the Reviewe
 - Each resubmission SHALL address all Blocking findings and note how Non-blocking findings were handled (addressed, deferred with rationale, or acknowledged).
 - If three revisions have occurred and the plan still has unresolved Blocking findings, Status defaults to **Significant Findings** and the matter is escalated for human decision on whether to continue planning, reduce scope, or close the work item.
 
-If human oversight is involved:
-- Confirm or dismiss uncertain findings based on domain knowledge.
-- Reclassify findings if the blocking/non-blocking judgment differs from project standards.
+If the Author is available to address uncertain findings:
+- Confirm or dismiss uncertain findings based on domain knowledge and project context.
 - Identify anything the Reviewer missed (e.g., organizational nuances).
 
 ### 6. Status

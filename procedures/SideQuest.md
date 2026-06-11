@@ -2,7 +2,7 @@
 
 ## Intent
 
-Execute a one-off task, random chore, or minor investigation with minimal friction while preserving a basic audit trail. A SideQuest bypasses the heavy machinery of the standard workflow (Plan, Implement, Review, Test, Document, Reflect) in favor of a single, free-form execution and documentation step.
+Execute a one-off task, random chore, or minor investigation with minimal friction while preserving a basic audit trail. A SideQuest bypasses the heavy machinery of the standard workflow (Plan, Code, Review, Test, Document, Reflect) in favor of a single, free-form execution and documentation step.
 
 SideQuests are for when the overhead of planning exceeds the value of the work itself, but doing the work completely undocumented is unacceptable.
 
@@ -14,7 +14,7 @@ SideQuests are for when the overhead of planning exceeds the value of the work i
 - Random tasks that "just need to get done."
 
 DO NOT use SideQuest for:
-- Features or complex bug fixes (use `Plan` -> `Implement`).
+- Features or complex bug fixes (use `Plan` -> `Code`).
 - Changes that require strict security or architecture review.
 - Anything that requires cross-component coordination.
 
@@ -26,7 +26,7 @@ A SideQuest must begin with a `workitem.md` in a `docs/pending/` folder to captu
 ### 2. Execution
 The author (human or AI agent) performs the requested task directly based on the `workitem.md`. 
 - No `plan.md` is required.
-- No `implementation.md` log is maintained during the work.
+- No `code.md` log is maintained during the work.
 - **Versioning**: SideQuests are explicitly **exempt** from standard project version increment rules (e.g., semantic version bumps) unless the work item explicitly requests a version bump.
 
 ### 3. Documentation

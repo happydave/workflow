@@ -22,9 +22,8 @@ The agent reads `AGENTS.md` at the start of each session and consults the refere
 
 | Directory | Contents |
 |-----------|----------|
-| `procedures/` | Step-by-step process documents (Plan, Implement, Review, etc.) |
+| `procedures/` | Step-by-step process documents (Plan, Code, Review, etc.) |
 | `skills/` | Language and tooling conventions (Go, TypeScript, SQL, etc.) |
-| `templates/` | Starter document skeletons |
 | `knowledge/` | Reference material (architecture diagrams, integration guides) |
 | `internal/` | Design docs for the workflow system itself |
 
@@ -32,7 +31,7 @@ The agent reads `AGENTS.md` at the start of each session and consults the refere
 
 **New project:** Create Project → Discover → Design → Design Review → Create Work Items
 
-**Work item:** Plan → Plan Review → Implement → Code Review → Test → Document → Reflect → Git Merge → Complete
+**Work item:** Plan → Plan Review → Code → Code Review → Test → Document → Reflect → Git Merge → Complete
 
 **Quick chore:** SideQuest (single execution + audit doc, no planning phase)
 

@@ -2,126 +2,107 @@
 
 ## Intent
 
-Evaluate a merge request thoroughly and produce clear, actionable feedback. The output is a structured set of observations — concerns, questions, and approvals — that helps the author understand what needs to change and why, or confirms the change is ready to merge.
+Verify that the changes produced by the Code procedure correctly implement the plan before proceeding to Test. The output is a structured set of findings — blocking issues that must be resolved, non-blocking observations worth noting, and confirmation that the implementation is ready to proceed.
 
-Code Review is a cooperative process: the AI performs exhaustive mechanical scanning and surfaces findings; the human provides intent context, exercises judgment on ambiguous findings, and delivers the final verdict. Neither does this well alone — the AI catches what fatigued human eyes miss across large or repetitive diffs; the human understands system intent, team conventions, and acceptable risk in ways the AI cannot fully infer.
+Code Review is a cooperative process: the Agent performs exhaustive mechanical scanning and evaluates changes against the plan; the Reviewer exercises judgment on ambiguous findings and decides what must be resolved before Test begins.
 
-## When to Code Review
+## When to Use
 
-- A merge request has been submitted and is awaiting review
-- A reviewer has been assigned or has volunteered to evaluate a change
-- A draft MR is being shared for early feedback before it is ready to merge
+- The Code procedure has completed and `code.md` is up to date.
+- Before proceeding to the Test procedure.
 
 ## Roles
 
-**Human:**
-- Provides the MR context and any background the AI needs (linked work items, intent not captured in the description, relevant system knowledge)
-- Clarifies findings the AI flags as uncertain
-- Judges which findings are actually blocking vs. acceptable given team context
-- Delivers the final verdict and posts comments to the MR
+**Reviewer:**
+- Clarifies findings the Agent flags as uncertain
+- Judges which findings are blocking vs. acceptable given intent and context
+- Decides whether to fix issues in-place or proceed to Test with known non-blocking observations
 
-**AI:**
+**Agent:**
 - Reads the full diff without fatigue or anchoring bias
-- Scans exhaustively for mechanical issues across all files, including large and repetitive changesets
-- Surfaces subtle issues that are easy to miss at scale: misspellings, shadowed variables, variable name mismatches, copy-paste errors, inconsistent changes across similar files
-- Distinguishes linter-class changes (whitespace, comment formatting, trivial rewordings) from substantive changes, so the human can focus attention appropriately
-- **Fixes minor issues directly** (e.g., typos, linter-class problems, trivially-wrong references) rather than reporting them as findings
-- For issues that are substantive, safety-relevant, or unreasonably complex to resolve without additional context, stops and notifies the requester rather than attempting a fix
-- Evaluates each change against the dimensions below and reports findings with enough specificity for the human to act on them
+- Evaluates changes against the plan's requirements, invariants, and acceptance criteria
+- Surfaces mechanical issues that are easy to miss at scale: misspellings, shadowed variables, name mismatches, copy-paste errors, inconsistent changes across similar files
+- **Defaults to action**: if a finding has an obvious, good solution, applies the fix directly and notes it in the findings summary
+- For findings without an obvious solution, weighs risk before deciding how to proceed (see step 4)
+- Stops the pipeline and escalates to the Reviewer only for high-risk decisions where the cost of a wrong call exceeds the cost of pausing
 
 ## Procedure
 
-### 1. Human: Establish Context
+### 1. Agent: Read Context
 
-Before the AI reads the diff, provide:
+Read the following before reviewing the diff:
 
-- The MR title, description, and any linked work items or planning documents
-- Any background not captured in the MR itself: what system behavior is changing, what problem is being solved, relevant constraints
-- Any areas of particular concern or focus (e.g., "pay attention to the error handling in the retry logic")
+- `plan.md` — the authoritative specification: requirements, invariants, acceptance criteria, and applicable guidelines
+- `workitem.md` — original intent and constraints
+- `code.md` — what was done, decisions made, and any deviations from the plan
 
-If the MR description is absent or insufficient, note this — it is itself a finding. A reviewable MR should be self-describing.
+If `code.md` is missing or contains only empty scaffolding, this is a **blocking finding** — report it and do not proceed until it is provided.
 
-### 2. AI: Verify Implementation Log
+Follow any document references in plan.md or workitem.md that are relevant to evaluating correctness (e.g., design docs, linked specifications).
 
-Before reading the diff, locate the work item folder for this MR. Check for the presence and completeness of `implementation.md`:
+### 2. Agent: Review the Diff
 
-- **Missing** — `implementation.md` does not exist in the work item folder. This is a **blocking finding**. Report it and do not proceed until the file is provided.
-- **Empty or scaffolding-only** — `implementation.md` exists but contains only template placeholders (e.g., all sections consist solely of HTML comment content with no substantive entries). This is a **blocking finding**. Report it and do not proceed.
-- **Present and substantive** — `implementation.md` exists and contains real log entries. Continue to step 3.
-
-If no work item folder can be identified from the MR context, note the absence as an advisory observation and proceed — the check cannot be performed without a work item reference.
-
-### 3. AI: Read and Categorize the Diff
+Obtain the local diff (e.g., `git diff` for unstaged, `git diff --cached` for staged, or the set of files modified during the Code procedure).
 
 Read all changed files in full. Do not skim. For each file, identify:
 
 - What category of change this is: substantive (logic, behavior, structure) or mechanical (formatting, whitespace, comment wording, generated code)
-- What has changed and why, based on the description and code context
+- Whether the change corresponds to a requirement or decision recorded in `plan.md` or `code.md`
 
-Produce a brief **change summary** grouping files by category. This orients the human and makes clear where scrutiny is most needed. Large volumes of mechanical changes should be called out explicitly so the human is not lulled into treating them as low-risk without confirmation.
+Produce a brief **change summary** grouping files by category. Flag any changes that are not traceable to the plan or `code.md` — these may be unintended or out-of-scope.
 
-### 4. AI: Evaluate
+### 3. Agent: Evaluate
 
 Assess all substantive changes across these dimensions:
 
-**Correctness** — does the code do what the description says it should? Are there logic errors, off-by-one cases, incorrect assumptions about data, or edge cases that are unhandled?
+**Correctness** — does the implementation match what the plan specifies? Check requirements, invariants, and acceptance criteria explicitly. Note any gaps between what was planned and what was built.
 
-**Safety** — does the change introduce risk? Consider: security vulnerabilities, data loss scenarios, race conditions, inconsistent state, backward-incompatible changes to APIs or contracts, irreversible side effects.
+**Safety** — does the change introduce risk? Consider: security vulnerabilities, data loss scenarios, race conditions, inconsistent state, irreversible side effects.
 
-**Clarity** — is the code readable and maintainable? Consider: naming, structure, comments where non-obvious logic is present, and whether a future reader would understand the intent without needing to ask the author.
+**Clarity** — is the code readable and maintainable? Naming, structure, and whether a future reader would understand the intent without needing to ask the author.
 
-**Tests** — are the changes adequately tested? Are new behaviors covered? Are existing tests still meaningful, or do they need updating? Absence of tests is worth noting explicitly, not silently accepting.
+**Tests** — are new behaviors covered? Are existing tests still meaningful? Absence of tests for plan-specified behaviors is a blocking finding.
 
-**Scope** — does the change stay within its stated purpose? Unrelated or opportunistic changes mixed into an MR increase review surface and risk.
+**Scope** — does the change stay within what the plan specifies? Unrelated or opportunistic changes should be flagged.
 
-**Consistency** — does the change follow the conventions, patterns, and style of the codebase? For large MRs with many similar files, verify that the pattern is applied uniformly — inconsistencies across similar files are a common source of subtle bugs.
+**Consistency** — for changes applied across multiple similar files, verify the pattern is applied uniformly. Inconsistencies across similar files are a common source of subtle bugs.
 
 Also scan exhaustively for mechanical issues regardless of change category:
 
 - Misspellings in identifiers, comments, log messages, or documentation
 - Shadowed variables or identifier reuse that may mask intent
-- Variable or parameter name mismatches (e.g., a renamed variable used inconsistently)
+- Variable or parameter name mismatches
 - Copy-paste errors in repeated blocks
-- Inconsistent application of a change across files that should be identical
 
-### 5. AI: Report Findings
+### 4. Agent: Report Findings
 
-Organize findings into three tiers:
+For each finding, apply one of three responses before reporting:
 
-- **Blocking** — must be resolved before merge: correctness errors, safety risks, missing required tests, inconsistencies that could cause runtime failures
-- **Non-blocking** — worth addressing but do not block merge: clarity improvements, naming suggestions, minor structural observations
-- **Linter-class** — mechanical changes only (whitespace, comment rewording, generated code churn): call these out as a group rather than line by line, and flag any that are unexpectedly large or mixed with substantive changes
+**Fix directly** — if there is an obvious, good solution: apply it, then include the finding in the summary as resolved. This is the default for linter-class issues, typos, name mismatches, and any substantive issue where the correct fix is unambiguous.
 
-For each blocking and non-blocking finding: state what it is, where it is, and why it matters. Be specific enough that the author knows exactly what to address.
+**Decide and proceed** — if there is no obvious solution but the risk is low: make a reasoned choice, apply it, document the rationale, and flag it in the summary for Reviewer awareness. Low risk means the decision is reversible via git and does not affect external contracts, security, or data integrity.
 
-Flag findings as **uncertain** when the concern depends on intent or system context the AI cannot fully determine. These are handed to the human for judgment rather than presented as definitive.
+**Stop and escalate** — if there is no obvious solution and the risk is high: halt and surface to the Reviewer before proceeding. High-risk decisions include: security vulnerabilities, data loss scenarios, breaking changes to external APIs or contracts, and scope changes that meaningfully deviate from the plan.
 
-### 6. Human: Review Findings and Decide
+Organize the findings summary into three tiers:
 
-Review the AI's findings:
+- **Escalations** — decisions stopped for Reviewer input; include what was found, why it is high-risk, and what options exist
+- **Resolved** — issues found and fixed, including both direct fixes and decided-and-proceeded cases; include the rationale for any judgment calls
+- **Observations** — non-blocking notes the Reviewer may want to be aware of but that do not require action before Test
 
-- Confirm or dismiss uncertain findings based on system knowledge and team context
-- Reclassify any findings where the AI's blocking/non-blocking judgment does not match the team's standards
-- Identify anything the AI missed that requires manual scrutiny (integration behavior, deployment implications, operational concerns)
+### 5. Reviewer: Act on Escalations
 
-### 7. Human: Deliver the Review
+Review any escalated findings:
 
-Post feedback to the MR. Inline comments for findings tied to specific lines; a top-level summary comment for the overall verdict and any general observations.
+- Provide the missing context or make the call the Agent could not
+- The Agent then applies the resolution and updates the findings summary
 
-A good review comment:
-- States the concern and why it matters
-- Is specific enough that the author knows what to address
-- Suggests a direction when one is obvious, without dictating implementation when the author is better positioned to decide
-
-Conclude with a verdict: approve, request changes, or (if genuinely uncertain) state what additional information is needed.
+If there are no escalations, no Reviewer action is required — proceed to Test.
 
 ## Guidance
 
-- Establish context before the AI reads the diff. Reviewing a changeset without knowing its intent produces surface-level findings.
-- Treat linter-class changes as a distinct category, not as evidence of low risk. A large batch of formatting changes can obscure a substantive change mixed in among them.
-- Uncertain findings are not noise — they are the AI surfacing something it cannot resolve alone. Give them deliberate attention rather than dismissing them wholesale.
-- Distinguish blocking from non-blocking clearly. A review where everything looks like a blocker trains authors to ignore feedback. A review where real blockers are buried in suggestions trains authors to merge prematurely.
-- Be specific. "This might have a race condition" is less useful than "if two goroutines call this concurrently before the lock is initialized, both may see a nil pointer."
-- For large MRs with many similar files, explicitly verify uniform application of the intended pattern. The AI should flag inconsistencies; the human should confirm they are not intentional.
-- A short review of a small, well-scoped MR is not a failure of rigor — it reflects an MR that was ready. Match depth to complexity.
-- Approve when the change is ready. Withholding approval as leverage or out of excessive caution blocks good work and erodes trust in the review process.
+- The plan is the primary evaluation standard. A change that works but doesn't match the plan is a finding; a plan gap discovered during review should be noted in `code.md`.
+- Default to action. Software can be rewritten and git provides a rollback path — the cost of a recoverable wrong decision is almost always lower than the cost of stopping unnecessarily.
+- Escalate sparingly. Escalation is for decisions where recovery would be expensive or impossible: security holes, data loss, broken external contracts, significant unplanned scope. Everything else is low risk by default.
+- Distinguish escalations from observations clearly. Treating every finding as a stop trains reviewers to ignore findings; burying real escalations in observations leads to proceeding with unresolved high-risk decisions.
+- A short review of a small, well-scoped change is not a failure of rigor — it reflects a change that was ready. Match depth to complexity.

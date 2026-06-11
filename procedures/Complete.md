@@ -21,7 +21,7 @@ Complete is NOT appropriate when:
 
 Check the work item folder for required artifacts:
 
-- [ ] `implementation.md` — must be present if the work item involved implementation.
+- [ ] `code.md` — must be present if the work item involved implementation.
 - [ ] `reflect.md` — should be present for non-trivial work items.
 
 ### 2. Update Status

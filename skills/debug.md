@@ -6,7 +6,7 @@ description: AI-specific debugging methodology: scientific loop, bias mitigation
 
 This document adapts traditional debugging methodologies for use by AI agents, specifically focusing on systematic diagnosis and overcoming cognitive biases. It complements `Investigate.md` (data collection procedures) with reasoning principles for how to interpret that data.
 
-**When to apply:** During the **Implement** phase when bugs surface, or during an **Investigate** action when runtime behavior needs deeper analysis.
+**When to apply:** During the **Code** phase when bugs surface, or during an **Investigate** action when runtime behavior needs deeper analysis.
 
 ## Cross-Reference with Other Guidelines
 
@@ -95,4 +95,4 @@ When a prediction fails or a result contradicts the current mental model, the ag
     2. **Assumption Inventory**: Enumerate and document all assumptions that supported the failed expectation (e.g., "Assumed the environment variable was set," "Assumed the function returned a Promise").
     3. **Direct Proofs**: Systematically verify each assumption with a targeted test, code inspection, log statement, or debugger inspection.
     4. **Log Results**: Document the outcome of these proofs before formulating the next hypothesis.
-- **Persistence**: For significant failures or persistent issues, record this analysis in a `debug.md` file within the current work item or investigation folder to preserve the reasoning trail without cluttering the primary log (`implementation.md` or `investigate.md`).
+- **Persistence**: For significant failures or persistent issues, record this analysis in a `debug.md` file within the current work item or investigation folder to preserve the reasoning trail without cluttering the primary log (`code.md` or `investigate.md`).
