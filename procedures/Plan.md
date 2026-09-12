@@ -102,12 +102,11 @@ Bullet list of items that require further research, testing, or human clarificat
 
 - Plaintext Markdown only
 - Concise, objective, precise language
-- Avoid restating context or technical details in chat that are (or should be) in the `plan.md`.
 - No code (structs, functions, declarations) appears in any planning document
 - Headings for structure (# Phase, ## Step)
 - Bullets for lists; numbered for sequences
 - Strong descriptive text of expected behavior, data flows, edge cases, invariants — enough to eliminate ambiguity for implementation
-- Invariant section must contain: each invariant provably true given fundamental constraints, traceable to an explicit statement or direct implication in the work item, no unstated assumptions or dependencies, no implicit contradictions
+- Invariant section: each invariant provably true given fundamental constraints, with no unstated assumptions or dependencies and no implicit contradictions; traceability to the work item is governed by **Invariants & Hard Constraints** above
 - This framework assumes invariants will be scrutinized during the Critically Assess step
 - Heading hierarchy wording: avoid directional terms like "higher level" or "lower level" when describing markdown heading structure — these are ambiguous because H1 is simultaneously highest in document hierarchy and lowest in heading number. Use level-number comparisons instead: "a heading whose level number is ≤ N" or "a heading at depth ≤ the matched heading."
 
