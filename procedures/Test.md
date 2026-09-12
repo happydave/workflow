@@ -38,6 +38,12 @@ Gather testing instructions from the sources identified in the **Input & Guidanc
 
 Run the identified test suites and perform manual verification. If any steps require human intervention (e.g., UI verification, hardware interaction), the AI agent must explicitly ask the user to perform these steps and report the results.
 
+When the verification is a live or environment-driven procedure, execute the project's runbook for
+it (`Runbook.md`) and record in `test.md` the runbook used, every deviation, and every new trap; then
+correct the runbook in place and refresh its **Last executed** line. If no runbook exists and the
+procedure is one the project will repeat, write it now and have `test.md` point at it — `test.md`
+holds this run's evidence, not the recipe.
+
 ### 3. Run the Negative Controls
 
 A test that passes against a deliberately broken implementation is not evidence. For each behavior the plan specifies in its **Required Behaviors & Verifications**, remove or invert that behavior and confirm the intended tests fail — and that they fail on the cases that target it. The scope is the plan's behaviors: not every new test, and not every line of the change. Before breaking anything, read the next paragraph — it constrains which behaviors may be checked this way at all.

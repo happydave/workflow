@@ -40,6 +40,8 @@ The agent reads `AGENTS.md` at the start of each session and consults the refere
 
 **Quick chore:** SideQuest (single execution + audit doc, no planning phase)
 
+**Adopt (material crossing a boundary, either direction):** Work Item → Inventory → Filter + confirmed redaction list → Execute → Review (fidelity, leak gate, coherence, fit) → Git Commit → Complete, in one `adopt.md`
+
 **Bug fix:** BugReport → Investigate (if diagnosis needed) → Plan → the work item pipeline
 
 **Rapid iteration (exploratory/hardening):** Test → Triage → fix in groups → Reflect → Document, looped

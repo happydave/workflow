@@ -30,7 +30,7 @@ Read each applicable documentation guideline. These guidelines define the verifi
 Review the implementation and determine which documentation surfaces could be affected:
 
 - **README** — project description, setup instructions, usage examples, feature list
-- **Code comments** — function and module-level documentation, especially on public APIs
+- **Code comments** — function and module-level documentation, especially on public APIs. `skills/comments.md` decides what to cut and what earns its place
 - **Inline help text** — CLI help strings, UI labels, tooltip text, error messages
 - **Configuration documentation** — environment variables, config files, options
 - **Contribution or development guides** — build steps, test instructions, architecture notes

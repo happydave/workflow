@@ -24,10 +24,12 @@ This repository contains meta-instructions - the governing standard for how feat
 - `WorkItem.md` — create and manage work items
 - `BugReport.md` — capture a defect as a structured work item with reproduction context
 - `Phase.md` — a named group of work items, owned by one project, that must close together: record under `docs/projects/<owner>/phases/`, membership declared on the work item (`phase:`), close gated on no open member
+- `Runbook.md` — an executable, dated operational procedure a project repeats (deploy to an environment, live test, rollback): record under `docs/projects/<owner>/runbooks/`, executed and corrected in place by `Test.md`, with a **Last executed** line
 - `GitCommit.md` — stage and commit changes; no-op if the working directory is not a git repository
 - `GitMerge.md` — plan and execute branch merges: survey divergence, select strategy, execute, record outcome
 - `Merge.md` — execute one strategy in depth: audited squash-and-rebase of a diverged feature branch, with logical-conflict review
 - `SideQuest.md` — execute and document one-off tasks with minimal overhead
+- `Adopt.md` — carry material across a boundary (a fork of this framework, a third-party skill, outward to another copy): inventory → filter + owner-confirmed redaction list → execute → four-dimension review with a leak gate
 - `Spike.md` — answer one feasibility/cost/design question with a throwaway build and a recorded verdict
 - `Dispatch.md` — package context and instructions for a specialized agent session
 - `MultiSession.md` — run a multi-session arc on named roles (coordinator, executor, shepherd, tester), artifact-borne authorization, and a consult protocol for owner-absent decisions
@@ -56,6 +58,7 @@ This repository contains meta-instructions - the governing standard for how feat
 - `docker.md` — container-first build environment (`Dockerfile.dev` + `Makefile` pattern)
 - `kubernetes.md` — Helm chart verification ladder, per-pod identity in a StatefulSet, throwaway kind clusters on podman
 - `markdown.md` — quality gates for Markdown artifacts (link checking, structure verification, merge union check, spell checking)
+- `comments.md` — code comments and doc prose: what to cut, what earns its place, matching a project's voice
 - `sql.md` — SQL conventions for queries, schema, and migrations
 - `versioning.md` — version increment policy: one ticket, one patch (Go projects exempt — they version via git tags)
 - `claude-code.md` — Claude Code CLI usage reference for task delegation and automated operations
@@ -74,6 +77,7 @@ This repository contains meta-instructions - the governing standard for how feat
 - `DESIGN.md` — design notes for the workflow system itself
 
 **knowledge** (reference material — look these up as needed; non-normative)
+- `tools/kind.md` — kind (Kubernetes in Docker): context switching, node nofile limit, arm64 platform matching, disk/max-pods, serial image pulls
 - `vscode-agent-registration.md` — registering agents for VS Code
 
 ## Typical Pipelines
@@ -85,6 +89,7 @@ This repository contains meta-instructions - the governing standard for how feat
 - Bug Fix: `BugReport → Investigate (if diagnosis needed) → Plan → (standard Work Item pipeline)` (see `BugReport.md`)
 - Rapid Iteration (exploratory/hardening): `Test → Triage → fix in groups → Reflect → Document` (loop; see `RapidIteration.md`)
 - Spike (settle one question before planning): `Work Item → Design → Execute → Verdict → Reflect` (single `spike.md`; see `Spike.md`)
+- Adopt (material crossing a boundary, either direction): `Work Item → Inventory → Filter + confirmed redaction list → Execute → Review (fidelity, leak gate, coherence, fit) → Git Commit → Complete` (single `adopt.md`; see `Adopt.md`)
 - Codex Harvest (research archives → published claims): `Ledger/Survey (SideQuest) → Harvest (distillation plan → distillation review → author → fidelity review → gates → edition) → Reflect → Git Commit → Complete` (see `Harvest.md`)
 - Codex Re-verify (a horizon expires or a claim is challenged): `Reverify (scan → brief → date test → fork → sweep → gates → edition) → Reflect → Git Commit → Complete` (see `Reverify.md`)
 

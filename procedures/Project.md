@@ -19,6 +19,8 @@ Projects are documented in a central location (e.g., a `tickets` repository), no
 
 - `design.md`: The architectural design for the project (see `Design.md`).
 - `phases/`: One flat file per phase this project owns (see `Phase.md`).
+- `runbooks/`: One file per operational procedure the project repeats — deploy to an environment,
+  live test, rollback (see `Runbook.md`).
 - `archive/`: A folder where completed work items associated with this project are moved.
 
 ## Required Content
@@ -34,6 +36,9 @@ Every project record must include:
 
 - **Backlog** — a list of Work Item IDs associated with this project and their current status.
 - **Phases** — the phases this project owns, each a record under `phases/` (see `Phase.md`), with their declared status. Membership is derived from the work items' own `phase` fields, never listed here as authority.
+- **Runbooks** — the operations this project repeats, each a record under `runbooks/` (see
+  `Runbook.md`), with its **Last executed** date. Work items that verify live run these rather than
+  re-deriving the procedure.
 - **Decisions** — dated, append-only decision entries. Settled decisions recorded in a project
   doc follow the Decision Records convention in `Design.md`: supersede by appending a new dated
   entry that names what it replaces and why — never by rewriting the stamped original.

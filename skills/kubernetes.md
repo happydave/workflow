@@ -100,6 +100,12 @@ Tag under `docker.io/library` so the kubelet's short-name resolution finds the i
 `image: <img>:dev`. Fully qualify base images in the `Dockerfile` too — podman resolves a short
 name only against configured unqualified-search registries, and many hosts configure none.
 
+Loading a locally built single-architecture image is fine. Loading a multi-arch OCI **index** is
+**not** — the loaded record is still an index, and containerd on an arm64 node refuses one that
+lists only `amd64`. That case, the node `RLIMIT_NOFILE` inheritance, the disk budget, `max-pods`,
+and serial image pulls are all in [`knowledge/tools/kind.md`](../knowledge/tools/kind.md); read it
+before standing up a cluster that has to hold a full namespace rather than one chart.
+
 ## Drive it from inside the cluster
 
 `kubectl port-forward` binds one pod and dies with it, so it cannot survive the rolling restart it

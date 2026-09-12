@@ -34,6 +34,9 @@ Identify friction, errors, and rework during implementation. For each item, note
 - Why it happened (root cause if apparent)
 - How it was resolved
 
+If the work item ran a project runbook (`Runbook.md`), note whether it had drifted, and confirm the
+correction landed in the runbook itself rather than only in `test.md`.
+
 Focus on issues that originated from the process, documentation, or tooling — not incidental problems like a service being temporarily unavailable.
 
 ### 3. Produce Recommendations
