@@ -50,13 +50,15 @@ from the source with the listed identifiers replaced, and record the replacement
 
 ### 5. Review
 
-Run in-session; the dimensions carry the stance. Record each result in `adopt.md`.
+Run in-session; the dimensions carry the stance. Record each result in `adopt.md`. Fidelity and
+fit are this procedure's own; the rest are shared with `WorkflowChange.md`.
 
 - **Fidelity** — every take row landed (a file taken as-is is byte-identical to the source:
   `cmp`), every decline row is absent, and `git diff --cached --name-only` lists only the files
   the inventory names.
-- **Leak gate** — a search of the staged diff for every redaction term, case-insensitive, whose
-  output is pasted into `adopt.md` and must be empty:
+- **Leak gate** — the redaction list from step 3 over the staged diff, output pasted into
+  `adopt.md`, must be empty. When the target is the workflow repo, the site term list is appended
+  to the redaction list and the gate runs as `WorkflowChange.md` specifies; otherwise:
 
   ```sh
   git diff --cached | grep -inE 'term1|term2|term3'
@@ -66,7 +68,8 @@ Run in-session; the dimensions carry the stance. Record each result in `adopt.md
 
 - **Coherence** — `skills/markdown.md` build gates on every touched document (links resolve,
   structure holds) and `internal/dupcheck.py` over them; every new procedure or skill has its
-  index line.
+  index line. For the workflow repo, the coherence, form and application-test dimensions of
+  `WorkflowChange.md` apply in full.
 - **Fit** — every conflict named in step 3 is resolved in the text, not left for the reader.
 
 A failed dimension returns to step 4; the review is repeated in full after the fix.

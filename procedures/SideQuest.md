@@ -30,6 +30,7 @@ The author (human or AI agent) performs the requested task directly based on the
 - No `plan.md` is required.
 - No `code.md` log is maintained during the work.
 - **Versioning**: SideQuests are explicitly **exempt** from standard project version increment rules (e.g., semantic version bumps) unless the work item explicitly requests a version bump.
+- **Workflow repo**: a SideQuest that changes the workflow repo runs the gates in `WorkflowChange.md` before step 3 and records them in `sidequest.md`.
 
 ### 3. Documentation
 Upon completion of the work, the author creates a `sidequest.md` file in the work item folder. This single artifact replaces all other workflow documents for this task.

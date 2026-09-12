@@ -14,6 +14,10 @@ The goal is to provide continuous, clear direction that ensures execution remain
 
 This repository contains meta-instructions - the governing standard for how features are architected and built. This is the operational manual for the development process itself.
 
+## Site Overlay
+
+This repository is public and holds only generic procedure. Site-specific values — hosts, the private forge, accounts, paths, personas that exist at one site — live outside it in a **site overlay** at `tickets/site/`, included from the global agent instructions after this file. The workflow names **roles** (the private forge, the realm hosts, the ops persona, the tickets repo, the site knowledge store) and the overlay's `AGENTS.md` maps each role to its value. The overlay's `redaction.txt` is the **site term list** that `WorkflowChange.md` reads as its leak gate. On a machine with no overlay, a role resolves to nothing and any procedure that needs its value holds for the owner.
+
 ## File Layout
 
 **procedures**
@@ -29,6 +33,7 @@ This repository contains meta-instructions - the governing standard for how feat
 - `GitMerge.md` — plan and execute branch merges: survey divergence, select strategy, execute, record outcome
 - `Merge.md` — execute one strategy in depth: audited squash-and-rebase of a diverged feature branch, with logical-conflict review
 - `SideQuest.md` — execute and document one-off tasks with minimal overhead
+- `WorkflowChange.md` — the gate set every change to the workflow repo passes before commit, whichever pipeline carries it: filter (generic, or it moves to the site overlay) + review (leak gate over the site term list, coherence, form, application test, fit)
 - `Adopt.md` — carry material across a boundary (a fork of this framework, a third-party skill, outward to another copy): inventory → filter + owner-confirmed redaction list → execute → four-dimension review with a leak gate
 - `Spike.md` — answer one feasibility/cost/design question with a throwaway build and a recorded verdict
 - `Dispatch.md` — package context and instructions for a specialized agent session
@@ -67,17 +72,15 @@ This repository contains meta-instructions - the governing standard for how feat
 - `authoring-skills.md` — how we write skills: directive not narrative, application-tested; synthesizes superpowers `writing-skills` + tickets `creating-skills`
 - `tooling.md` — tool-selection policy and credential handling for external tools
 
-**agents** (agent personas — attach when dispatching a specialized session)
+**agents** (agent personas — attach when dispatching a specialized session; the site overlay may add its own)
 - `Merge.md` — Merge Agent: drives `procedures/Merge.md` interactively
-- `ops.md` — Ops Agent: single point of coordination for realm hosts ai/ai2/gtr; realm ledgers live at `tickets/docs/projects/ops/realms/`
 - `researcher.md` — research agent persona
 
 **internal** (framework tooling — run these rather than reimplementing a check)
 - `dupcheck.py` — duplicate-detection heuristic from `skills/markdown.md`; `internal/dupcheck.py FILE...`
 - `DESIGN.md` — design notes for the workflow system itself
 
-**knowledge** (reference material — look these up as needed; non-normative)
-- `tools/curl.md` — signed S3 requests (`--aws-sigv4`) against Linode Object Storage: keeping the secret out of argv, PUT when stdin is taken, HTTP-code checks
+**knowledge** (reference material — look these up as needed; non-normative; the site overlay's `knowledge/` adds site facts)
 - `tools/kind.md` — kind (Kubernetes in Docker): context switching, node nofile limit, arm64 platform matching, disk/max-pods, serial image pulls
 - `vscode-agent-registration.md` — registering agents for VS Code
 
@@ -111,15 +114,12 @@ through compaction, and so we can free what we aren't using without forgetting.
 - **A destructive operation decides in a pure predicate.** Where an action is destructive, irreversible, or outward-facing — removing a path, dropping a table, sending a message, publishing a document — the decision to proceed is taken by a pure function the operation calls, not by a check written inline. *Pure* here means free of the guarded effect, not free of all I/O: the predicate may read whatever it needs in order to decide, but it must not perform the act. Test that predicate, using the dangerous arguments it exists to refuse; hand the operation itself only arguments the test created for it. The reason is the negative control — the way to show a guard's test has teeth is to break the guard and watch the test fail, so every guard's test is eventually run **with the guard removed**, and a test that reaches the operation with live arguments is safe only until someone checks it properly. On 2026-09-08 that check destroyed a host's home directory.
 - **Commit freely; never push.** Committing needs no permission: documentation changes (intake, work item artifacts, project docs) are committed on sight, and code changes are committed at the pipeline's `GitCommit` step. Stage **by specific path** — never `git add -A` or `git add .`, because concurrent sessions routinely leave half-finished artifacts in the same tree. But **`git push`, force-push, and merges into `main`/`master` require an explicit instruction in the requester's current message.** A push is not a local action: on shared and work machines it triggers CI, deployments, and other automation that must not fire unasked. Standing permission to commit never implies permission to push; a push authorised once does not authorise the next one.
 - **Code comments relate directly to the code.** Never hold or continue a conversation in comments (e.g. "this is what changed") — that context belongs in the implementation log or commit message.
-- **Ops is responsible for host state.** Installing software, changing services or ports, standing
-  up test infrastructure, starting a resource-heavy workload (large model load, video generation,
-  load test — check Claims for live reservations first), or otherwise changing machine state on a
-  realm host (`ai`, `ai2`, `gtr`,
-  and any future server) goes through the Ops Agent persona (`agents/ops.md`): read the host's
-  realm ledger before touching, write the ledger with the change, honour the authorization tiers.
-  Technology stances (preferred / anti-preferred / container-only / forbidden-on-host) and fleet
-  constraints are also recorded there — check them before choosing or installing a technology. The
-  ledgers, protocol, preferences, and constraints live at `tickets/docs/projects/ops/`; the
-  persona holds the tiers and playbooks. Specifics live in those documents, not here.
+- **Host state goes through the ops persona.** Installing software, changing services or ports,
+  standing up test infrastructure, starting a resource-heavy workload (check the host's claims for
+  live reservations first), or otherwise changing machine state on a realm host goes through the
+  ops persona the site overlay defines: read the host's ledger before touching, write the ledger
+  with the change, honour the persona's authorization tiers, and check its technology stances
+  before choosing or installing a technology. Without an overlay, host-state changes hold for the
+  owner. Specifics live in the overlay and its ledgers, not here.
 - **Query workflow data via its procedure.** When asked about workflow-managed data (e.g. "show me pending work items"), read the defining procedure (`WorkItem.md`) first to learn the canonical structure and query approach, then query. This applies to workflow artifacts specifically; general one-off questions and quick lookups remain outside the workflow.
-- **Read docs in full.** When you open a `workflow` doc or a project doc under `/home/dave/Documents/tickets`, read the entire file rather than a partial range. This applies to documentation only — **not** source code, which may contain very large files that are read selectively. "Read in full" is per-file: each doc you open is read whole; it does not mean every file in a tree must be opened. Files merely referenced by another doc are read only when directly relevant to the task.
+- **Read docs in full.** When you open a `workflow` doc or a project doc in the tickets repo, read the entire file rather than a partial range. This applies to documentation only — **not** source code, which may contain very large files that are read selectively. "Read in full" is per-file: each doc you open is read whole; it does not mean every file in a tree must be opened. Files merely referenced by another doc are read only when directly relevant to the task.

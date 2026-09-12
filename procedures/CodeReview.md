@@ -67,6 +67,8 @@ Assess all substantive changes across these dimensions:
 
 **Consistency** — for changes applied across multiple similar files, verify the pattern is applied uniformly. Inconsistencies across similar files are a common source of subtle bugs.
 
+**Workflow repo** — when the diff changes the workflow repo, the gates in `WorkflowChange.md` (filter; leak gate, coherence, form, application test, fit) are part of this evaluation and are recorded in `codereview.md` under **Workflow change gates**.
+
 Also scan exhaustively for mechanical issues regardless of change category:
 
 - Misspellings in identifiers, comments, log messages, or documentation

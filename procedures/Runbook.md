@@ -17,7 +17,7 @@ Keep these apart; mixing them is what makes procedures unfindable:
 
 | Layer | Lives in | Example |
 |---|---|---|
-| Environment fact | the knowledge store (`knowledge/`, or the platform store a project names) | which node pins ACKs, how a VPN assigns addresses |
+| Environment fact | the knowledge store (`knowledge/` for generic facts, the site overlay's `knowledge/` for site facts, or the platform store a project names) | which node pins ACKs, how a VPN assigns addresses |
 | Project procedure | `docs/projects/<slug>/runbooks/<name>.md` | how *this* project deploys and drives its live test |
 | Per-run evidence | the running work item's `test.md` | what run N observed, with timestamps |
 

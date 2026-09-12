@@ -85,7 +85,7 @@ iterations.
 
 ## Throwaway cluster: kind on podman
 
-Creating one is Tier A under `agents/ops.md` — act freely, delete in the same session.
+Creating one is Tier A under the site's ops persona — act freely, delete in the same session.
 
 ```sh
 export KIND_EXPERIMENTAL_PROVIDER=podman
@@ -127,10 +127,10 @@ Write them to measure the server, not the client library. Two distinct traps:
 Wait for a count rather than a fixed sleep, and print disconnect reason codes so a redirect is
 observed rather than assumed.
 
-## Our setup
+## Site setup
 
-Realm host `ai2` carries kind, kubectl and helm in `~/.local/bin`, which is *not* on the PATH of a
-non-interactive ssh. Read its realm ledger before touching it — see `agents/ops.md`.
+Which host carries kind, kubectl and helm, what is or is not on its non-interactive PATH, and which
+ledger to read first are site facts: see the site overlay's knowledge store (`kubernetes-setup.md`)
+and its ops persona.
 
-Source: hoardmq WI 1272 — `tickets/docs/pending/1272-hoardmq-drain-readiness-helm/test.md` and the
-runbook in `projects/hoardmq/deploy/helm/hoardmq/README.md`.
+Source: a home-realm Helm work item, 2026-09; the chart and StatefulSet material above is general.

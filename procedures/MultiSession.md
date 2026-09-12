@@ -13,7 +13,7 @@ Roles are named per arc, even when one session wears several hats — they are o
 - **Shepherd** — owns liveness and legitimacy: subscribes to executor idle notices, keeps a fallback heartbeat, nudges stalls, routes safeguards-flagged work per the brief, brokers consults, and keeps the decision log and morning brief where the owner will read them. The shepherd is explicitly NOT an authorizer: a shepherd go-ahead is never the owner's answer.
 - **Tester** — a fresh-context session running `Test.md` against the artifacts. Invoke for significant verification only (multi-host runbooks, load tests, checkpoint gates). The value is independence from the diagnosis: a session with no investment in a finding is the natural catcher of a harness measuring the wrong thing — the 2026-09-05 arc's measurement error was made and caught by the same session.
 
-A role stays defined here until it accrues standalone playbooks; only then does it split into an `agents/` persona (the `../agents/ops.md` precedent). A shepherd persona was considered and declined on this condition — re-raise when the condition triggers.
+A role stays defined here until it accrues standalone playbooks; only then does it split into an `agents/` persona (the ops persona is the precedent; it lives in the site overlay). A shepherd persona was considered and declined on this condition — re-raise when the condition triggers.
 
 ## Artifact-Borne Authorization
 

@@ -66,7 +66,7 @@ If unknown, write: "Reproduction steps unknown.">
 
 ## Severity
 
-<Impact statement, e.g.: "Blocks copilot completions entirely for gtr host." or "Cosmetic — incorrect label in UI.">
+<Impact statement, e.g.: "Blocks copilot completions entirely on the build host." or "Cosmetic — incorrect label in UI.">
 
 ## Acceptance Criteria
 
