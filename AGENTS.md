@@ -77,6 +77,7 @@ This repository contains meta-instructions - the governing standard for how feat
 - `DESIGN.md` — design notes for the workflow system itself
 
 **knowledge** (reference material — look these up as needed; non-normative)
+- `tools/curl.md` — signed S3 requests (`--aws-sigv4`) against Linode Object Storage: keeping the secret out of argv, PUT when stdin is taken, HTTP-code checks
 - `tools/kind.md` — kind (Kubernetes in Docker): context switching, node nofile limit, arm64 platform matching, disk/max-pods, serial image pulls
 - `vscode-agent-registration.md` — registering agents for VS Code
 
