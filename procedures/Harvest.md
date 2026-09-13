@@ -152,7 +152,7 @@ Cut the edition per archivist §4 — the annotated tag and the root entry — a
 ### 9. Reflect, commit, complete
 
 `Reflect.md` as usual. Commit the lore repo (content plus tag) and the tickets repo per
-`GitCommit.md`; never push. Then `Complete.md`.
+`GitCommit.md`; push only as the push directive in `AGENTS.md` allows. Then `Complete.md`.
 
 ## The `harvest.md` Template
 

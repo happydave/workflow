@@ -4,7 +4,7 @@
 
 Stage and commit changes in the current working directory with a clear, accurate commit message.
 
-This procedure commits only. **It never pushes.** Publishing the commit is a separate action requiring an explicit instruction from the requester — see the "Commit freely; never push" directive in `AGENTS.md`.
+This procedure commits only. **It never pushes.** Whether a push may follow is decided by the "Commit freely; never push" directive in `AGENTS.md`: an explicit instruction from the requester, or a push lane the site overlay grants.
 
 ## When to Use
 

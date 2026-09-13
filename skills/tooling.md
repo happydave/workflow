@@ -47,7 +47,7 @@ Record the outcome. If verification fails, that is a finding to report — not a
 Tools that expose write and delete operations alongside reads require deliberate narrowing.
 
 - Read-only operations may be performed as needed.
-- Write operations (comment, approve, merge, push, tag) require the request to be explicit in the user's current instruction.
+- Write operations (comment, approve, merge, push, tag) require the request to be explicit in the user's current instruction. The one exception is a push inside a push lane, per the push directive in `AGENTS.md`.
 - Delete and revoke operations require confirmation before execution, regardless of prior authorization in the session.
 - An MCP server or CLI that exposes destructive subcommands should be constrained by permission rules rather than by intention alone.
 

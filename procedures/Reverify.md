@@ -109,7 +109,8 @@ on) means no edition.
 ### 8. Reflect, commit, complete
 
 Grade the brief per `WebResearch.md` §6 (did every hypothesis get a verdict line and a date?),
-then `Reflect.md`, `GitCommit.md` for both repos, never push, then `Complete.md`.
+then `Reflect.md`, `GitCommit.md` for both repos, push only as the push directive in `AGENTS.md`
+allows, then `Complete.md`.
 
 ## The brief shape
 
