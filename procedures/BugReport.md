@@ -4,7 +4,7 @@
 
 Guide a reporter through capturing a defect as a structured work item. Every bug report produced by this procedure contains the minimum information needed to reproduce, triage, and plan a fix.
 
-Follow this procedure from start to finish. It produces a work item folder and `workitem.md` — you do not need to read `WorkItem.md` separately.
+Follow this procedure from start to finish. It produces a work item folder and `workitem.md`. The one part of `WorkItem.md` it relies on is Procedure step 1, which assigns the ID.
 
 ## Required Fields
 
@@ -27,7 +27,7 @@ Include these when known. Explicitly record "unknown" or "not yet available" rat
 
 ### 1. Assign an ID
 
-Read `docs/pending/next` to obtain the next available ID `N`. Write `N + 1` back to `docs/pending/next` before creating any files. If `docs/pending/next` does not exist, find the highest-numbered existing folder in `docs/pending/` and add one; write that value plus one back to `docs/pending/next`.
+Assign the ID `N` exactly as `WorkItem.md` Procedure step 1 describes — by tooling where available, otherwise by that step's manual counter rules — before creating any files.
 
 ### 2. Create the Work Item Folder
 
