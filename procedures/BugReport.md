@@ -35,7 +35,7 @@ Create `docs/pending/<N>-<short-name>/` where `<short-name>` is a brief kebab-ca
 
 ### 3. Write `workitem.md`
 
-Create `docs/pending/<N>-<short-name>/workitem.md` using the structure below. Fill in all required fields. For optional fields, include them if known; write "unknown" or "not yet available" rather than omitting the heading.
+Create `docs/pending/<N>-<short-name>/workitem.md` using the structure below. The title names the experienced behaviour, not a suspected cause (`WorkItem.md` step 2). Fill in all required fields. For optional fields, include them if known; write "unknown" or "not yet available" rather than omitting the heading.
 
 ```
 ---

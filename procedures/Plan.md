@@ -52,6 +52,7 @@ Certain feature shapes have repeatedly produced interleaving or coverage gaps th
 - **A replicated-state change** — say which node acts on apply and which acts on the proposer's result, and in what order those may interleave; defects live in the interleavings a plan does not name.
 - **A shared identifier** (a key, a code, a name format used by more than one component) — state its exact form and which package owns it.
 - **A gate command that includes a test-binary flag** — name the exact package path, not a `./...` pattern; other test binaries in the tree reject the flag.
+- **A critical section split across two locks** (a record sealed under one lock and made durable under another, a check under one and the act under the next) — name what another caller can observe between them and what a crash between them leaves behind, and state what the acknowledgement of the whole promises and whether it may precede the part under the second lock (WI 1490: an acknowledgement preceded the fsync it reported).
 
 **Migration note.** The prior two-way scheme used `[visual/manual]` for everything non-automated. An existing `[visual/manual]` tag should be read as `[human]` by default (the conservative reading); re-triage it to `[agent]` opportunistically when the check is in fact one the agent can perform by inspection.
 Example:

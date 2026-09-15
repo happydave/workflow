@@ -78,8 +78,9 @@ A claim about frequency or a fix carries its run count in the same sentence. "Th
 intermittent" means nothing; "2 failures in 6 runs" is a finding. A claim that a change *fixed* a
 flaky failure needs enough runs that the old failure rate would have shown itself — and where the
 counts alone are weak (2-of-6 versus 0-of-6 is p ≈ 0.2 on its own), say whether the attribution
-rests on the counts or on the mechanism. This rule has been re-learned in three separate work items;
-apply it before publishing, not after being asked.
+rests on the counts or on the mechanism. A single green run is never that sample, and `Complete.md`
+refuses a fix claim for an intermittent failure that omits its count. This rule has been re-learned
+in four separate work items; apply it before publishing, not after being asked.
 
 ### A Gate's Exit Status and Its Completeness Are Separate Questions
 A green gate is only evidence if the gate actually ran to completion over everything it claims to
@@ -91,6 +92,17 @@ incomplete run is not a zero. Confirm completeness explicitly — for Go, a pack
 A surprising number from a changed build is compared against the unchanged build, on the same
 machine, before it is attributed to anything. Without that control run, "the change made it worse"
 and "it was always this bad" are indistinguishable — and both mistakes have been published.
+
+### A Failure That Outlives Its Recovery Time Is Not Contention
+Contention clears at the rate the system retries. A failure that persists for many multiples of its
+expected recovery time has a cause a retry cannot reach, so read the counters — attempts, successes,
+the state the retry depends on — before adding a retry or lengthening a cooldown. Source: WI 1491.
+
+### A Correlate Is Not a Cause
+A variable that perfectly separates good runs from bad across every run seen is still a
+correlate; the causal claim earns **Supported** at most until a run manipulates it alone. The work
+item filed to test it is titled by the observation, per `WorkItem.md` step 2, so the title does not
+assert the cause the work item exists to test. Source: WI 1492, refuted by WI 1493.
 
 ### "Nothing Found" Is a Valid Output
 Resist the temptation to produce a "root cause" or a positive result without evidence. Documenting what

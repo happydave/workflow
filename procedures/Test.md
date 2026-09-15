@@ -54,6 +54,8 @@ The shape this asks for is small. In hoardmq's failover driver, `validateStoreRo
 
 Which cases fail matters as much as that something failed. A mutation that breaks more cases than expected, or fewer, has located a gap. In md-mcp WI 1169 a mutation passed the entire suite and revealed that the invariant the plan had singled out as the subtle one had no test at all — every other case was byte-identical either way, so the assertions that appeared to cover it did not.
 
+A control's failure is read, not only counted. The failure text names the assertion that tripped, and that must be the assertion targeting the behaviour removed; a failure at an earlier assertion, or before any assertion runs, shows the test has other teeth, not that this behaviour is covered. Record the tripped assertion with the break (WI 1486 nearly recorded a control that failed for the wrong reason as evidence).
+
 Record the result in `test.md` as a table of the break, the test, and the failure observed. Where a control could not be run — a behavior that will not compile once removed, or an operation whose decision is not separable — name the behavior and the reason. An omitted control must not be indistinguishable from one that passed.
 
 This is `skills/evidence.md`'s "actively seek contradictory evidence" applied to the suite itself: a control that *should* fail is what distinguishes a test with teeth from a test that agrees with whatever it is given.
@@ -63,7 +65,7 @@ This is `skills/evidence.md`'s "actively seek contradictory evidence" applied to
 Document the testing process and results in a `test.md` file within the work item folder.
 
 #### Required Sections:
-- **Test Summary**: High-level pass/fail status and summary of coverage.
+- **Test Summary**: High-level pass/fail status and summary of coverage. A claim that a fix ended an intermittent failure carries the run count it rests on against the prior rate (`skills/evidence.md`, *State the Sample a Claim Rests On*); `Complete.md` refuses the claim without it.
 - **Automated Results**: Output or summary of test suite executions.
 - **Manual Verification**: Description of manual steps taken and their outcomes.
 - **Negative Controls**: the table of breaks run, the tests they broke, and the failures observed — or, where none were run, which behaviors went uncontrolled and why.
