@@ -82,6 +82,23 @@ rests on the counts or on the mechanism. A single green run is never that sample
 refuses a fix claim for an intermittent failure that omits its count. This rule has been re-learned
 in four separate work items; apply it before publishing, not after being asked.
 
+### The Claims That Need Checking Are the Comfortable Ones
+A claim that the thing under test is fine — nothing was lost, the sweep confirms it, no batch reports
+it, it is read nowhere — is written where being fine is the expected answer, and nobody goes looking
+for the bug behind it. Before commit, take each such claim in the prose that reports a result or a
+survey finding and verify it, label it at the confidence it earns, or delete it. The floor is
+mechanical:
+
+```sh
+git diff --cached -U0 -- '*.md' | grep -E '^\+[^+]' | grep -wiE 'every|no|none|nothing|nowhere|always|never|confirms'
+```
+
+Settle each hit the same three ways, a verification being the search that would refute it; a hit that
+is not a claim — a heading, a quoted example, an instruction — is dismissed on reading. A comfortable claim without one of those words
+needs the same look; the grep is the floor, not the trigger, and a fix claim also owes its sample
+(*State the Sample a Claim Rests On*). Source: WIs 1478, 1480, 1502, 1509, each settled by one search
+not run first.
+
 ### A Gate's Exit Status and Its Completeness Are Separate Questions
 A green gate is only evidence if the gate actually ran to completion over everything it claims to
 cover. A timeout, a skip, or a package that never reported is not a pass, and a zero count from an
