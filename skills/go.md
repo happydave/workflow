@@ -17,12 +17,17 @@ The rules focus on unambiguous setup and tooling behavior so AI-generated code r
 - Explicitly grant freedom on non-critical choices.
 
 ## Testing
+
+### Running tests
 - *NEVER* use `-short` with `go test`. There is no plan-level override for this.
 - *NEVER* run `go build` to test; use `go test` (or `go run` if you want to interact with a running instance).
 - Always run `go test ./...` before making changes to verify the state of the project.
 - Always run `go test ./...` after all changes are made for final verification.
 - Pass `-timeout` on any run that can block: the default is generous enough that a hung package looks like a slow one, and the timeout is what turns it into a goroutine dump.
+- `-race -count=5` on any new or changed concurrent package, before it is called stable; why is under *Concurrent test harnesses* below.
 - **Run the documented gate, not a faster decomposition of it.** If the project documents one whole-module command as its gate, run that command. Splitting it into parallel halves changes what is tested — inter-package contention is part of what the combined run exercises, and a split has hidden a real regression for a whole session. If the combined command is too slow, record that fact; it is not a licence to substitute the halves.
+
+### Writing tests
 - `TestMain` must live in a `_test.go` file. A `TestMain` in a regular file compiles without complaint, passes `go vet`, and never runs — no gate in this document catches it.
 - **A benchmark's parallelism is part of its claim.** `-cpu` and `b.RunParallel` set the concurrency
   the result is *about*. Go weights mutex profiles by the number of blocked goroutines precisely
