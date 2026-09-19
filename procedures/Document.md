@@ -58,7 +58,7 @@ Look for contradictions across documentation surfaces:
 
 ### 5. Update
 
-Make the necessary corrections. Keep the existing style and tone of each document — this action updates content, not voice.
+Make the necessary corrections. Keep the existing style and tone of each document — this action updates content, not voice; voice is `Voice.md`'s step.
 
 ## Guidance
 

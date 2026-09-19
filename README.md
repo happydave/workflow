@@ -36,7 +36,7 @@ The agent reads `AGENTS.md` at the start of each session and consults the refere
 
 **Intake:** Capture (`docs/intake/`) → Triage → Work Item(s) or declined
 
-**Work item:** Plan → Plan Review → Code → Code Review → Test → Document → Reflect → Git Commit → Complete
+**Work item:** Plan → Plan Review → Code → Code Review → Test → Voice → Document → Reflect → Git Commit → Complete
 
 **Quick chore:** SideQuest (single execution + audit doc, no planning phase)
 

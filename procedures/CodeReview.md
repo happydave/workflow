@@ -59,7 +59,7 @@ Assess all substantive changes across these dimensions:
 
 **Safety** — does the change introduce risk? Consider: security vulnerabilities, data loss scenarios, race conditions, inconsistent state, irreversible side effects. Where an operation is destructive, irreversible, or outward-facing, check that the decision to proceed is separable from the act — a pure predicate the operation calls, per the directive in `AGENTS.md`.
 
-**Clarity** — is the code readable and maintainable? Naming, structure, and whether a future reader would understand the intent without needing to ask the author.
+**Clarity** — is the code readable and maintainable? Naming, structure, and whether a future reader would understand the intent without needing to ask the author. Comment style is `Voice.md`'s step, not review's.
 
 **Tests** — are new behaviors covered? Are existing tests still meaningful? Absence of tests for plan-specified behaviors is a blocking finding. An assertion of absence must establish the presence it qualifies, and a guard's test must assert on the predicate rather than on the operation it guards — see `Test.md`, *Negative Testing* and *Run the Negative Controls*.
 

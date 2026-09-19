@@ -14,6 +14,7 @@ Completion is the logical end of the active workflow. It ensures that the state 
 
 Complete is NOT appropriate when:
 - Unresolved blocking findings remain from a Code Review or Plan Review.
+- `voice.md` is absent.
 - The work item claims to have fixed an intermittent failure and the claim does not state the run count it rests on against the failure's prior rate, and whether the attribution rests on those counts or on the mechanism — a single green run is not that sample (`skills/evidence.md`, *State the Sample a Claim Rests On*; WI 1491 was credited from one green gate and corrected after WI 1494 found two more paths).
 
 ## Procedure
@@ -24,6 +25,7 @@ Check the work item folder for required artifacts:
 
 - [ ] `code.md` — must be present if the work item involved implementation.
 - [ ] `reflect.md` — should be present for non-trivial work items.
+- [ ] `voice.md` — must be present; one line, `Nothing to trim.`, when the work item added nothing in scope. A single-artifact procedure's document (`sidequest.md`, `spike.md`) stands in for it, as for the others.
 
 ### 2. Update Status
 

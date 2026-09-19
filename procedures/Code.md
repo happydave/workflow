@@ -84,7 +84,7 @@ When all features are implemented:
 ## Guidance
 
 - Follow the constraints in the planning documents strictly. Invariants and SHALL statements are non-negotiable. AI freedom sections are where discretion applies.
-- Create temporary directories inside the project repository, not outside it. Outside the repo, each file system action requires manual approval; inside the repo, there are no such restrictions.
+- Create temporary directories inside the project repository, not outside it. Outside the repo, each file system action requires manual approval; inside the repo, there are no such restrictions. **Exception: a repository whose contents are processed by a tool that walks the whole tree.** A scratch copy inside such a repo becomes input — a deployment repo is the worked case, where the templating tool deletes any directory holding a manifest its app list does not declare, scratch copies included. There, place the scratch copy outside the repo and log the deviation.
 - When a planning document is ambiguous, make a reasonable choice, document it **in `code.md` at the time of making the decision**, and continue. Do not block on ambiguity. Software can be rewritten and git provides a rollback path — the cost of a recoverable wrong decision is almost always lower than the cost of stopping.
 - When a planning document contradicts another, note the inconsistency in `code.md` and resolve it in the direction that best serves the stated goals of the plan and/or project.
 - When a change merges overlapping content from multiple documents into one, apply the Merge Union Check in `skills/markdown.md`: enumerate the source items from the pre-change versions and tick each off against the merged result before considering the step done.

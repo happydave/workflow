@@ -12,7 +12,7 @@ A spike is deliberately sized between a SideQuest and the full Work Item pipelin
 - A **SideQuest** is a chore with negligible risk and no design question — it needs no plan and reaches
   for a result directly. A spike has a real question whose *framing* matters: a poorly-designed spike
   measures the wrong thing convincingly, which is worse than measuring nothing.
-- The **full pipeline** (Plan → PlanReview → Code → CodeReview → Test → Document → Reflect) delivers
+- The **full pipeline** (Plan → PlanReview → Code → CodeReview → Test → Voice → Document → Reflect) delivers
   production work through independent quality gates. A spike answers a question and is then thrown away
   or promoted; running eight artifacts to produce one number is friction without payoff.
 
@@ -46,7 +46,7 @@ A spike lives in a work item folder under `docs/pending/`:
 - `docs/pending/<id>-<name>/workitem.md` — the question and its context (prerequisite).
 - `docs/pending/<id>-<name>/spike.md` — the Design, the execution, the findings, the verdict, and a
   brief Reflect. This single artifact replaces the pipeline's `plan.md` / `code.md` / `codereview.md`
-  / `test.md` / `document.md` / `reflect.md`.
+  / `test.md` / `voice.md` / `document.md` / `reflect.md`.
 
 A spike that produces reusable artifacts (a prototype, a findings entry in a research repo) stores
 those where that repo's conventions put them; `spike.md` links to them.

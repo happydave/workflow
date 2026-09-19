@@ -25,6 +25,49 @@ renders is the branch that is broken. The ladder ends at pods reporting Ready, w
 the chart is proven when a client has used what it deployed (see "Drive it from inside the
 cluster").
 
+### Verifying a rendered manifest against a cluster you do not own
+
+A committed generated manifest (ArgoCD repos, `DO NOT EDIT MANUALLY` headers) verifies in a different
+order from a chart you are authoring. First prove the file is what the chart produces — the only check
+that catches a hand-edit or a stale regeneration:
+
+```sh
+helm template <rel> <chart>.tgz -n <ns> --values=… | diff - <(tail -n +4 <app>/<env>/manifest.yaml)
+```
+
+Then dry-run against a namespace that exists, **retargeting per namespace — never one blanket `sed`**.
+A manifest whose app sits in one namespace and whose `KafkaUser` sits in the operator's collapses into
+one, validating objects where they will never live and erasing the cross-namespace relationship most
+likely to be wrong. (`^  namespace:` also misses nested ones: webhook `clientConfig`, RoleBinding
+subjects.) Run both paths — they answer different questions:
+
+```sh
+kubectl -n <ns> apply  --dry-run=server -f retargeted.yaml        # validates the MERGE with the live object
+kubectl -n <ns> create --dry-run=server -o yaml -f one-object.yaml # your object + what the API defaults
+```
+
+`apply` inherits omitted fields from the live object, so an omission cannot be caught there. `create`
+needs a scratch `metadata.name` **and every self-reference scratched** (`scaleTargetRef.name`,
+`advanced.horizontalPodAutoscalerConfig.name`) or an operator's webhook refuses the duplicate claim —
+and you are then validating a differently-shaped object than you ship.
+
+Three buckets for a rejection; none is a pass. `field is immutable` (`spec.selector`) is
+environmental — the release is installed here under another release name. A type or schema error is
+the manifest. `admission webhook "…" denied the request` is usually environmental; read it.
+
+**A green dry run is namespace-scoped.** Pod Security Admission, ResourceQuota, LimitRange and policy
+webhooks in the *target* namespace were never consulted — a manifest with no `securityContext` passes
+in a permissive namespace and is refused by a `restricted` one.
+
+**Admission success is not reconciliation.** An operator-owned object is inert until claimed, by
+bindings the API server does not check: a `KafkaUser` labelled for a Strimzi cluster absent from its
+namespace is accepted and yields no SCRAM user; a `PodMonitor` is scraped only if the Prometheus CR's
+`podMonitorNamespaceSelector` matches a label on the namespace; a `ScaledObject` can sit with empty
+`.status` and no generated HPA (`kubectl get hpa -o jsonpath` on
+`.metadata.labels.scaledobject\.keda\.sh/name` shows which HPAs KEDA actually made). Name the binding
+each CR is claimed by, and say whether you checked it. Report what you could not reach as **not
+verifiable here** — a report with no such category turns unreachable risk into a pass.
+
 ## Three ways a chart stops pods dead
 
 **Service links.** The kubelet injects `<SERVICE>_PORT`, `<SERVICE>_SERVICE_HOST` and six more for

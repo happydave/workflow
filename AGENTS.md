@@ -49,6 +49,7 @@ This repository is public and holds only generic procedure. Site-specific values
 - `Code.md` — implement incrementally from plans, maintaining an implementation log
 - `CodeReview.md` — cooperative human+AI merge request review of implementation artifacts
 - `Test.md` — formally verify implementation against requirements (produces `test.md`)
+- `Voice.md` — trim and voice the comments, doc prose, and reply drafts a work item added, once, after Test (produces `voice.md`; mandatory — one line when there is nothing to trim)
 - `PlanReview.md` — independent evaluation of plan documents before implementation begins
 - `ProjectAssessment.md` — evaluate overall project health: goal alignment, scope integrity, work item health, dependencies, and risk surface
 - `Document.md` — verify documentation accuracy after changes
@@ -57,13 +58,13 @@ This repository is public and holds only generic procedure. Site-specific values
 - `Archive.md` — archive a completed work item (by explicit request only)
 
 **skills**
-- `go.md` — Go module setup, tooling, conventions
+- `go.md` — Go module setup, tooling, conventions; concurrent and long-lived-handler testing, mock expectation semantics, graceful shutdown, golangci-lint v2
 - `rust.md` — Rust + Bevy conventions: cargo gates, headless-crate (sub-crate) rule, feature gating
 - `typescript.md` — TypeScript hub: universal conventions + profiles for VS Code extensions and SPA/game/web (Docker-based builds)
 - `docker.md` — container-first build environment (`Dockerfile.dev` + `Makefile` pattern)
 - `kubernetes.md` — Helm chart verification ladder, per-pod identity in a StatefulSet, throwaway kind clusters on podman
 - `markdown.md` — quality gates for Markdown artifacts (link checking, structure verification, merge union check, spell checking)
-- `comments.md` — code comments and doc prose: what to cut, what earns its place, matching a project's voice
+- `comments.md` — code comments, doc prose, and MR discussion replies: what to cut, what earns its place, matching a project's voice
 - `sql.md` — SQL conventions for queries, schema, and migrations
 - `versioning.md` — version increment policy: one ticket, one patch (Go projects exempt — they version via git tags)
 - `claude-code.md` — Claude Code CLI usage reference for task delegation and automated operations
@@ -90,7 +91,7 @@ This repository is public and holds only generic procedure. Site-specific values
 - Project: `Create Project → Discover → Design → Design Review → Create Work Item(s)` (grouped into Phases when the design has checkpoints; see `Phase.md`)
 - Phase (a group of work items that must close together): `Create (Phase.md) → members run the Work Item pipeline → Close (gated on no open member)`
 - Intake: `Capture (docs/intake/) → Triage → Work Item(s) or declined` (see `Intake.md`)
-- Work Item: `Plan → Plan Review → Code → Code Review → Test → Document → Reflect → Git Commit → Complete`
+- Work Item: `Plan → Plan Review → Code → Code Review → Test → Voice → Document → Reflect → Git Commit → Complete`
 - Bug Fix: `BugReport → Investigate (if diagnosis needed) → Plan → (standard Work Item pipeline)` (see `BugReport.md`)
 - Rapid Iteration (exploratory/hardening): `Test → Triage → fix in groups → Reflect → Document` (loop; see `RapidIteration.md`)
 - Spike (settle one question before planning): `Work Item → Design → Execute → Verdict → Reflect` (single `spike.md`; see `Spike.md`)
