@@ -51,6 +51,9 @@ Tools that expose write and delete operations alongside reads require deliberate
 - Delete and revoke operations require confirmation before execution, regardless of prior authorization in the session.
 - An MCP server or CLI that exposes destructive subcommands should be constrained by permission rules rather than by intention alone.
 
+## Matching Processes by Command Line
+`pkill -f` and `pgrep -f` match against every process's full command line, the invoking shell's included: `pkill -f 'go test'` run through `bash -c` kills the shell that carries it, and `pgrep -f` reports a match when nothing else is running. Bracket one character of the pattern so it cannot match itself — `pkill -f '[g]o test'` — or match by pid. Source: WI 1628.
+
 ## Recording Tool Knowledge
 Tool findings decay. When work turns up something non-obvious about a tool — a missing flag, a surprising default, an auth quirk — record it:
 
