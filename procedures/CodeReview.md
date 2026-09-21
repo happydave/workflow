@@ -78,7 +78,7 @@ Also scan exhaustively for mechanical issues regardless of change category:
 
 ### 4. Agent: Report Findings
 
-For each finding, apply one of three responses before reporting:
+For each finding, apply one of three responses before reporting. Whichever response applies an edit, the finding is recorded as resolved only after the file's diff has been read: a script's output can show that an edit failed, never that it succeeded. An edit that did not land leaves the finding open, and a failed precondition is evidence about the text — re-open the file before retrying (WI 1657).
 
 **Fix directly** — if there is an obvious, good solution: apply it, then include the finding in the summary as resolved. This is the default for linter-class issues, typos, name mismatches, and any substantive issue where the correct fix is unambiguous.
 

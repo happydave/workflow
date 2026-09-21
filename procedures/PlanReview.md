@@ -82,7 +82,7 @@ Precision is accuracy as well as clarity. Where the plan makes a concrete claim 
 
 Before reporting, the Reviewer SHALL attempt to resolve every finding identified in Step 3:
 
-- **Fix it directly** — for Blocking and Non-blocking findings where the correct resolution is unambiguous (e.g., a typo, a trivially-wrong reference, a missing section whose content can be inferred from context), apply the fix to the plan document immediately.
+- **Fix it directly** — for Blocking and Non-blocking findings where the correct resolution is unambiguous (e.g., a typo, a trivially-wrong reference, a missing section whose content can be inferred from context), apply the fix to the plan document immediately. Record a finding as fixed only after confirming the edit landed: read the file's diff (for an untracked file, the whole edited region), not only the lines the edit was meant to change. A script's output can show that an edit failed, never that it succeeded, and an edit script that fails its own precondition writes nothing and says so only in output nobody read (WI 1657). An edit that did not land leaves the finding open, and a precondition that failed is evidence about the text: re-open the file before retrying.
 - **Stop on unresolvable findings** — if a finding cannot be resolved without information or decisions the Reviewer does not have (e.g., conflicting requirements, ambiguous intent that only the Author can clarify, scope questions that require stakeholder input), stop immediately and state:
   1. Which finding cannot be resolved.
   2. Why it cannot be resolved (what information or decision is missing).

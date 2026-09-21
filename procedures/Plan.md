@@ -145,7 +145,8 @@ The planning process MUST identify all applicable guidelines and document them i
 
 When the work item includes a measurement (a benchmark, a scale run, a resource envelope), the plan requires:
 
-- **Run it early.** The measurement runs once at a nominal scale as soon as it compiles, not at the end. A measurement that first executes on the final day discovers its harness bugs on the final day.
+- **Run it early.** The measurement runs at a nominal scale as soon as it compiles, not at the end, and is repeated until its run-to-run variance is visible. A measurement that first executes on the final day discovers its harness bugs on the final day.
+- **Size the batch from the variance already seen.** The nominal runs show how often the effect appears and what uncontrolled condition it follows. When it appears in a fraction of runs, state how many runs an arm needs to see it and the smallest p the design can give; when it follows a condition the harness does not control, control it, or balance it across arms, before spending the batch. Where the nominal runs come after `plan.md`, the sizing goes into it as a dated amendment before the batch is spent; a reservation that cannot hold the batch is said to be so, and the result is reported as descriptive. A condition that was controlled is part of the claim and is stated with the result. A batch sized by the clock measures the clock (WI 1657: p = 0.17 from five pairs whose arms drew unlike conditions the nominal runs had already shown).
 - **Assert starting conditions.** The measurement checks the preconditions it depends on (a settled machine, available ports, an empty data directory) and refuses to run when they do not hold, naming what it saw — rather than assuming them and producing a number that looks like a finding.
 
 When the work item builds a harness that checks properties (invariants over runs, simulation checks), the plan additionally requires:
