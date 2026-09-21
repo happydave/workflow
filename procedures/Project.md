@@ -11,7 +11,7 @@ Define a high-level goal or initiative that requires multiple work items to achi
 - A "discovery" phase reveals a significant new feature area that needs structured decomposition
 - Any time high-level design and architectural oversight are needed before breaking down work
 
-Projects are "never finished" in the traditional sense; they exist as long as the initiative is active. They can be archived once all associated work items are completed and the goal is met.
+Projects are "never finished" in the traditional sense; they exist as long as the initiative is active. A record is archived on the terms under **Status Tracking**.
 
 ## Document Storage & Naming
 
@@ -28,7 +28,8 @@ Projects are documented in a central location (e.g., a `tickets` repository), no
 Every project record must include:
 
 - **Title** — a concise name for the project.
-- **Status** — `active`, `inactive`, or `archived`. Starts as `active`.
+- **Status** — `active`, `inactive`, or `archived`. Starts as `active`. The field holds the word
+  alone; an archived record carries the dated reason described under Status Tracking.
 - **Purpose** — the high-level "why" and "what" of the project.
 - **Scope** — the boundaries of the project, including which repositories or systems are involved.
 
@@ -55,7 +56,20 @@ Every project record must include:
 ## Status Tracking
 
 - **active**: Project is being actively worked on.
-- **inactive**: Project is paused or deprioritized.
-- **archived**: All work items are finished and the project goal has been met.
+- **inactive**: Project is paused or deprioritized, and may be picked up again.
+- **archived**: Project has ended and no further work is planned — whether the goal was met, another
+  project absorbed it, its premise was disproved, or it was never started.
+
+The status field holds the single word, so a lister can filter on it. The reason sits where a reader
+meets the status first: on the status line itself where the record states its status in prose, or in
+a paragraph of its own immediately below the frontmatter where it does not. It is a dated clause
+naming why the project ended and, where one exists, the successor that holds its work — the form is
+`**Archived (YYYY-MM-DD).** Goal met: …`, `**Archived (YYYY-MM-DD).** Superseded by …`,
+`**Archived (YYYY-MM-DD).** Never started: …`, and so on for whichever ending applies. Date it the
+day the record was archived; name any earlier end date inside the clause, at whatever precision is
+known. The word alone leaves a reader unable to tell a delivered project from an abandoned one, and
+a record that ends without the reason has it re-derived later. Work items still open under an
+archived project stay listed in its backlog: the status states an intent and closes none of them,
+and what becomes of each is a separate decision.
 
 Status updates are manual.
