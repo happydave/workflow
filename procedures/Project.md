@@ -23,6 +23,16 @@ Projects are documented in a central location (e.g., a `tickets` repository), no
   live test, rollback (see `Runbook.md`).
 - `archive/`: A folder where completed work items associated with this project are moved.
 
+A project whose output must never leave the host it is made on — derived from material licensed for
+local use but not redistribution, say — takes the slug prefix `sandbox-` on the owner's decision, and
+so do its repositories, so the constraint shows in every path, link and commit message a session
+meets before it acts. *Sandbox* means contained, not throwaway: such a project can be long-lived and
+serious. It carries the **Distribution** line under Required Content. The prefix and the line are
+added or dropped together, by a dated decision in the record, and dropping or narrowing them waits on
+a check of each repository's history for the material that would newly leave; a check that finds
+some holds the change until the owner chooses the remedy. A project that plainly qualifies but that the owner
+has not marked is raised with the owner before its folder is created.
+
 ## Required Content
 
 Every project record must include:
@@ -32,6 +42,19 @@ Every project record must include:
   alone; an archived record carries the dated reason described under Status Tracking.
 - **Purpose** — the high-level "why" and "what" of the project.
 - **Scope** — the boundaries of the project, including which repositories or systems are involved.
+- **Distribution** — on a `sandbox-` project only: `internal-only`, on the line directly below
+  Status, naming the host, what the constraint derives from, and what it covers — by default all the
+  project's output: its repositories, artifacts, and data derived from the licensed material.
+  Covered output never leaves that host: it is not pushed, published or uploaded, nor copied or
+  served to another host, the site's own included; a copy or a loopback view on the same host is not
+  a departure. A narrower
+  scope — tool code without derived data, say — is the owner's decision to change the line, which an
+  instruction to act is not, and is recorded as a dated entry superseding any decision it
+  contradicts, with the record's other statements of the scope brought into line. The line narrows
+  `AGENTS.md`'s push directive and grants nothing: no push lane covers a `sandbox-` repository, and
+  an instruction that would move covered output off the host is answered by quoting the line. The
+  record and the project's work items live in the tickets repo, which is pushed, so they carry
+  planning and never covered output.
 
 ## Optional Content
 
@@ -46,7 +69,7 @@ Every project record must include:
 
 ## Procedure
 
-1. **Initiate** — create `docs/projects/<slug>/project.md` with the Title, Purpose, Scope, and Status set to `active`.
+1. **Initiate** — create `docs/projects/<slug>/project.md` with the Title, Purpose, Scope, and Status set to `active` — and, for a `sandbox-` project, its Distribution line and the dated decision that set it.
 2. **Discovery (Optional)** — if the project requires research before design, follow `Discover.md`.
 3. **Design** — produce a high-level design following `Design.md`.
 4. **Design Review** — subject the design to a formal review following `DesignReview.md`.
