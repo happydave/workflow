@@ -61,6 +61,7 @@ This repository is public and holds only generic procedure. Site-specific values
 - `go.md` — Go module setup, tooling, conventions; concurrent and long-lived-handler testing, mock expectation semantics, graceful shutdown, golangci-lint v2
 - `rust.md` — Rust + Bevy conventions: cargo gates, headless-crate (sub-crate) rule, feature gating
 - `typescript.md` — TypeScript hub: universal conventions + profiles for VS Code extensions and SPA/game/web (Docker-based builds)
+- `live-stack-testing.md` — tests that drive a running multi-process system: tier routing, arm → act → wait, precondition failures, resource pools, intermittent failures
 - `docker.md` — container-first build environment (`Dockerfile.dev` + `Makefile` pattern)
 - `kubernetes.md` — Helm chart verification ladder, per-pod identity in a StatefulSet, throwaway kind clusters on podman
 - `markdown.md` — quality gates for Markdown artifacts (link checking, structure verification, merge union check, spell checking)
