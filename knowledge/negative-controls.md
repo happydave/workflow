@@ -25,3 +25,11 @@ A control removed a behavior and the test failed — at an assertion earlier tha
 ## Two controls whose mutation never landed (WIs 1401, 1403)
 
 In one, the mutation did not compile, so the previously built artifact answered in its place and the control "passed". In the other, the mutated string appeared twice in the file and a replace-first-occurrence helper exercised one site twice, leaving the second uncontrolled. Both produced exactly the expected output; both were caught by reading the mutation mechanism, not the result.
+
+## Seven controls that failed, over a fixture that could not carry the property (WI 1611)
+
+An image-token suite asserted size, format and the absence of a baked border, and ran seven negative controls; every one failed the test that targeted it. Every token it shipped had its alpha inverted. The fixture was an RGB image with no alpha channel, so no assertion could observe polarity and no break could reveal the gap — each control tripped an assertion the fixture could satisfy. It was found by the next work item that used the output. Replacing the fixture (WI 1636) then silently invalidated an existing border check that had assumed a flat image, which is why a changed fixture re-opens every assertion reading it.
+
+## A break that ran, over an effect that ended before the assertion (WIs 1705, 1618)
+
+A control disabled a refusal so that a stopped component would start a background goroutine and hold its wait group; the test asserted the group was not held over a two-second window. The break was live — the goroutine started — but for an unreachable peer it returned almost at once, so the window saw nothing and the control failed nothing. Read as *nothing reaches the break*, it would have closed as a pass. The remedy was a test asserting the refusal itself. In the second case the test fed a single reading after the state it meant to observe had settled; the remedy was to extend its input.

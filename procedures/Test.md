@@ -55,6 +55,15 @@ owes only these. Worked cases are in `knowledge/negative-controls.md`.
 
 Plan the set of controls:
 
+- **Name where each observable can be seen**: the fixture feature that would differ if the behavior
+  were violated — a channel, a field, a state — and the moment the assertion samples it. An
+  observable the fixture cannot carry is untested however many controls fail, because a control
+  trips only assertions the fixture lets differ. An effect that ends before the assertion samples —
+  a goroutine that starts and returns, a flag a later step clears, input that stops before the
+  broken state is reached — is asserted through the decision that produces it, with a test still
+  reaching the call site, or the input is extended until the effect holds when the assertion
+  samples. When a fixture changes, every assertion reading it is named again and its control re-run,
+  not only the new ones.
 - **One break per observable.** Read the observables from what the behavior claims rather than from
   the count of its verification bullets: split a claim wherever a plausible weaker implementation
   could satisfy one part of it and not the other.
@@ -78,14 +87,15 @@ Read what came back:
 - **Where a behavior is reached by more than one entry point**, say which of them the suite covered
   it at, whether the break failed something or nothing.
 - **Show the break is live** before reading a nil result as missing coverage: a temporary test that
-  reads the mutated state directly, deleted once it has answered, because a break that never
-  executed reports the same nothing. Where the break is unobservable by construction — two checks of
-  one rule that refuse identically — the combined break discharges this, and the unobservability is
-  itself the finding.
+  reads the mutated state, or its first effect, directly, deleted once it has answered, because a
+  break that never executed reports the same nothing. Where the break is unobservable by
+  construction — two checks of one rule that refuse identically — the combined break discharges
+  this, and the unobservability is itself the finding.
 - **A break that fails nothing is a finding for step 5**, with four readings to separate: the
-  behavior has no test; the test asserts momentary state that a later step undoes; another check
-  already does the broken one's work; or nothing reaches what you broke. Name which one it was — or
-  which ones, since a masked path is both unreached and covered by whatever masks it.
+  behavior has no test; the break ran but its effect ended before the assertion sampled, which the
+  liveness probe tells apart from the last reading; another check already does the broken one's
+  work; or nothing reaches what you broke. Name which one it was — or which ones, since a masked
+  path is both unreached and covered by whatever masks it.
 - **Read the multi-site split**: every single break passing while the combined one fails means the
   sites are redundant; a single break that fails on its own is the load-bearing one, and the sites
   that passed are either its redundant copies or unreachable, which the applied diff tells apart; a
@@ -94,12 +104,14 @@ Read what came back:
 Record what you did:
 
 - **Each control is a row in `test.md`**, in these columns: the break and where it was applied, the
-  applied-state check, the tests it failed, the assertions that tripped, anything it failed or
-  spared unexpectedly — including a failure at an assertion belonging to another behavior — the
-  runs, and the reading where nothing failed, left blank where something did. One run completes a
-  deterministic control, such as an error versus nil.
+  fixture feature and moment its assertion reads, the applied-state check, the tests it failed, the
+  assertions that tripped, anything it failed or spared unexpectedly — including a failure at an
+  assertion belonging to another behavior — the runs, and the reading where nothing failed, left
+  blank where something did. One run completes a deterministic control, such as an error versus
+  nil.
 - **Where a control could not be run**, name the behavior and the reason, so an omitted control is
-  never indistinguishable from one that passed.
+  never indistinguishable from one that passed. An observable the fixture cannot carry is recorded
+  the same way, as untested, and is a finding for step 5.
 
 | When the behavior or its control… | Then… | Source |
 |---|---|---|
