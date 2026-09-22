@@ -93,7 +93,7 @@ For each finding, apply one of three responses before reporting. Whichever respo
 
 Organize the findings summary into three tiers:
 
-- **Escalations** — decisions stopped for Reviewer input; include what was found, why it is high-risk, and what options exist
+- **Escalations** — decisions stopped for Reviewer input; include what was found, why it is high-risk, what options exist, and which one is recommended and why
 - **Resolved** — issues found and fixed, including both direct fixes and decided-and-proceeded cases; include the rationale for any judgment calls
 - **Observations** — non-blocking notes the Reviewer may want to be aware of but that do not require action before Test
 

@@ -87,6 +87,7 @@ Before reporting, the Reviewer SHALL attempt to resolve every finding identified
   1. Which finding cannot be resolved.
   2. Why it cannot be resolved (what information or decision is missing).
   3. Who or what is needed to unblock it.
+  4. The resolution you recommend, and why.
 
 Do not proceed to Step 5 (Reporting) until all resolvable findings have been resolved or it is confirmed that unresolvable findings prevent proceeding.
 
