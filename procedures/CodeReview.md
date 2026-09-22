@@ -61,7 +61,12 @@ Assess all substantive changes across these dimensions:
 
 **Clarity** — is the code readable and maintainable? Naming, structure, and whether a future reader would understand the intent without needing to ask the author. Comment style is `Voice.md`'s step, not review's.
 
-**Tests** — are new behaviors covered? Are existing tests still meaningful? Absence of tests for plan-specified behaviors is a blocking finding. An assertion of absence must establish the presence it qualifies, and a guard's test must assert on the predicate rather than on the operation it guards — see `Test.md`, *Negative Testing* and *Run the Negative Controls*.
+**Tests** — are new behaviors covered? Are existing tests still meaningful? Absence of tests for plan-specified behaviors is a blocking finding. An assertion of absence must establish the presence it qualifies, and a guard on a destructive, irreversible, or outward-facing operation is tested at the predicate that decides rather than by driving the operation — see `Test.md`, *Negative Testing* and *Run the Negative Controls*. Where the product code checks the same thing at more than one site, name the guarantee each site gives before touching anything, reading it from the plan's invariants and from where in the code the check sits, which the call graph alone does not show. Then try to write, for each site, the case only that site's removal would break:
+
+- keep a site whose guarantee is its own for any input that reaches it — a batch refused whole before its first item goes out, where the per-item check publishes some of them first. Add the case, remove the site, watch that case fail for its own reason and nothing else break, restore it, and re-run green;
+- delete a site whose guarantee a survivor gives at the same point and before any effect, on every input that reaches it — a check re-made in a caller whose callee refuses identically. Then remove the survivor too, watch a test reaching the deleted site's path fail, and restore it: a test that passes with either check standing shows nothing.
+
+A site whose case cannot be written, and whose removal fails no existing test, is left standing and recorded as a gap in the suite — a finding about the tests, never a licence to delete the site. Review is where the sites are still visible together, and the silence of a control settles nothing by itself: it covers a redundant site and a guarantee no test holds equally well. The named guarantee is what decides (WIs 1646–1651, 1668, 1670, 1671).
 
 **Scope** — does the change stay within what the plan specifies? Unrelated or opportunistic changes should be flagged.
 
