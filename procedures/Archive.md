@@ -2,13 +2,13 @@
 
 ## Intent
 
-Formally archive a completed work item by moving its folder from `docs/pending/` to `docs/archive/`. This action cleans up the active work directory and moves the auditable trail of the work item to long-term storage.
+Formally archive a closed work item — complete, superseded or declined — by moving its folder from `docs/pending/` to `docs/archive/`. This action cleans up the active work directory and moves the auditable trail of the work item to long-term storage.
 
-Archive follows the logical `Complete` action.
+Archive follows the logical `Complete` action, or `Retire.md`.
 
 ## When to Archive
 
-- The work item's status is `complete`.
+- The work item's status is terminal: `complete`, `superseded` or `declined` (`Retire.md`), or a legacy `completed` or `reverted`.
 - **Explicit Request**: The user or orchestrator explicitly requests archival. This action should NOT be performed automatically at the end of the `Complete` procedure.
 - No further near-term reference to the work item in the active directory is required.
 
@@ -18,13 +18,13 @@ Archive is NOT appropriate when:
 
 ## Roles & Responsibilities
 
-**Reviewer** — verifies the `complete` status and executes the folder move.
+**Reviewer** — verifies the terminal status and executes the folder move.
 
 ## Procedure
 
-### 1. Verify Completion Status
+### 1. Verify Terminal Status
 
-Verify that the work item's status is `complete` by reading the `Status` field in `workitem.md`. If the status is not `complete`, stop and inform the user that the work item must be finalized via the `Complete` action first.
+Read the `Status` field in `workitem.md`. If it is not terminal (When to Archive), stop and inform the user that the work item must be completed (`Complete.md`) or retired (`Retire.md`) first.
 
 ### 2. Execute Move
 

@@ -55,7 +55,8 @@ This repository is public and holds only generic procedure. Site-specific values
 - `Document.md` — verify documentation accuracy after changes
 - `Reflect.md` — capture what went well, what didn't, and concrete recommendations
 - `Complete.md` — formally mark a work item as complete in `workitem.md`
-- `Archive.md` — archive a completed work item (by explicit request only)
+- `Retire.md` — close a work item that will not be completed (`superseded` or `declined`) with its reason and successor; defines the work item status values
+- `Archive.md` — archive a closed work item (by explicit request only)
 
 **skills**
 - `go.md` — Go module setup, tooling, conventions; concurrent and long-lived-handler testing, mock expectation semantics, graceful shutdown, golangci-lint v2

@@ -42,12 +42,17 @@ project: <project-slug>
 
 The three frontmatter fields are:
 - `title` — the work item title (same text as the `# ` heading in the body)
-- `status` — current state, typically `pending` or `complete`
+- `status` — current state: `pending`, `deferred`, `complete`, `superseded` or `declined`, as `Retire.md` defines them
 - `project` — the project slug this work item belongs to, or `none` for standalone items
 
-One optional field is defined:
+Three optional fields are defined:
 
 - `phase` — the phase this work item belongs to (see `Phase.md`): a bare slug resolved against this work item's `project`, or `<owner>/<slug>` for a phase owned by another project. A work item with `project: none` must use the qualified form. At most one phase per work item; a work item that plausibly serves two joins the earlier one. The value must name a phase record that exists. The work item's own frontmatter is the only authoritative statement of its phase membership — no list in a phase record or project document overrides it.
+
+- `blocked_by` — the work items this one cannot start before, as an ID or a list of IDs (`blocked_by: [1149, 1150]`); a folder name where an ID is not unique in the tree. The item is blocked while any item it names is open, so nothing needs removing when they complete; retiring one updates it (`Retire.md`).
+- `gate` — `human` when the item's next step is the owner's (a decision, a manual check, a play session). The body says what the owner is asked, with a recommendation (`AGENTS.md`). The session that records the owner's answer removes the field.
+
+Retiring adds `superseded_by` and `resolution` (`Retire.md`).
 
 When using `workflow-work-item-create`, the MCP tool writes this format automatically (supply `phase` to declare membership at creation; the tool validates it against an existing record). Manual creation must follow this spec.
 
@@ -58,7 +63,7 @@ When using `workflow-work-item-create`, the MCP tool writes this format automati
 Every work item record must include:
 
 - **Title** — a concise description of the work item.
-- **Status** — the current state of the work item (e.g., `pending`, `complete`).
+- **Status** — the current state of the work item (see Document Format).
 - **Project** — the slug of the project this work item belongs to, or `none` for standalone items.
 - **Description** — enough context to understand the need without referring to the original source. One to three sentences is often sufficient. Include the "why" — what problem this solves or what capability it enables.
 
@@ -68,6 +73,7 @@ Include these when they are known and useful. Omit them when they are not:
 
 - **Proposed Changes** — a brief sketch of what might be built. This is a starting point for planning, not a commitment.
 - **Acceptance Criteria** — conditions that would confirm the work is done. Keep these outcome-oriented, not implementation-specific.
+- **Blocked_by and gate** — the fields above, when the item waits on other work items or on the owner. Prose such as "depends on 1149" or a `[human]` marker in the body stays readable only to a reader; the fields let tooling separate actionable items from waiting ones.
 - **Phase** — the `phase` frontmatter field above, when this work item is one of a group that must close together. Declaring it is what makes the item count toward the phase's close gate (`Phase.md`).
 - **Target Project** — which project will contain the implementation work; defaults to the capturing project when omitted or empty. Supports multiple targets via comma-separated listing, though one work item per project is recommended for clarity. This field can be safely omitted when the work item originates inside the target project.
 - **Source** — where the work item originated (external issue URL, implementation log reference, conversation summary) if it helps preserve context. Do not reference intake file paths — intake files move to `docs/intake-processed/` when processed and already record what they spawned; text search covers the rare need to trace back.
