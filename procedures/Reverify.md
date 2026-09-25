@@ -66,7 +66,9 @@ below, then execute and archive per its §§5–6. The codex consult in the brie
 is the round's own prior finding: every hypothesis cites "codex, ed. N, `<slug>`, verified
 YYYY-MM-DD" so the researcher argues against the published state, not a paraphrase. Record both
 the execution date and the reply's self-stated "as of" date in the provenance blockquote when
-they differ; the "as of" date is the candidate `verified` stamp.
+they differ; the "as of" date is the candidate `verified` stamp. Then anchor the archived reply in
+the vault per archivist §1 step 1, one anchor per round, whatever the verdicts — it is the
+evidence every claim and errata line this round touches will cite.
 
 ### 4. The date test
 
@@ -85,7 +87,11 @@ The verdict word is the researcher's; the path is decided here.
 ### 5. Dispose
 
 Per hypothesis, in `reverify.md`'s **hypothesis table** (verdict, date test, path, claims
-touched):
+touched). Every claim this round refreshes or corrects adds the reply to its `sources`, the new
+entry's note saying what the round found, and keeps its earlier entries; a sibling cites the reply
+and any earlier source it still rests on. Each points its `harvest` link at the round's anchor,
+since its `verified` stamp now rests on that reply. A claim the round does not re-verify keeps its
+sources, link and stamp.
 
 - **Holds** — refresh `verified` on each claim to the "as of" date; re-bless (archivist §2).
 - **Wrong when stamped** — the errata path (archivist §3, "we were wrong"): correct, re-verify,
@@ -104,13 +110,13 @@ For every supersession, run the impact sweep (archivist §6) and record each hit
 
 ### 7. Gates and edition
 
-Write the edition's root entry, run the gate checklist and Voice, then commit the lore repo and
-cut the edition, exactly as `Harvest.md` steps 7–8, recording results in `reverify.md`. Read
-Harvest's terms for this round: the baseline is step 1's; gate 3's list is the topic's blessed
-claims after this round — those already blessed, less any displaced, plus any siblings; gate 6
-does not apply; and a Voice cut that would change a claim's statement, confidence or scope goes
-back to step 5; the edition entry names the horizon served and the topics touched. A held
-disposition (a hypothesis whose date test the reply cannot support and the owner has not ruled
+Write the edition's root entry, run the gate checklist and Voice, then commit the lore repo and cut
+the edition, exactly as `Harvest.md` steps 7–8, recording results in `reverify.md`. Read Harvest's
+terms for this round: the baseline is step 1's; gate 2 covers step 3's anchor; gate 3's list is the
+topic's blessed claims after this round — those already blessed, less any displaced, plus any
+siblings; gate 6 does not apply; and a Voice cut that would change a claim's statement, confidence
+or scope goes back to step 5; the edition entry names the horizon served and the topics touched. A
+held disposition (a hypothesis whose date test the reply cannot support and the owner has not ruled
 on) means no edition.
 
 ### 8. Record, reflect, commit, complete
