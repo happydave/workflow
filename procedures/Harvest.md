@@ -38,8 +38,8 @@ In the work item folder under `docs/pending/`:
   gate results, and the edition entry. Replaces `plan.md`, `code.md`, and `test.md`.
 - `harvestreview.md` — two review passes: §A the distillation review (before authoring) and §B
   the fidelity review (after). Replaces `planreview.md` and `codereview.md`.
-- `voice.md` — per `Voice.md`, unchanged: the claim bodies, topic indexes, errata notes and anchor
-  bodies the harvest wrote are the documentation prose it trims (step 7).
+- `voice.md` — per `Voice.md`, unchanged: the claim bodies, topic indexes, errata notes, anchor
+  bodies and root Editions entry the harvest wrote are the documentation prose it trims (step 7).
 - `reflect.md` — per `Reflect.md`, unchanged.
 
 Vault content lands in the lore repo (`universes/codex/`); the tickets work item folder holds the
@@ -59,7 +59,8 @@ Read in full before planning: archivist §1 (harvest intake) and §2 (promotion)
 existing index of every target topic that already exists; and the vault's `check` rule list in
 the lore `README.md`. Run a codex search for each target subject and record the result in the manifest preamble
 (step 3) — an existing topic means claims extend it, and existing claims are cross-link
-targets, not candidates for re-authoring.
+targets, not candidates for re-authoring. Record `lore check`'s findings for every tenant as the
+baseline gate item 1 compares against.
 
 ### 3. Distillation plan (`harvest.md`)
 
@@ -75,7 +76,7 @@ it was written gets a **re-verify** mark, and the round runs through `WebResearc
 authoring, its archived reply becoming one more source row.
 
 **Claim manifest** — one table per target topic: slug; one-line statement; confidence (translated
-per archivist §1 step 2); scope (or "stable"); verified date (per archivist §1 step 3 — every
+per archivist §1 step 2); scope (or "stable"); verified date (per archivist §1 steps 3 and 5 — every
 claim carries one); sources; harvest anchor; and horizon or leaf mark where the topic's index
 does not already carry one. Below the table: errata seeds from the sources' stated gaps, the
 cross-link targets in other topics (linked by slug, never duplicated), any topic that another
@@ -97,14 +98,17 @@ Dimensions, each producing Blocking or Non-blocking findings:
 - **Fidelity** — open the cited source for a sample of manifest rows (at least six, including the
   rows with numbers, version pins, and quotations) and confirm the statement says what the source
   says. A precise but false row is Blocking.
-- **Labels** — vendor claims, single sources, and inferences are not `confirmed`; conflicting
-  sources are `contested`; examined-but-unresolved is `inconclusive`.
-- **Dates** — every row has a `verified` date that follows the source's date rule; scoped rows
+- **Labels** — vendor marketing (`[VENDOR-CLAIM]` in `WebResearch.md`'s evidence standard; a
+  developer's own manual or patch notes are primary sources, not marketing), single sources, and
+  inferences are not `confirmed`; a claim resting on a community wiki is at most `supported` unless
+  the manifest's recorded reason holds (archivist §1 step 2); conflicting sources are `contested`;
+  examined-but-unresolved is `inconclusive`.
+- **Dates** — every row has a `verified` date that follows archivist §1 steps 3 and 5; scoped rows
   name the scope in the statement as well as the field.
 - **Scope** — the manifest covers what the work item names and nothing it does not; deliberate
   omissions are listed with a reason.
-- **Links** — no forward wiki-links to topics that do not exist yet; shared anchors are reuse
-  rows; cross-links to other topics resolve to real slugs.
+- **Links** — no wiki-link to a topic or claim that neither exists nor lands in this edition;
+  shared anchors are reuse rows; cross-links to other topics resolve to real slugs.
 - **Size** — the cap in step 3 was applied.
 
 Record the status (Complete / Significant Findings), the sample, and the uncertain findings with
@@ -115,38 +119,41 @@ their dispositions. Revise `harvest.md` until no Blocking finding remains.
 In the lore repo, in this order: anchors (`type: document`, `provenance: generated`, the full
 `source` group per archivist §1 steps 1 and 5); claims, one file per manifest row with the
 frontmatter `CONVENTIONS.md` §10 requires and the quoting rule from archivist §1 step 2; the
-topic index and errata note; the tenant's notes index; then blessing, top-down per archivist §2.
+topic index and errata note; the tenant's notes index. Nothing is blessed until step 6 passes.
 Log deviations from the manifest — a row merged, a label raised on new evidence, a claim dropped
 — in the **Authoring log** section of `harvest.md` as they happen, not afterwards.
 
 ### 6. Fidelity review (`harvestreview.md` §B)
 
-The review gate after authoring, self-applicable as in step 4. Re-sample the authored claims
-against their opened sources: at least six claims, chosen from the categories most easily
-garbled (API facts, counts, licence clauses, quotations), plus every row whose label the
-authoring log raised. Check for hedges lost in authoring (a `confirmed` claim resting on a
-vendor page), forward links, and — where the topic borrows from a licence or legal topic — run a
-text search for a distinctive clause from the source topic and require zero hits. Tiers per
-`CodeReview.md`: Escalations (a claim no opened source supports — the harvest **holds** and
-nothing is blessed or tagged), Resolved, Observations; then the disposition.
+The review gate after authoring, self-applicable as in step 4. Re-sample the authored claims against
+their opened sources: at least six claims, chosen from the categories most easily garbled (API
+facts, counts, licence clauses, quotations), plus every row whose label the authoring log raised.
+Check for hedges lost in authoring (a `confirmed` claim resting on vendor marketing or a community
+wiki), forward links, and — where the topic borrows from a licence or legal topic — run a text
+search for a distinctive clause from the source topic and require zero hits. Tiers per
+`CodeReview.md`: Escalations (a claim no opened source supports — the harvest **holds** and nothing
+is blessed or tagged), Resolved, Observations; then the disposition. On **proceed**, bless the
+claims top-down per archivist §2.
 
 ### 7. Gate checklist
 
-Run every item from the lore repo root; record the results in the **Gates** section of
-`harvest.md`:
+First write the edition's entry in the codex root (archivist §4), naming the tag it will carry,
+so the gates and Voice read the tenant root as it will be published. Then run every item from the
+lore repo root and record the results in the **Gates** section of `harvest.md`:
 
-1. `lore check` on the codex tenant: 0 violations, and no new warnings the manifest did not
-   predict; then on every other tenant: unchanged. The `missing-verified` violation and the
-   `unknown-generator` warning are what make the manifest's dates and generators
-   machine-checked here.
-2. `lore digest check` over the topic's anchors: every one `ok`.
+1. `lore check` on the codex tenant: 0 violations, and no new warnings the manifest did not predict
+   — a `verify-overdue` whose due date falls during the harvest is recorded, not a failure; then on
+   every other tenant: unchanged from step 2's baseline. The `missing-verified` violation and the
+   `unknown-generator` warning are what make the manifest's dates and generators machine-checked
+   here.
+2. `lore digest check` over every anchor this harvest created or reused: every one `ok`.
 3. `lore resolve --vault universes --universe codex --canon canon <topic>`: its `descendant (full)`
    sections — one per claim, after the ancestor overviews and the topic's own index, which are not
-   counted — are exactly the manifest's blessed claims (at `--depth 2` the same claims appear as one
-   `leaf entries` list instead); errata absent.
+   counted — are exactly the topic's earlier blessed claims plus the manifest's (at `--depth 2` the
+   same claims appear as one `leaf entries` list instead); errata absent.
 4. `go test ./...` in the lore repo passes.
 5. Dupcheck on the topic index and the tenant root (`skills/markdown.md`).
-6. The cross-link text search from step 6 where it applies.
+6. The licence-clause search from step 6 where it applies.
 7. Link validation on every tickets document touched.
 
 A failure is fixed and the checklist re-run from item 1. A digest mismatch is fixed by
@@ -160,13 +167,18 @@ item 1 and record both runs: a cut changes files the gates read.
 
 ### 8. Edition
 
-Cut the edition per archivist §4 — the annotated tag and the root entry — and record the tag in
-`harvest.md`. One edition per coherent blessing batch; a held fidelity review means no edition.
+Commit the lore repo per `GitCommit.md`, then create the edition's annotated tag on that commit
+(archivist §4) — a tag cut before the commit points at a tree without its root entry — and record
+the tag in `harvest.md`. One edition per coherent blessing batch; a held fidelity review means no
+edition.
 
-### 9. Reflect, commit, complete
+### 9. Document, reflect, commit, complete
 
-`Reflect.md` as usual. Commit the lore repo (content plus tag) and the tickets repo per
-`GitCommit.md`; push only as the push directive in `AGENTS.md` allows. Then `Complete.md`.
+A harvest's documentation outside the vault is the owning project's backlog row and the codex
+ledger's row for each source harvested. Bring both up to date and link-check them as gate item 7
+does; that is this procedure's Document step, in place of `Document.md`. Then `Reflect.md`
+as usual, commit the tickets repo per `GitCommit.md` (the lore repo was committed in step 8), push
+only as the push directive in `AGENTS.md` allows, and `Complete.md`.
 
 ## The `harvest.md` Template
 

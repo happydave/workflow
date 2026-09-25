@@ -37,6 +37,8 @@ In the work item folder under `docs/pending/`:
   results, and the edition entry. Replaces `plan.md`, `code.md`, and `test.md`.
 - `briefs/web-research-<topic>-reverify-brief.md` — the brief, per `WebResearch.md`; the reply
   is archived verbatim under the owning project's `research/` with its provenance blockquote.
+- `voice.md` — per `Voice.md`, unchanged: the prose the round wrote (sibling claims, errata
+  lines, the edition entry), trimmed in step 7.
 - `reflect.md` — per `Reflect.md`, unchanged.
 
 ## Procedure
@@ -44,9 +46,10 @@ In the work item folder under `docs/pending/`:
 ### 1. Trigger and scope
 
 Record in `reverify.md` what triggered the run (rule output, due date, sweep hit, or owner
-challenge) and which topics it names. Run `lore check` on the codex tenant and list every
+challenge) and which topics it names. Record `lore check`'s findings for every tenant as the gate
+baseline, and list every
 `verify-overdue` finding: overdue claims in topics the trigger did not name join the round, or
-are recorded as deferred with their date. Nothing runs early (see When not).
+are recorded as deferred with their date. Nothing runs early (see When to Reverify).
 
 ### 2. Scan
 
@@ -101,15 +104,21 @@ For every supersession, run the impact sweep (archivist §6) and record each hit
 
 ### 7. Gates and edition
 
-Run the gate checklist and cut the edition exactly as `Harvest.md` steps 7–8, recording results
-in `reverify.md`; the edition entry names the horizon served and the topics touched. A held
+Write the edition's root entry, run the gate checklist and Voice, then commit the lore repo and
+cut the edition, exactly as `Harvest.md` steps 7–8, recording results in `reverify.md`. Read
+Harvest's terms for this round: the baseline is step 1's; gate 3's list is the topic's blessed
+claims after this round — those already blessed, less any displaced, plus any siblings; gate 6
+does not apply; and a Voice cut that would change a claim's statement, confidence or scope goes
+back to step 5; the edition entry names the horizon served and the topics touched. A held
 disposition (a hypothesis whose date test the reply cannot support and the owner has not ruled
 on) means no edition.
 
-### 8. Reflect, commit, complete
+### 8. Record, reflect, commit, complete
 
 Grade the brief per `WebResearch.md` §6 (did every hypothesis get a verdict line and a date?),
-then `Reflect.md`, `GitCommit.md` for both repos, push only as the push directive in `AGENTS.md`
+record each topic's next due date where the work item and project doc track it, then
+`Reflect.md`, `GitCommit.md` for the tickets repo (the lore repo was committed with the
+edition), push only as the push directive in `AGENTS.md`
 allows, then `Complete.md`.
 
 ## The brief shape

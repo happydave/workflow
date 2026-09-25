@@ -48,9 +48,9 @@ The agent reads `AGENTS.md` at the start of each session and consults the refere
 
 **Spike (settle one question before planning):** Work Item → Design → Execute → Verdict → Reflect, in one `spike.md`
 
-**Codex harvest (`Harvest.md`):** Ledger/Survey → Harvest (distillation plan → distillation review → author → fidelity review → gates → voice → edition) → Reflect → Git Commit → Complete
+**Codex harvest (`Harvest.md`):** Ledger/Survey → Harvest (distillation plan → distillation review → author → fidelity review → bless → gates → voice → edition) → Document → Reflect → Git Commit → Complete
 
-**Codex re-verify (`Reverify.md`):** a horizon expires or a claim is challenged → Reverify (scan → brief → date test → fork → sweep → gates → edition) → Reflect → Git Commit → Complete
+**Codex re-verify (`Reverify.md`):** a horizon expires or a claim is challenged → Reverify (scan → brief → date test → fork → sweep → gates → voice → edition) → Reflect → Git Commit → Complete
 
 ## License
 
