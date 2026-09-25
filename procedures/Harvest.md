@@ -72,7 +72,8 @@ archivist §1 step 5 gives for undated sources); transport or producing procedur
 round is needed. Digests are not planned — they are computed at authoring per `CONVENTIONS.md`
 §4 with the vault's digest tooling, never by hand.
 A source shared with an earlier harvest is a reuse row; a source whose evidence has moved since
-it was written gets a **re-verify** mark, and the round runs through `WebResearch.md` before
+it was written, or whose date is already past the target topic's horizon — so its claims would be
+overdue when published — gets a **re-verify** mark, and the round runs through `WebResearch.md` before
 authoring, its archived reply becoming one more source row.
 
 **Claim manifest** — one table per target topic: slug; one-line statement; confidence (translated

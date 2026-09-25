@@ -61,14 +61,15 @@ claims can share a hypothesis; a claim can carry several.
 
 ### 3. Brief and round
 
-Write one brief per topic cluster following `WebResearch.md` §2 and the brief-shape section
-below, then execute and archive per its §§5–6. The codex consult in the brief's context capsule
-is the round's own prior finding: every hypothesis cites "codex, ed. N, `<slug>`, verified
-YYYY-MM-DD" so the researcher argues against the published state, not a paraphrase. Record both
-the execution date and the reply's self-stated "as of" date in the provenance blockquote when
-they differ; the "as of" date is the candidate `verified` stamp. Then anchor the archived reply in
-the vault per archivist §1 step 1, one anchor per round, whatever the verdicts — it is the
-evidence every claim and errata line this round touches will cite.
+Write one brief per topic cluster following `WebResearch.md` §2 and the brief-shape section below,
+then execute and archive per its §§5–6. The codex consult in the brief's context capsule is the
+round's own prior finding: every hypothesis cites "codex, ed. N, `<slug>`, verified YYYY-MM-DD" so
+the researcher argues against the published state, not a paraphrase. Record both the execution date
+and the reply's self-stated "as of" date in the provenance blockquote when they differ; the "as of"
+date is the `verified` stamp of every claim the round re-verifies, since `verified` is the date the
+evidence describes the world as of (archivist §1 step 3). Then anchor the archived reply in the
+vault per archivist §1 step 1, one anchor per round, whatever the verdicts — it is the evidence
+every claim and errata line this round touches will cite.
 
 ### 4. The date test
 
