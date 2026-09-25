@@ -28,7 +28,7 @@ Identify what will be committed:
 - Confirm no unintended files are included (secrets, build artifacts, editor temp files).
 - Once everything is staged, where the diff adds prose that reports a result or a survey finding, verify, label or delete each claim that the thing under test is fine — *The Claims That Need Checking Are the Comfortable Ones* in `skills/evidence.md`, including its grep over the added Markdown lines, and *State the Sample a Claim Rests On* for a fix claim.
 
-Stage additional files as needed. Prefer staging by specific path over `git add .` or `git add -A`.
+Stage additional files as needed, by specific path — never `git add .`, `git add -A` or `git commit -a` (`AGENTS.md`, *Commit freely; never push*).
 
 ### 3. Draft Commit Message
 

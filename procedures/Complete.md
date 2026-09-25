@@ -25,7 +25,9 @@ Check the work item folder for required artifacts:
 
 - [ ] `code.md` — must be present if the work item involved implementation.
 - [ ] `reflect.md` — should be present for non-trivial work items.
-- [ ] `voice.md` — must be present; one line, `Nothing to trim.`, when the work item added nothing in scope. A single-artifact procedure's document (`sidequest.md`, `spike.md`) stands in for it, as for the others.
+- [ ] `voice.md` — must be present; one line, `Nothing to trim.`, when the work item added nothing in scope.
+
+A single-artifact procedure's document (`sidequest.md`, `spike.md`, `adopt.md`) stands in for all three, here and under *When to Complete*.
 
 ### 2. Update Status
 

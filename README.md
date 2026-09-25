@@ -38,7 +38,7 @@ The agent reads `AGENTS.md` at the start of each session and consults the refere
 
 **Work item:** Plan → Plan Review → Code → Code Review → Test → Voice → Document → Reflect → Git Commit → Complete
 
-**Quick chore:** SideQuest (single execution + audit doc, no planning phase)
+**Quick chore:** SideQuest (single execution + audit doc, no planning phase) → Git Commit → Complete
 
 **Adopt (material crossing a boundary, either direction):** Work Item → Inventory → Filter + confirmed redaction list → Execute → Review (fidelity, leak gate, coherence, fit) → Git Commit → Complete, in one `adopt.md`
 
@@ -46,7 +46,7 @@ The agent reads `AGENTS.md` at the start of each session and consults the refere
 
 **Rapid iteration (exploratory/hardening):** Test → Triage → fix in groups → Reflect → Document, looped
 
-**Spike (settle one question before planning):** Work Item → Design → Execute → Verdict → Reflect, in one `spike.md`
+**Spike (settle one question before planning):** Work Item → Design → Execute → Verdict → Reflect → Git Commit → Complete, in one `spike.md`
 
 **Codex harvest (`Harvest.md`):** Ledger/Survey → Harvest (distillation plan → distillation review → author → fidelity review → bless → gates → voice → edition) → Document → Reflect → Git Commit → Complete
 

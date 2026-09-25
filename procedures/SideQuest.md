@@ -35,8 +35,8 @@ The author (human or AI agent) performs the requested task directly based on the
 ### 3. Documentation
 Upon completion of the work, the author creates a `sidequest.md` file in the work item folder. This single artifact replaces all other workflow documents for this task.
 
-### 4. Completion
-Once `sidequest.md` is written, the work item's `Status` is immediately changed to `complete` in `workitem.md`.
+### 4. Commit and complete
+Commit the changes by path (`GitCommit.md`) in each repository the work touched other than the tickets repo. Then complete the work item (`Complete.md`) and make one tickets-repo commit: `sidequest.md`, what Complete changed, and any change the task itself made there. A SideQuest that stops at its document leaves its changes in the tree for another session to find (WI 1034).
 
 ## The `sidequest.md` Template
 
@@ -60,4 +60,4 @@ Create `sidequest.md` in the work item folder using the following structure:
 ## Guidance
 
 - **Minimal Friction**: Do not over-document. The goal is an audit trail, not a novel.
-- **Agent Handoff**: If an AI agent completes the SideQuest, it should write the `sidequest.md` and immediately execute the `Complete` action in the same session.
+- **Agent Handoff**: If an AI agent completes the SideQuest, it writes `sidequest.md` and runs step 4 in the same session.

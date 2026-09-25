@@ -128,8 +128,12 @@ capture it here and route it, do not bury it.
 
 ### 6. Completion
 
-When the verdict and Reflect are written, set the work item's `status` to `complete`. A spike is done
-when the decision is answered — not when the thing it built is production-ready, which it never is.
+When the verdict and Reflect are written, delete what the spike throws away, and commit by path
+(`GitCommit.md`) what it keeps — a findings entry, a prototype kept for a later Plan to promote — in
+each repository other than the tickets repo that holds it. Then complete the work item
+(`Complete.md`) and make one tickets-repo commit: `spike.md`, what Complete changed, and anything the
+spike keeps there. A spike is done when the decision is answered — not when the thing
+it built is production-ready, which it never is.
 
 ## The `spike.md` Template
 
