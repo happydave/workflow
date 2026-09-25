@@ -85,7 +85,7 @@ This repository is public and holds only generic procedure. Site-specific values
 **knowledge** (reference material — look these up as needed; non-normative; the site overlay's `knowledge/` adds site facts)
 - `tools/kind.md` — kind (Kubernetes in Docker): context switching, node nofile limit, arm64 platform matching, disk/max-pods, serial image pulls
 - `vscode-agent-registration.md` — registering agents for VS Code
-- `negative-controls.md` — worked cases behind `Test.md` step 3's control table: the guard that destroyed a home directory, a mutation the suite ignored, a control that failed 3 in 20, one that failed for the wrong reason, two whose mutation never landed
+- `negative-controls.md` — worked cases behind `Test.md` step 3's control rules: a guard tested by driving the operation, a mutation the suite ignored, a control that passed by chance, breaks that never landed, ran stale code or hid their target, fixtures that could not carry the property or sampled too late
 
 ## Typical Pipelines
 

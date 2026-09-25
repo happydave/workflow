@@ -33,3 +33,11 @@ An image-token suite asserted size, format and the absence of a baked border, an
 ## A break that ran, over an effect that ended before the assertion (WIs 1705, 1618)
 
 A control disabled a refusal so that a stopped component would start a background goroutine and hold its wait group; the test asserted the group was not held over a two-second window. The break was live — the goroutine started — but for an unreachable peer it returned almost at once, so the window saw nothing and the control failed nothing. Read as *nothing reaches the break*, it would have closed as a pass. The remedy was a test asserting the refusal itself. In the second case the test fed a single reading after the state it meant to observe had settled; the remedy was to extend its input.
+
+## Two controls that ran the previous break (WI 1732)
+
+Two Python controls edited same-length tokens ("fail" to "pass", "skip" to "fail") within a second of the previous restore. CPython revalidates a cached `.pyc` by the source's modification time, at one-second resolution, and its size, so the previous break's bytecode ran. One control failed nothing; the other reported a different control's failures. The applied-state check passed both times, because the source was right; the executed code was not. Re-run with `python3 -B` and the cache removed, both failed the tests that target them.
+
+## A break the fixture routed around, and one that hid its target (WI 1275)
+
+A refusal written as one condition over several keys was broken by prefixing `false && `. `&&` binds tighter than `||`, so only the first key's clause was disabled, and the fixture removed a key that a surviving clause still refused: the control failed nothing and read as missing coverage until the whole condition was wrapped. In the same suite, removing a length check made the first subtest panic with an index out of range. The panic ended the binary before the sibling subtest that trips the targeted assertion; re-run alone with `-run`, the sibling failed at its assertion.
