@@ -34,7 +34,7 @@ Bad example (do not add invariants like this):
 (For project-wide security rules — e.g., OWASP Top 10 mitigation, no plain-text secrets in logs — reference a central security.md or include critical ones here.)
 
 **Required Behaviors & Verifications**
-Concise descriptions of required behavior and verifiable success criteria. Organize by major concern (user-visible actions, data flows, security/privacy, etc.). Use SHALL statements for must-have outcomes and include focused scenarios (Gherkin-style or numbered steps) that define "done." Cover at least: one happy path, one key failure mode, one security-relevant case.
+Concise descriptions of required behavior and verifiable success criteria. Organize by major concern (user-visible actions, data flows, security/privacy, etc.). Where the concerns are the files the change touches, every requirement goes under a file it changes, one about several files under one of them: a trailing section of requirements outside the per-file sections reads as commentary, and is skipped (WI 1225). Use SHALL statements for must-have outcomes and include focused scenarios (Gherkin-style or numbered steps) that define "done." Cover at least: one happy path, one key failure mode, one security-relevant case.
 
 Tag each scenario by **verification mode** — the axis is *who can supply the verdict*:
 - `[automated]` — a deterministic gate decides it: a test, a build, a lint, a schema check. Repeatable, pass/fail, no judgment.
@@ -47,7 +47,7 @@ Choosing `[human]` when `[agent]` would do is a real failure mode: it defers to 
 
 **A verification must be able to fail.** Choose each verification's inputs so that an implementation without the behavior, without any one clause of it, or looser than it gives a different result, and say in the verification what that implementation would give. Work an example value through the rule it tests, with the constants the survey records for that rule (open the code and record them if it does not), and check the value passes on a correct implementation too. Replace a value that gives the same outcome either way: a multiplier of 1, an armour of 0, a value equal to a default or a fallback, one that rounds to the same result, a speed whose step fits inside the rule's normal allowance, a name already in the case the code folds to. An assertion loose enough to accept both results — a wide range, "plausible", "about" — fails the same way. Where a behavior or edge case names several shapes or actors — each kind of state a restart carries across, a second player, a player who leaves mid-action — name a test that exercises each one, not only the first. This chooses the values for the cases the plan already names, and adds a case only for a clause no case reaches; it does not add a catalog. A verification that cannot fail passes through Code and is found at Test as a control that fails nothing (WIs 1756, 1757, 1824, 1827).
 
-Certain feature shapes have repeatedly produced interleaving or coverage gaps that surfaced only at implementation. When the feature includes one of these, the plan must pin the detail explicitly:
+Certain feature shapes have repeatedly produced defects that surfaced only at implementation. When the feature includes one of these, the plan must pin the detail explicitly:
 
 - **An authentication default** — include one scenario per credential kind the system accepts (password, certificate, token, …), not just the default path.
 - **A server-initiated message triggered by a client request** (a retained message on subscribe, a replay on connect) — state its order relative to the acknowledgement of the request that triggered it.
@@ -55,6 +55,10 @@ Certain feature shapes have repeatedly produced interleaving or coverage gaps th
 - **A shared identifier** (a key, a code, a name format used by more than one component) — state its exact form and which package owns it.
 - **A gate command that includes a test-binary flag** — name the exact package path, not a `./...` pattern; other test binaries in the tree reject the flag.
 - **A critical section split across two locks** (a record sealed under one lock and made durable under another, a check under one and the act under the next) — name what another caller can observe between them and what a crash between them leaves behind, and state what the acknowledgement of the whole promises and whether it may precede the part under the second lock (WI 1490: an acknowledgement preceded the fsync it reported).
+- **A destructive, irreversible, or outward-facing operation** — name the decision that governs it and state that it is a pure predicate the operation calls, computing everything it decides on (`AGENTS.md`, *A destructive operation decides in a pure predicate*; WIs 1378, 1827).
+- **A rule that follows references through content data** (chains, conditions, links between records) — state how each recursion is bounded, and verify it with data that loops (WI 1756: a loop in the content overflowed the stack).
+- **The removal or rename of a package, file, or exported name** — list every importer and caller, found by search, among the files the plan changes (WI 314).
+- **A long-running command run under a service manager** — run it headless for a minute and record its output rate and which stream carries it before deciding where its output goes (WI 1433: a status screen redrawn into the journal at about 300 lines a minute).
 
 **Migration note.** The prior two-way scheme used `[visual/manual]` for everything non-automated. An existing `[visual/manual]` tag should be read as `[human]` by default (the conservative reading); re-triage it to `[agent]` opportunistically when the check is in fact one the agent can perform by inspection.
 Example:
@@ -127,7 +131,7 @@ The presence of `plan.md` in a work item folder indicates the item has been plan
 
 The planning process MUST identify all applicable guidelines and document them in the feature plan's **Applicable Guidelines** section. This is mandatory, not optional. Guidelines from `skills/[name].md` define the build and test procedures that Code and Document actions will use — they cannot be applied correctly if they are not named in the plan.
 
-- Inspect the project root and purpose to determine which guidelines apply (e.g., `skills/go.md` for Go projects, `skills/typescript.md` (plus the applicable profile) for TypeScript projects, `skills/docker.md` for Docker-based builds, `skills/markdown.md` for documentation-heavy projects).
+- Inspect the project root and purpose to determine which guidelines apply (e.g., `skills/go.md` for Go projects, `skills/typescript.md` (plus the applicable profile) for TypeScript projects, `skills/docker.md` for Docker-based builds, `skills/markdown.md` whenever the change writes or edits a Markdown file, such as a README, whatever the project's language). A work item that creates a repository includes a README among its changes.
 - `skills/tooling.md` applies whenever the work depends on an external tool (a CLI, MCP server, or editor extension), independently of language. Tool-specific reference material lives in `knowledge/tools/`.
 - Record each applicable guideline and its defined build/test steps in the plan's Applicable Guidelines section.
 - If a project spans multiple guidelines (e.g., Go + Docker), list all of them.
