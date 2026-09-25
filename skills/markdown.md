@@ -90,7 +90,7 @@ Lightweight grammar and readability checks are optional advisory quality signals
 ## When to Apply Checks
 **Build procedures** (link checking, structure verification, merge union check) MUST pass before closing a ticket. The link check runs on each Markdown file in the step that writes or edits it, on that file; the run before close is the backstop, not the gate. Structure verification SHOULD run after every step that modifies Markdown files, and the merge union check applies only to steps that consolidate content from more than one document. These are fast, deterministic checks with clear outcomes.
 
-The commonest broken link is a relative path from a nested directory to another repository or a parent tree, written one `../` short. Count the segments against the file's actual depth when writing the link, never from memory. Source: WIs 1000, 1001, 1013.
+A broken link that has recurred is a relative path from a nested directory to another repository or a parent tree, written one `../` short — three times in one session. Count the segments against the file's actual depth when writing the link, never from memory. Source: WIs 1000, 1001, 1013.
 
 **Test procedures** (spell check, duplicate detection, grammar checks) SHOULD run periodically or at ticket close time — not necessarily after each small incremental change, as they can produce noise during active writing and may flag issues that resolve themselves in subsequent edits.
 
