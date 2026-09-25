@@ -53,11 +53,19 @@ are recorded as deferred with their date. Nothing runs early (see When to Reveri
 
 ### 2. Scan
 
-For each topic in scope, list its living claims (`resolve --canon canon <topic>` gives the
-blessed set) in the **scan table**: slug, one-line statement, `scope`, `verified`, sources, and
-the edition it was last blessed in. Group the claims into **hypotheses** — one per fact the
-world could have moved — quoting each claim's scope as the hypothesis's own scope. Several
-claims can share a hypothesis; a claim can carry several.
+For each topic in scope, list its blessed claims in the **scan table**: slug, one-line statement,
+`scope`, `verified`, due date (`verified` plus the topic's horizon; `lore check` warns from the day
+after), sources, and the edition it was last blessed in. The blessed set is
+`lore resolve --vault universes --universe codex --canon canon <topic>`, run from the lore repo root,
+one claim per `descendant (full)` section; drafts are outside Reverify (When to Reverify). `resolve`
+prints no frontmatter, so the other columns come from each claim's file, and the edition from the
+earliest `codex-ed` tag containing the claim's last change. Group the due claims into
+**hypotheses** — one per fact the world could have moved — quoting each claim's scope as the
+hypothesis's own scope. Several claims can share a hypothesis; a claim can carry several. A claim
+not yet due joins only a hypothesis a due claim already carries, and is then disposed like the rest,
+since the reply is new evidence for it. Every due claim appears in the hypothesis table: under a
+hypothesis, or with the reason no research round can reach it (a local measurement), which step 5
+records as Unverifiable.
 
 ### 3. Brief and round
 
@@ -89,12 +97,17 @@ The verdict word is the researcher's; the path is decided here.
 
 Per hypothesis, in `reverify.md`'s **hypothesis table** (verdict, date test, path, claims
 touched). Every claim this round refreshes or corrects adds the reply to its `sources`, the new
-entry's note saying what the round found, and keeps its earlier entries; a sibling cites the reply
-and any earlier source it still rests on. Each points its `harvest` link at the round's anchor,
-since its `verified` stamp now rests on that reply. A claim the round does not re-verify keeps its
-sources, link and stamp.
+entry's note saying what the round found, and keeps its earlier entries and its `harvest` link,
+which names the anchor it was distilled from (CONVENTIONS §10). A sibling is distilled from the
+reply: it cites the reply and any earlier source it still rests on, and its `harvest` link is the
+round's anchor. A claim the round does not re-verify keeps its sources, link and stamp.
 
-- **Holds** — refresh `verified` on each claim to the "as of" date; re-bless (archivist §2).
+- **Holds** — refresh `verified` on each claim to the "as of" date (archivist §1 step 3) and
+  re-bless (archivist §2). The scope stays as written, in the field and the statement: it names what
+  the evidence established, and the stamp says how recent that evidence is. Moving one date inside a
+  scope that also pins a version or a build would assert something nobody checked. A claim with any
+  part the reply did not check, such as a local measurement, is not a hold: it goes under
+  **Unverifiable this pass**.
 - **Wrong when stamped** — the errata path (archivist §3, "we were wrong"): correct, re-verify,
   re-bless; the errata note records what was misread.
 - **World moved** — the supersession path (archivist §3, "the world moved"), all five steps,
@@ -151,10 +164,10 @@ In addition to `WebResearch.md`'s required content, a re-verify brief SHALL:
 <!-- rule output / due date / sweep hit / challenge; topics; overdue claims deferred, with dates -->
 
 ## Scan
-| Slug | Statement | Scope | Verified | Sources | Edition |
+| Slug | Statement | Scope | Verified | Due | Sources | Edition |
 
 ## Hypotheses
-| Hypothesis | Claims | Verdict | New state (date) | Date test | Path |
+| Hypothesis | Scope | Claims | Verdict | New state (date) | Date test | Path |
 
 ## Sweep
 <!-- per supersession: consumer hits and the intake captures made -->
