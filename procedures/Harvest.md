@@ -11,7 +11,7 @@ content is a manifest and a `code.md` that logs a checklist; Harvest collapses t
 true shape while keeping the two review gates, which are the steps that catch misread sources,
 mislabelled confidence, and missing dates.
 
-Harvest sits between a SideQuest and the full pipeline, as `Spike.md` does: three documents, two
+Harvest sits between a SideQuest and the full pipeline, as `Spike.md` does: four documents, two
 reviews, one checklist. The normative rules for the vault stay where they live — the archivist
 procedure (`docs/projects/loradel/archivist.md` in the tickets repo) and the vault's
 `CONVENTIONS.md` §10. This procedure says when to open them and which sections apply; it never
@@ -38,6 +38,8 @@ In the work item folder under `docs/pending/`:
   gate results, and the edition entry. Replaces `plan.md`, `code.md`, and `test.md`.
 - `harvestreview.md` — two review passes: §A the distillation review (before authoring) and §B
   the fidelity review (after). Replaces `planreview.md` and `codereview.md`.
+- `voice.md` — per `Voice.md`, unchanged: the claim bodies, topic indexes, errata notes and anchor
+  bodies the harvest wrote are the documentation prose it trims (step 7).
 - `reflect.md` — per `Reflect.md`, unchanged.
 
 Vault content lands in the lore repo (`universes/codex/`); the tickets work item folder holds the
@@ -76,8 +78,10 @@ authoring, its archived reply becoming one more source row.
 per archivist §1 step 2); scope (or "stable"); verified date (per archivist §1 step 3 — every
 claim carries one); sources; harvest anchor; and horizon or leaf mark where the topic's index
 does not already carry one. Below the table: errata seeds from the sources' stated gaps, the
-cross-link targets in other topics (linked by slug, never duplicated), and any topic that another
-queued harvest will create — named in prose only (archivist §1 step 5).
+cross-link targets in other topics (linked by slug, never duplicated), any topic that another
+queued harvest will create — named in prose only (archivist §1 step 5) — and every row that labels
+a claim resting on a community wiki above `supported`, the wiki's ceiling (archivist §1 step 2), with
+the reason the wiki is primary for that row.
 
 Size: a manifest over about twenty claims for one topic is split — sibling topics, or a second
 work item — before review, because a fidelity sample cannot cover more.
@@ -128,14 +132,18 @@ nothing is blessed or tagged), Resolved, Observations; then the disposition.
 
 ### 7. Gate checklist
 
-Run every item; record the results in the **Gates** section of `harvest.md`:
+Run every item from the lore repo root; record the results in the **Gates** section of
+`harvest.md`:
 
 1. `lore check` on the codex tenant: 0 violations, and no new warnings the manifest did not
    predict; then on every other tenant: unchanged. The `missing-verified` violation and the
    `unknown-generator` warning are what make the manifest's dates and generators
    machine-checked here.
 2. `lore digest check` over the topic's anchors: every one `ok`.
-3. `resolve --canon canon <topic>` lists exactly the manifest's blessed claims; errata absent.
+3. `lore resolve --vault universes --universe codex --canon canon <topic>`: its `descendant (full)`
+   sections — one per claim, after the ancestor overviews and the topic's own index, which are not
+   counted — are exactly the manifest's blessed claims (at `--depth 2` the same claims appear as one
+   `leaf entries` list instead); errata absent.
 4. `go test ./...` in the lore repo passes.
 5. Dupcheck on the topic index and the tenant root (`skills/markdown.md`).
 6. The cross-link text search from step 6 where it applies.
@@ -143,6 +151,12 @@ Run every item; record the results in the **Gates** section of `harvest.md`:
 
 A failure is fixed and the checklist re-run from item 1. A digest mismatch is fixed by
 recomputing, never by editing the recorded value.
+
+When the checklist passes, run `Voice.md` over the prose the harvest wrote. Its cuts land before
+the edition, so no claim in a cut edition changes; an anchor this harvest created is re-stamped
+with `lore digest stamp` after a cut. A cut that would change a claim's statement, confidence or
+scope is not a voice cut: it goes back through step 6. After any cut, re-run the checklist from
+item 1 and record both runs: a cut changes files the gates read.
 
 ### 8. Edition
 
@@ -165,7 +179,7 @@ Cut the edition per archivist §4 — the annotated tag and the root entry — a
 ## Claim manifest — <topic slug> (horizon: <days or stable>)
 | Slug | Statement | Confidence | Scope | Verified | Sources | Anchor |
 
-Errata seeds: … Cross-links: … Named in prose only: …
+Errata seeds: … Cross-links: … Named in prose only: … Wiki rows above `supported`: …
 
 ## Authoring log
 <!-- deviations from the manifest, as they happen -->

@@ -97,7 +97,7 @@ This repository is public and holds only generic procedure. Site-specific values
 - Rapid Iteration (exploratory/hardening): `Test → Triage → fix in groups → Reflect → Document` (loop; see `RapidIteration.md`)
 - Spike (settle one question before planning): `Work Item → Design → Execute → Verdict → Reflect` (single `spike.md`; see `Spike.md`)
 - Adopt (material crossing a boundary, either direction): `Work Item → Inventory → Filter + confirmed redaction list → Execute → Review (fidelity, leak gate, coherence, fit) → Git Commit → Complete` (single `adopt.md`; see `Adopt.md`)
-- Codex Harvest (research archives → published claims): `Ledger/Survey (SideQuest) → Harvest (distillation plan → distillation review → author → fidelity review → gates → edition) → Reflect → Git Commit → Complete` (see `Harvest.md`)
+- Codex Harvest (research archives → published claims): `Ledger/Survey (SideQuest) → Harvest (distillation plan → distillation review → author → fidelity review → gates → voice → edition) → Reflect → Git Commit → Complete` (see `Harvest.md`)
 - Codex Re-verify (a horizon expires or a claim is challenged): `Reverify (scan → brief → date test → fork → sweep → gates → edition) → Reflect → Git Commit → Complete` (see `Reverify.md`)
 
 ## Stance
