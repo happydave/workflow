@@ -20,7 +20,9 @@ Internal link validation is a mandatory build gate: every `#heading` reference a
 
 **Scope:**
 - **Internal links** (relative paths, heading anchors) MUST be verified on every run. Broken internal links are a hard failure — the artifact does not pass build until all links are resolved or removed.
-- **External links** (URLs) SHOULD be checked optionally. External link checking is noted as advisory rather than mandatory to avoid CI fragility from upstream URL rot. When external links are included in scope, only check links within this project's own repository (e.g., references to `procedures/Plan.md`) — treat them as internal cross-references that must resolve.
+- **External links** (URLs) SHOULD be checked optionally. External link checking is noted as advisory rather than mandatory to avoid CI fragility from upstream URL rot. When external links are included in scope, only check links within this project's own repository (e.g., a URL to this repository's `procedures/Plan.md`) — treat them as internal cross-references that must resolve.
+
+**Record what was examined.** A link check result states how many links it examined as well as how many failed: "0 broken of 22" and "0 broken of 0" are different results, and only the first shows the links resolve. Where the checker reports only failures, count the file's links yourself — a `](` inside a code span or a fenced block is not one — and record both numbers; a file with no links passes, and says so. A path written only in a code span (`procedures/Plan.md`), not as a link, is resolved by no link checker: a change that moves or removes a file searches every repository that may cite it for its old path instead. Source: WI 1225.
 
 **Placeholder handling:**
 Generated or templated Markdown may contain placeholder markers such as `#TODO` or section headers left for later filling-in during active drafting. These are acceptable while a document is in progress but MUST be removed before ticket close. A link checker should treat known placeholder patterns (e.g., paths containing `TODO`, `FIXME`, `REPLACE`) as non-fatal only when the artifact has not yet been marked complete.
@@ -86,7 +88,9 @@ Lightweight grammar and readability checks are optional advisory quality signals
 - Readability metrics (e.g., sentence length averages) may be checked optionally to flag documents that have become unwieldy, but no specific grade-level target is mandated.
 
 ## When to Apply Checks
-**Build procedures** (link checking, structure verification, merge union check) SHOULD run after every implementation step that modifies Markdown files and MUST pass before closing a ticket. The merge union check applies only to steps that consolidate content from more than one document; the other two apply to every step. These are fast, deterministic checks with clear outcomes.
+**Build procedures** (link checking, structure verification, merge union check) MUST pass before closing a ticket. The link check runs on each Markdown file in the step that writes or edits it, on that file; the run before close is the backstop, not the gate. Structure verification SHOULD run after every step that modifies Markdown files, and the merge union check applies only to steps that consolidate content from more than one document. These are fast, deterministic checks with clear outcomes.
+
+The commonest broken link is a relative path from a nested directory to another repository or a parent tree, written one `../` short. Count the segments against the file's actual depth when writing the link, never from memory. Source: WIs 1000, 1001, 1013.
 
 **Test procedures** (spell check, duplicate detection, grammar checks) SHOULD run periodically or at ticket close time — not necessarily after each small incremental change, as they can produce noise during active writing and may flag issues that resolve themselves in subsequent edits.
 

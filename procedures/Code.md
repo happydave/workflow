@@ -61,7 +61,7 @@ Infrastructure and scaffolding (build configuration, project structure, dependen
 Implement changes (other than infrastructure and scaffolding) in the order specified by the plan. For each change:
 
 1. Implement the change according to the plan
-2. Test to verify correctness
+2. Test to verify correctness — for a Markdown file, that includes its link check (`skills/markdown.md`)
 3. Fix any errors before moving to the next change
 4. **Update `code.md` — log what was done, any decisions taken, and current state**
 
