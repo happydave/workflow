@@ -4,7 +4,7 @@
 
 Critically assess a plan document to ensure it is sufficient to guide correct implementation on first attempt. The output is a structured set of observations — concerns, questions, and recommendations — that identifies gaps, contradictions, or ambiguities before implementation begins.
 
-Plan Review is a *preferably external* quality gate. Its evaluation is independent in the sense that matters: independent of the plan's own reasoning, not necessarily performed by a second party. If no external reviewer is available, the same agent SHALL perform the review itself in the same session — a **self-applied** review. The gate is never skipped; "no reviewer available" is not a disposition. See **Self-Applied Review** for how the two-party protocol collapses to one agent.
+Plan Review is preferably external; without a reviewer it is self-applied (`AGENTS.md`, *A review is never skipped for want of a reviewer*). See **Self-Applied Review** for how the two-party protocol collapses to one agent.
 
 ## Roles
 
@@ -19,18 +19,13 @@ Plan Review is a *preferably external* quality gate. Its evaluation is independe
 
 ## Self-Applied Review
 
-When no external reviewer is available, the plan's author performs the review in the same session. The dimensions, the findings tiers, and the `planreview.md` artifact are identical to an external review; only the role assignments collapse. Under self-application:
+Under self-application (`AGENTS.md`) the dimensions, the findings tiers, and the `planreview.md` artifact are identical to an external review; only the role assignments collapse:
 
 - "Stops and notifies the requester" means surfacing to the human owner — the requester is the owner in both modes.
 - The Revision Cycle Protocol applies unchanged: each self-revision is a real edit to `plan.md` addressing all Blocking findings, and three failed cycles still escalate to the owner as Significant Findings.
-- Step 4's stop clause — intent only the Author can clarify — collapses the same way: the self-reviewer resolves the finding from the context it holds, or holds it for the owner; it does not resolve it in the plan's favour.
-- Step 6's Author-availability clause (confirm or dismiss uncertain findings from domain knowledge) is external-review only. Its purpose is to let the Author supply context the Reviewer lacked; a self-reviewer already holds all of the author's context, so uncertainty that survives it is genuine and cannot be cleared by asserting the author's availability.
-
-Self-review's characteristic failure mode is rubber-stamping — a reviewer inclined to confirm the plan it just wrote. Three countermeasures are mandatory:
-
-1. `planreview.md` SHALL record the review mode (`external` or `self-applied`) so a later reader can weight the findings.
-2. The Precision spot-check SHALL be performed and its sample recorded in the artifact — which claims were checked against which opened files. It is the most bias-resistant step in the review because it is factual rather than judgmental.
-3. Uncertain findings SHALL NOT be resolved in the plan's favor by default (see Reporting).
+- Step 4's stop clause — intent only the Author can clarify — collapses the same way: the self-reviewer resolves the finding as step 5 says — revising `plan.md` so the uncertainty no longer exists — or holds it for the owner; it does not resolve it in the plan's favour.
+- Step 6's Author-availability clause (confirm or dismiss uncertain findings from domain knowledge) is external-review only: a self-reviewer already holds all of the author's context, so uncertainty that survives it is genuine.
+- The Precision spot-check SHALL be performed and its sample recorded in the artifact — which claims were checked against which opened files. It is the most bias-resistant step in the review because it is factual rather than judgmental.
 
 ## Procedure
 

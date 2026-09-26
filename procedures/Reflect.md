@@ -45,11 +45,11 @@ Record friction here on its first occurrence, even when it warrants no change: t
 
 For each significant issue, propose a concrete change to prevent or reduce it in future implementations. Recommendations should target specific documents or artifacts:
 
-- Feature plans (e.g., add a missing invariant to feature 08)
+- The plan (e.g., add a missing invariant to its Invariants section)
 - Framework procedure documents (e.g., update `procedures/Plan.md` with additional plan sections)
 - Framework guidelines (e.g., update `skills/docker.md`)
-- Implementation prompts (e.g., add an instruction to compile incrementally)
-- Makefile or tooling (e.g., add a pre-flight check)
+- Dispatch briefs (`Dispatch.md`)
+- Project tooling (e.g., add a pre-flight check to the gate)
 - New work items (if the issue warrants separate follow-up)
 
 Avoid vague recommendations. "Improve documentation" is not actionable. "Add an invariant to feature 08 stating that `.vscode/tasks.json` commands must use Makefile targets" is.

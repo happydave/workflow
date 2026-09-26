@@ -82,7 +82,7 @@ Also scan exhaustively for mechanical issues regardless of change category:
 
 For each finding, apply one of three responses before reporting. Whichever response applies an edit, the finding is recorded as resolved only after the file's diff has been read: a script's output can show that an edit failed, never that it succeeded. An edit that did not land leaves the finding open, and a failed precondition is evidence about the text — re-open the file before retrying (WI 1657).
 
-**Fix directly** — if there is an obvious, good solution: apply it, then include the finding in the summary as resolved. This is the default for linter-class issues, typos, name mismatches, and any substantive issue where the correct fix is unambiguous.
+**Fix directly** — if there is an obvious, good solution and the risk is low: apply it, then include the finding in the summary as resolved. This is the default for linter-class issues, typos, name mismatches, and any substantive issue where the correct fix is unambiguous.
 
 **Decide and proceed** — if there is no obvious solution but the risk is low: make a reasoned choice, apply it, document the rationale, and flag it in the summary for Reviewer awareness. Low risk means the decision is reversible via git and does not affect external contracts, security, or data integrity. A contract the plan itself specifies is the plan, not a change to it: implementing it, or choosing which of two colliding plan edge cases wins, is decided and recorded here (WI 1715).
 
@@ -107,11 +107,11 @@ Review any escalated findings:
 
 If there are no escalations, no Reviewer action is required — proceed to Test.
 
-If escalations exist and no Reviewer is available, the work item **holds at the escalation**: record the escalation and a `held` disposition in `codereview.md`, notify the owner, and do not proceed to Test until the owner acts. Do not self-resolve an escalation. Escalations are defined as high-risk-only precisely so they are rare; a reviewer resolving its own escalations collapses the tier into "decide and proceed" and the distinction stops meaning anything.
+If escalations exist and no Reviewer is available — the review is then self-applied — the work item **holds at the escalation**: record the escalation and a `held` disposition in `codereview.md`, notify the owner, and do not proceed to Test until the owner acts. Do not self-resolve an escalation (`AGENTS.md`, *A review is never skipped for want of a reviewer*). Escalations are defined as high-risk-only precisely so they are rare; a reviewer resolving its own escalations collapses the tier into "decide and proceed" and the distinction stops meaning anything.
 
 ## Document Storage
 
-The findings summary from step 4 is written to `codereview.md` in the work item folder. It contains: the **change summary** from step 2, any delegation of the reading, the three findings tiers (**Escalations**, **Resolved**, **Observations**), the result of the final gate run, and a final **Disposition** — proceed to Test, or held at an escalation with the owner notified. The file's presence is what makes a completed review visible; other procedures rely on the name (`Spike.md` cites `codereview.md` as one of the pipeline artifacts its single spike document replaces).
+The findings summary from step 4 is written to `codereview.md` in the work item folder. It contains: the **Review Mode** (`external` or `self-applied`), the **change summary** from step 2, any delegation of the reading, the three findings tiers (**Escalations**, **Resolved**, **Observations**), the result of the final gate run, and a final **Disposition** — proceed to Test, or held at an escalation with the owner notified. The file's presence is what makes a completed review visible; other procedures rely on the name (`Spike.md` cites `codereview.md` as one of the pipeline artifacts its single spike document replaces).
 
 ## Guidance
 

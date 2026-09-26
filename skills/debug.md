@@ -64,7 +64,7 @@ Before finalizing a fix, the agent should "critique" its own solution.
     3.  Ask: "Is this the simplest way to fix the root cause, or am I just masking a symptom?"
     4.  Adjust the fix based on this internal critique.
 
-## 6. Minimal Reproduction (Delta Debugging)
+## 5. Minimal Reproduction (Delta Debugging)
 
 Reduce the noise to isolate the signal.
 
@@ -72,7 +72,7 @@ Reduce the noise to isolate the signal.
 2.  **Bisection**: Use `git bisect` or manual binary search to find the exact commit or line change that introduced the failure.
 3.  **Isolate Environment**: Remove external dependencies or layers one by one until the failure disappears (or is isolated).
 
-## 7. SRE Troubleshooting (Google)
+## 6. SRE Troubleshooting (Google)
 
 Focused on stability and root cause analysis in complex systems.
 
@@ -81,7 +81,7 @@ Focused on stability and root cause analysis in complex systems.
 3.  **Examine & Diagnose**: Use logs and metrics to trace the failure from the edge to the source.
 4.  **Negative Results**: Explicitly document what was checked and found *normal* to prevent redundant work.
 
-## 8. Observability-Driven Debugging (ODD)
+## 7. Observability-Driven Debugging (ODD)
 
 Using internal telemetry to understand behavior.
 
@@ -90,7 +90,7 @@ Using internal telemetry to understand behavior.
 3.  **Compare Traces**: Look at a "good" trace vs. a "bad" trace to identify the divergence point.
 4.  **Price the probe before taking it**: Deep inspection of a process under load perturbs what it measures. Before a goroutine/thread dump of a process at scale, estimate the stop-the-world cost (population × per-frame cost) and decide whether the dump is worth contaminating the run; prefer a dump from a control run, or after the measurement window closes, when the number under measurement is a timing. (Go: a full-stack dump of hundreds of thousands of goroutines stops the world for over a minute, and `pprof` truncates `debug=2` output at 64 MiB.)
 
-## 5. Surprise Analysis & Assumption Proofing
+## 8. Surprise Analysis & Assumption Proofing
 
 When a prediction fails or a result contradicts the current mental model, the agent must pause to re-baseline. The level of rigor applied should be proportional to the severity of the failure.
 

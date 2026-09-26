@@ -55,8 +55,8 @@ Do NOT use WebResearch for:
 ### 1. Frame
 
 **Consult the codex first.** Before commissioning new research, search the codex tenant of the
-lore vault (`~/Documents/projects/lore/universes/codex/` — `lore search`/`resolve` from that
-repo, e.g. `go run ./cmd/lore search --vault universes --universe codex <term>`; registering
+lore vault (the lore repository the site overlay names — `lore search`/`resolve` from its
+root, e.g. `go run ./cmd/lore search --vault universes --universe codex <term>`; registering
 `lore mcp` to make this one call is an **owner step**, not one a session performs) for existing
 claims on the subject. A hit enters the brief's context capsule as a **prior finding, with its
 confidence, scope, and edition** ("codex, ed. N") — it eliminates or sharpens questions; it does
@@ -152,7 +152,7 @@ Persist the brief, then execute by transport:
   the claim's scope/pin where load-bearing) for any codex claims it leaned on — citations are what
   make the archivist's supersession impact sweep able to find consumers. Where a codex topic owns
   the reply's domain, the archived reply is harvest material: a `Harvest.md` work item takes it
-  onward through the archivist intake path (`docs/projects/loradel/archivist.md` §1).
+  onward through the archivist intake path (the archivist procedure the site overlay names, §1).
 - **Grade the brief**, not just the research: did the one-reply discipline hold, were labels/URLs
   used, were hypotheses engaged? Researcher-invented improvements get adopted into the next round's
   brief; slips become tightened instructions. Record lessons in `process-notes.md` for series work.

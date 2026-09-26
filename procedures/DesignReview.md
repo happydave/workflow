@@ -25,11 +25,11 @@ Independently evaluate a Project's `design.md` to ensure it is technically sound
 
 ## Self-Applied Review
 
-Design Review is preferably performed by a reviewer other than the design's author. When no external reviewer is available, the author performs the review directly in the same session — the gate is never skipped, and "no reviewer available" is not a disposition. Under self-application:
+Without an external reviewer the author performs the review in the same session (`AGENTS.md`, *A review is never skipped for want of a reviewer*). Under self-application:
 
-- All evaluation criteria are assessed and the findings recorded in the artifact (see Document Storage), which SHALL record the review mode (`external` or `self-applied`).
-- A finding SHALL NOT be dismissed on the author's preference alone. A dismissal cites evidence: an opened file, a recorded decision, a stated project constraint.
-- Findings that hinge on a judgment only the owner can make — product direction, scope trade-offs, acceptance of risk — are recorded in the artifact as open questions rather than silently resolved. The Outcome may still trigger with those questions visible for the owner to revisit; that is what keeps a self-applied review from becoming a self-granted approval.
+- All evaluation criteria are assessed and the findings recorded in the artifact (see Document Storage), which records the review mode.
+- A dismissal cites evidence: an opened file, a recorded decision, a stated project constraint.
+- Findings that hinge on a judgment only the owner can make — product direction, scope trade-offs, acceptance of risk — stay in the artifact as open questions, each with a recommendation; the Outcome may still trigger with those questions visible for the owner to revisit.
 
 ## Document Storage
 
@@ -45,7 +45,7 @@ The spellings `design-review.md`, `design-<aspect>-review.md`, and `artifacts-de
 ## Outcome
 
 Successful completion of a Design Review triggers:
-1. Update the Project's status to `Designed`.
+1. Record the approval as a dated Decision entry in the project record (`Project.md`, Decisions); the project's status stays as `Project.md` defines it.
 2. Authorization to begin creating Work Items in `docs/pending/` based on the approved design.
 
 ## Guidance

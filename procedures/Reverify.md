@@ -11,7 +11,7 @@ warnings and the claims quietly decay into fiction.
 Reverify is the second codex loop. `Harvest.md` is triggered by a research pass and produces
 claims; Reverify is triggered by a **date** (or a challenge) and re-examines claims that already
 exist. The vault rules it applies stay where they live — the archivist procedure
-(`docs/projects/loradel/archivist.md` in the tickets repo) §3 for the fork between errata and
+(the site overlay names it) §3 for the fork between errata and
 supersession, §6 for the impact sweep, and the vault's `CONVENTIONS.md` §10 Claim lifecycle.
 This procedure says when to open them and in what order; it never restates their mechanics.
 
@@ -195,4 +195,4 @@ and the edition last blessed in — enough to open a work item without a scan.
   date test decides, and the errata note or the pivot text says which.
 - **The sweep is what makes supersession actionable.** A superseded claim with no sweep is an
   archive entry; with one, it is a list of things to fix.
-- Source: loradel WI 1229's re-verify round (2026-09-01) read against archivist §3.
+- Source: WI 1229's re-verify round (2026-09-01) read against archivist §3.

@@ -5,7 +5,7 @@ description: Rust language + Bevy conventions, cargo tooling, headless-crate rul
 # Rust Language Guidelines
 
 ## Purpose
-These guidelines ensure consistent, idiomatic Rust, and capture the Bevy-specific conventions needed for projects in this framework (notably the Sounding game). The rules focus on unambiguous tooling and a small number of load-bearing architectural conventions, leaving non-critical choices to the implementer.
+These guidelines ensure consistent, idiomatic Rust, and capture the Bevy-specific conventions needed for projects in this framework. The rules focus on unambiguous tooling and a small number of load-bearing architectural conventions, leaving non-critical choices to the implementer.
 
 ## Core Principles
 - Follow official Rust idioms (the Rust API Guidelines, `clippy` defaults) unless explicitly overridden here.

@@ -13,7 +13,7 @@ mislabelled confidence, and missing dates.
 
 Harvest sits between a SideQuest and the full pipeline, as `Spike.md` does: four documents, two
 reviews, one checklist. The normative rules for the vault stay where they live — the archivist
-procedure (`docs/projects/loradel/archivist.md` in the tickets repo) and the vault's
+procedure (the site overlay names it) and the vault's
 `CONVENTIONS.md` §10. This procedure says when to open them and which sections apply; it never
 restates them.
 
@@ -91,8 +91,8 @@ work item — before review, because a fidelity sample cannot cover more.
 ### 4. Distillation review (`harvestreview.md` §A)
 
 The review gate before authoring. External if a reviewer is available; otherwise **self-applied**
-in the same session under the `PlanReview.md` provision, with its three countermeasures: record
-the mode, record the sample, and never resolve an uncertain finding in the plan's favour.
+in the same session (`AGENTS.md`, *A review is never skipped for want of a reviewer*), with
+`PlanReview.md`'s recorded sample.
 
 Dimensions, each producing Blocking or Non-blocking findings:
 
@@ -232,4 +232,4 @@ Disposition: proceed to gates | held
   content; hedging it into `supported` to make it publishable is a fidelity failure.
 - **Tooling.** When the lore binary provides anchor, claim, and digest verbs, use them; until
   then the vault's digest helper stands in. The procedure does not change either way.
-- Source: loradel WIs 1229–1233 (codex-ed3 through ed6) and their reflects.
+- Source: WIs 1229–1233 (codex-ed3 through ed6) and their reflects.
