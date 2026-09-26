@@ -10,13 +10,7 @@ Plan Review is a *preferably external* quality gate. Its evaluation is independe
 
 **Reviewer:**
 - **Prerequisites**: Access to the originating `workitem.md` (for Scope Alignment), access to applicable guideline documents identified during evaluation, and knowledge of any project-specific constraints stated in the plan's Dependencies & Context or Explicit AI Freedom sections.
-- Systematically evaluates the plan across five dimensions: Completeness, Coherence, Precision, Scope, and Compliance.
-- Identifies contradictions, ambiguities, and scope inflation.
-- **Fixes minor issues directly** (e.g., typos, minor wording ambiguity, trivially-wrong references) rather than reporting them as findings.
-- For issues that are substantive or unreasonably complex to resolve without additional context, stops and notifies the requester rather than attempting a fix.
-- Organizes findings into tiered categories with section-level precision.
-- Produces a structure summary confirming which required sections are substantive.
-- Delivers the final Status and posts structured feedback.
+- Evaluates the plan across five dimensions (step 3), resolves what can be resolved and stops on what cannot (step 4), and reports tiered findings and a Status (steps 5 to 7).
 
 **Author:**
 - Provides the plan and any context not captured within it (stakeholder constraints, technical limitations, etc.).
@@ -29,6 +23,7 @@ When no external reviewer is available, the plan's author performs the review in
 
 - "Stops and notifies the requester" means surfacing to the human owner — the requester is the owner in both modes.
 - The Revision Cycle Protocol applies unchanged: each self-revision is a real edit to `plan.md` addressing all Blocking findings, and three failed cycles still escalate to the owner as Significant Findings.
+- Step 4's stop clause — intent only the Author can clarify — collapses the same way: the self-reviewer resolves the finding from the context it holds, or holds it for the owner; it does not resolve it in the plan's favour.
 - Step 6's Author-availability clause (confirm or dismiss uncertain findings from domain knowledge) is external-review only. Its purpose is to let the Author supply context the Reviewer lacked; a self-reviewer already holds all of the author's context, so uncertainty that survives it is genuine and cannot be cleared by asserting the author's availability.
 
 Self-review's characteristic failure mode is rubber-stamping — a reviewer inclined to confirm the plan it just wrote. Three countermeasures are mandatory:
@@ -43,9 +38,7 @@ Self-review's characteristic failure mode is rubber-stamping — a reviewer incl
 
 The Author provides the plan (typically `plan.md` in the work item folder).
 
-If the plan document does not exist, stop immediately and inform the requester that the plan is missing.
-
-If a prerequisite artifact (e.g., `workitem.md`) cannot be located, Status = Deferred with an explanation of which artifact could not be found.
+If `plan.md` or the originating `workitem.md` cannot be located, stop, inform the requester, and record Status **Deferred** (step 7).
 
 ### 2. Structural Analysis
 
@@ -66,7 +59,7 @@ A section contains **placeholder content** when it consists only of headings wit
 
 The Reviewer assesses the plan across these dimensions:
 
-**Completeness** — are all required sections from `Plan.md` present? Are there gaps in failure modes, security-relevant behaviors, or edge cases?
+**Completeness** — are all sections that `Plan.md`'s **Plan Structure** requires present (open it)? Are there gaps in failure modes, security-relevant behaviors, or edge cases?
 
 **Coherence** — are there internal contradictions? Check invariants against each other and against required behaviors. Ensure invariants are provable.
 
@@ -74,7 +67,7 @@ The Reviewer assesses the plan across these dimensions:
 
 Precision is accuracy as well as clarity. Where the plan makes a concrete claim about existing code, content, or data, spot-check a sample of those claims against the artifact each one cites or describes — `Plan.md` requires the planner to have opened it (see its **Open-and-verify** rule), and this is the gate that checks they did. A claim that is precise but false is Blocking: unlike vagueness, which an implementer will notice and question, a confident wrong claim propagates silently into the implementation. Where a claim states a count or other quantity about an existing artifact, count it and record the number in the sample: confirming that the items match does not confirm how many there are (WI 1210: a plan's "six proven meals" passed its spot-check against a list of five).
 
-For each condition or trigger that starts, keeps, repeats, or stops a behavior ("while X holds", "until Y", "at first start"), name one event that can change it or set it off. One that no event can change or set off is empty, and the behavior it governs is not what the plan says (WI 1828).
+For each condition or trigger that starts, keeps, repeats, or stops a behavior ("while X holds", "until Y", "at first start"), name one event that can change it or set it off. One that no event can change or set off is empty — Blocking, as ambiguity in a critical section — and the behavior it governs is not what the plan says (WI 1828).
 
 **Scope Alignment** — does the plan stay within the mandate of the originating `workitem.md`? Distinguish reasonable deductions from purely opportunistic additions. A plan step that installs a binary or registers external tooling, in a work item that is not about installation, is scope inflation: name it as a step for the owner instead.
 
@@ -84,7 +77,7 @@ For each condition or trigger that starts, keeps, repeats, or stops a behavior (
 
 Before reporting, the Reviewer SHALL attempt to resolve every finding identified in Step 3:
 
-- **Fix it directly** — for Blocking and Non-blocking findings where the correct resolution is unambiguous (e.g., a typo, a trivially-wrong reference, a missing section whose content can be inferred from context), apply the fix to the plan document immediately. Record a finding as fixed only after confirming the edit landed: read the file's diff (for an untracked file, the whole edited region), not only the lines the edit was meant to change. A script's output can show that an edit failed, never that it succeeded, and an edit script that fails its own precondition writes nothing and says so only in output nobody read (WI 1657). An edit that did not land leaves the finding open, and a precondition that failed is evidence about the text: re-open the file before retrying.
+- **Fix it directly** — for Blocking and Non-blocking findings where the correct resolution is unambiguous (e.g., a typo, a trivially-wrong reference, a missing section whose content can be inferred from context), apply the fix to the plan document immediately. A finding is fixed when the file's diff shows the edit landed; an edit that did not land leaves it open, and the file is re-opened before a retry (WI 1657).
 - **Stop on unresolvable findings** — if a finding cannot be resolved without information or decisions the Reviewer does not have (e.g., conflicting requirements, ambiguous intent that only the Author can clarify, scope questions that require stakeholder input), stop immediately and state:
   1. Which finding cannot be resolved.
   2. Why it cannot be resolved (what information or decision is missing).
@@ -96,8 +89,8 @@ Do not proceed to Step 5 (Reporting) until all resolvable findings have been res
 ### 5. Reporting
 
 The Reviewer organizes findings into two tiers:
-- **Blocking** — must be resolved before proceeding: missing sections, contradictions, scope inflation, or ambiguity in critical sections.
-- **Non-blocking** — worth addressing but implementation may continue: minor ambiguity in non-critical sections, partially-filled optional sections, or structural observations.
+- **Blocking** — must be resolved before proceeding: a missing required section or placeholder-only content; an internal contradiction, such as conflicting invariants; a behavior that violates a stated invariant; scope inflation beyond the originating work item; ambiguity in a critical section (Behaviors, Invariants, Edge Cases) that could lead to incorrect implementation.
+- **Non-blocking** — worth addressing but planning may continue: vague terms in non-critical sections (metadata, meta-information); partially-filled sections with minor gaps; an overly broad AI Freedom section that conflicts with no specific constraint; structural observations.
 
 Flag findings as **uncertain** when they depend on intent or context the Reviewer cannot fully determine. An uncertain finding defaults to **Blocking** unless a human adjudicates it. Under a self-applied review, the author's presence in the session does not constitute adjudication: a Blocking uncertain finding is resolved the way any Blocking finding is — revise the plan so the uncertainty no longer exists, or hold it for the owner. It SHALL NOT be resolved in the plan's favor by default. The `planreview.md` output SHALL list all uncertain findings separately with their disposition so they are visible.
 
@@ -114,33 +107,13 @@ If the review is external and the Author is available to address uncertain findi
 
 ### 7. Status
 
-The Reviewer produces `planreview.md` in the work item folder, populated according to the artifact structure defined in this procedure. The file includes: **Status** (Complete, Significant Findings, or Deferred), the **Review Mode** (`external` or `self-applied`), a **Structure Summary** of which plan sections are present and substantive, **Findings** organized by dimension (Completeness, Coherence, Precision, Scope, Compliance) with each tagged as Blocking or Non-blocking — under self-application the Precision findings include the recorded spot-check sample — an **Uncertain Findings** subsection listing all uncertain findings with their disposition, and **Free-form Feedback** for observations that don't fit structured categories.
+Status is one of:
 
-## Findings Tiers
+- **Complete** — no unresolved Blocking findings, and at most five Non-blocking findings with no pattern of systemic issues.
+- **Significant Findings** — a Blocking finding remains, or the Non-blocking findings number more than five or affect more than half the plan's sections: systemic quality concerns that warrant revision.
+- **Deferred** — a prerequisite artifact (`plan.md`, the originating `workitem.md`) is absent or cannot be located; a precondition failure, not an evaluation result, reported with which artifact is missing.
 
-### Deferred — prerequisite artifact is absent
-
-The review cannot begin because a required document (e.g., `plan.md` or the originating `workitem.md`) does not exist. This is a precondition failure, not an evaluation result.
-
-### Blocking — plan cannot proceed until resolved
-
-- Missing required sections or placeholder-only content.
-- Internal contradictions (e.g., conflicting invariants).
-- Behaviors that violate stated invariants (e.g., unencrypted export vs. encryption invariant).
-- Scope inflation beyond the originating work item.
-- Ambiguity in critical sections (Behaviors, Invariants, Edge Cases) that could lead to incorrect implementation.
-
-### Non-blocking — worth addressing but planning may continue
-
-- Vague terms in non-critical sections (metadata, meta-information).
-- Partially-filled sections with minor gaps.
-- Overly broad AI Freedom sections that don't conflict with specific constraints.
-
-## Status
-
-- **Complete**: No blocking findings AND remaining non-blocking findings are minor (single-digit count, no pattern of systemic issues). Numerous non-blocking findings (more than five, or affecting more than half the plan's sections) indicate systemic quality concerns that warrant revision even in the absence of Blocking findings.
-- **Significant Findings**: Blocking findings remain OR numerous non-blocking findings indicate systemic quality concerns that warrant revision even in the absence of Blocking findings.
-- **Deferred**: The review cannot begin because a prerequisite artifact is absent (e.g., no `plan.md` exists, or no originating `workitem.md` exists). This is a precondition failure. If the Reviewer cannot determine whether a prerequisite artifact exists, Status is Deferred with an explanation of which artifact could not be located.
+The Reviewer produces `planreview.md` in the work item folder, populated according to the artifact structure defined in this procedure. The file includes: **Status**, the **Review Mode** (`external` or `self-applied`), a **Structure Summary** of which plan sections are present and substantive, **Findings** organized by dimension (Completeness, Coherence, Precision, Scope, Compliance) with each tagged as Blocking or Non-blocking — under self-application the Precision findings include the recorded spot-check sample — an **Uncertain Findings** subsection listing all uncertain findings with their disposition, and **Free-form Feedback** for observations that don't fit structured categories.
 
 ## Notes
 

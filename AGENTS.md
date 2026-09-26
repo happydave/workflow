@@ -72,6 +72,7 @@ This repository is public and holds only generic procedure. Site-specific values
 - `claude-code.md` — Claude Code CLI usage reference for task delegation and automated operations
 - `debug.md` — AI agent debugging methodology (structured hypothesis generation, bias mitigation)
 - `evidence.md` — evidence assessment rules (Hub for Logs, Metrics, Groundcover)
+- `measurement.md` — what a plan requires of a measurement (run early, size the batch from the variance seen, assert starting conditions, the instrument reports itself) and of a property harness (violations carry evidence, exemptions expire, non-vacuity, the harness's client is tested)
 - `authoring-skills.md` — how we write skills: directive not narrative, application-tested; synthesizes superpowers `writing-skills` + tickets `creating-skills`
 - `tooling.md` — tool-selection policy and credential handling for external tools
 

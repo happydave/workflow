@@ -45,20 +45,22 @@ The Code and Complete actions use these tags to know which outcomes the agent ca
 
 Choosing `[human]` when `[agent]` would do is a real failure mode: it defers to the owner a check the agent could have run, and it lets a result that *looks* right on automated metrics pass without anyone inspecting the artifact. If you can look at the thing, tag it `[agent]` and look.
 
-**A verification must be able to fail.** Choose each verification's inputs so that an implementation without the behavior, without any one clause of it, or looser than it gives a different result, and say in the verification what that implementation would give. Work an example value through the rule it tests, with the constants the survey records for that rule (open the code and record them if it does not), and check the value passes on a correct implementation too. Replace a value that gives the same outcome either way: a multiplier of 1, an armour of 0, a value equal to a default or a fallback, one that rounds to the same result, a speed whose step fits inside the rule's normal allowance, a name already in the case the code folds to. An assertion loose enough to accept both results — a wide range, "plausible", "about" — fails the same way. Where a behavior or edge case names several shapes or actors — each kind of state a restart carries across, a second player, a player who leaves mid-action — name a test that exercises each one, not only the first. This chooses the values for the cases the plan already names, and adds a case only for a clause no case reaches; it does not add a catalog. A verification that cannot fail is found at Code's break pass as a control that fails nothing (`Code.md` step 4; WIs 1756, 1757, 1824, 1827).
+**A verification must be able to fail.** Choose inputs that an implementation without the behavior, without any one clause of it, or looser than it would answer differently, and say what that implementation would give. Work one example through the rule with the constants the code holds, and check it passes on a correct implementation. Replace a value that gives the same outcome either way: a multiplier of 1, an armour of 0, a value equal to a default or a fallback, one that rounds to the same result, a name already in the case the code folds to; an assertion loose enough to accept both results — a wide range, "plausible", "about" — fails the same way. Where a behavior names several shapes or actors, name a test for each. This chooses values for the cases the plan already names and adds a case only for a clause no case reaches. A verification that cannot fail surfaces at Code's break pass (`Code.md` step 4). Source: WIs 1756, 1757, 1824, 1827.
 
-Certain feature shapes have repeatedly produced defects that surfaced only at implementation. When the feature includes one of these, the plan must pin the detail explicitly:
+Feature shapes that have repeatedly hidden a defect until implementation; when the feature includes one, the plan pins the detail:
 
-- **An authentication default** — include one scenario per credential kind the system accepts (password, certificate, token, …), not just the default path.
-- **A server-initiated message triggered by a client request** (a retained message on subscribe, a replay on connect) — state its order relative to the acknowledgement of the request that triggered it.
-- **A replicated-state change** — say which node acts on apply and which acts on the proposer's result, and in what order those may interleave; defects live in the interleavings a plan does not name.
-- **A shared identifier** (a key, a code, a name format used by more than one component) — state its exact form and which package owns it.
-- **A gate command that includes a test-binary flag** — name the exact package path, not a `./...` pattern; other test binaries in the tree reject the flag.
-- **A critical section split across two locks** (a record sealed under one lock and made durable under another, a check under one and the act under the next) — name what another caller can observe between them and what a crash between them leaves behind, and state what the acknowledgement of the whole promises and whether it may precede the part under the second lock (WI 1490: an acknowledgement preceded the fsync it reported).
-- **A destructive, irreversible, or outward-facing operation** — name the decision that governs it and state that it is a pure predicate the operation calls, computing everything it decides on (`AGENTS.md`, *A destructive operation decides in a pure predicate*; WIs 1378, 1827).
-- **A rule that follows references through content data** (chains, conditions, links between records) — state how each recursion is bounded, and verify it with data that loops (WI 1756: a loop in the content overflowed the stack).
-- **The removal or rename of a package, file, or exported name** — list every importer and caller, found by search, among the files the plan changes (WI 314).
-- **A long-running command run under a service manager** — run it headless for a minute and record its output rate and which stream carries it before deciding where its output goes (WI 1433: a status screen redrawn into the journal at about 300 lines a minute).
+- **An authentication default** — one scenario per credential kind accepted, not only the default path.
+- **A server-initiated message triggered by a client request** (a retained message on subscribe, a replay on connect) — its order relative to the acknowledgement of the request.
+- **A replicated-state change** — which node acts on apply, which on the proposer's result, and how those may interleave.
+- **A shared identifier** (a key, a code, a name format used by more than one component) — its exact form and the package that owns it.
+- **A gate command with a test-binary flag** — the exact package path, never a `./...` pattern.
+- **A critical section split across two locks** — what another caller can observe between them, what a crash between them leaves behind, and whether the whole's acknowledgement may precede the part under the second lock.
+- **A destructive, irreversible, or outward-facing operation** — the decision that governs it, a pure predicate the operation calls that computes everything it decides on (`AGENTS.md`).
+- **A rule that follows references through content data** (chains, conditions, links between records) — how each recursion is bounded, verified with data that loops.
+- **The removal or rename of a package, file, or exported name** — every importer and caller, found by search, among the files the plan changes.
+- **A long-running command run under a service manager** — its headless output rate and stream, measured for a minute before choosing where the output goes.
+
+Source: WIs 314, 1378, 1433, 1490, 1756, 1827.
 
 **Migration note.** The prior two-way scheme used `[visual/manual]` for everything non-automated. An existing `[visual/manual]` tag should be read as `[human]` by default (the conservative reading); re-triage it to `[agent]` opportunistically when the check is in fact one the agent can perform by inspection.
 Example:
@@ -133,6 +135,7 @@ The planning process MUST identify all applicable guidelines and document them i
 
 - Inspect the project root and purpose to determine which guidelines apply (e.g., `skills/go.md` for Go projects, `skills/typescript.md` (plus the applicable profile) for TypeScript projects, `skills/docker.md` for Docker-based builds, `skills/markdown.md` whenever the change writes or edits a Markdown file, such as a README, whatever the project's language). A work item that creates a repository includes a README among its changes.
 - `skills/tooling.md` applies whenever the work depends on an external tool (a CLI, MCP server, or editor extension), independently of language. Tool-specific reference material lives in `knowledge/tools/`.
+- `skills/measurement.md` applies whenever the work item includes a measurement (a benchmark, a scale run, a resource envelope) or builds a harness that checks properties over runs.
 - Record each applicable guideline and its defined build/test steps in the plan's Applicable Guidelines section.
 - If a project spans multiple guidelines (e.g., Go + Docker), list all of them.
 
@@ -146,22 +149,6 @@ The planning process MUST identify all applicable guidelines and document them i
 ### Cross-Feature Relationships
 
 - Cross-feature dependencies and ordering principles are introduced when they become ambiguity sources; these may be deferred if not genuinely necessary for understanding individual features
-
-### Measurements and Property Harnesses
-
-When the work item includes a measurement (a benchmark, a scale run, a resource envelope), the plan requires:
-
-- **Run it early.** The measurement runs at a nominal scale as soon as it compiles, not at the end, and is repeated until its run-to-run variance is visible. A measurement that first executes on the final day discovers its harness bugs on the final day.
-- **Size the batch from the variance already seen.** The nominal runs show how often the effect appears and what uncontrolled condition it follows. When it appears in a fraction of runs, state how many runs an arm needs to see it and the smallest p the design can give; when it follows a condition the harness does not control, control it, or balance it across arms, before spending the batch. Where the nominal runs come after `plan.md`, the sizing goes into it as a dated amendment before the batch is spent; a reservation that cannot hold the batch is said to be so, and the result is reported as descriptive. A condition that was controlled is part of the claim and is stated with the result. A batch sized by the clock measures the clock (WI 1657: p = 0.17 from five pairs whose arms drew unlike conditions the nominal runs had already shown).
-- **Assert starting conditions.** The measurement checks the preconditions it depends on (a settled machine, available ports, an empty data directory) and refuses to run when they do not hold, naming what it saw — rather than assuming them and producing a number that looks like a finding.
-- **The instrument reports its own state.** An instrument outside the population it measures — a probe, a load client, a sampler — records enough of itself (what it sent, what it received, how far behind it ran, what it failed to do) that each figure can be attributed to the system or to the instrument. A figure that could be either is not yet a result (WI 1618).
-
-When the work item builds a harness that checks properties (invariants over runs, simulation checks), the plan additionally requires:
-
-- **Violations carry evidence.** Each reported violation includes the state of the participants at the moment it happened, not only the fact of the violation. A one-line verdict forces a re-run with hand-added tracing for every diagnosis.
-- **Exemptions expire.** An allowance carved out of a property names the work item that will remove it, and the suite reports how many times it fired. A silent exemption is load-bearing scope no one is tracking.
-- **Properties state their non-vacuity.** For each property, say what makes it non-vacuous and assert that too (e.g., a run must actually deliver and acknowledge something). A property that passes over an idle system verifies nothing.
-- **The harness's own client is tested.** The harness speaks a protocol; test its client against the same specification the product is judged by. When the harness reports a defect, the harness is one of the suspects.
 
 ## Planning Workflow
 
@@ -177,16 +164,14 @@ These are not sequential phases — they are aspects of planning that apply thro
 
 **Research & Elaborate** — investigate technical feasibility, domain details, data flows, security/privacy needs, resource needs, risks, and non-functional requirements. Aggressively capture all findings directly into `plan.md`. Draft high-level invariants and goals. Refine descriptive outcomes (no code). This is intended as deep scrutiny to ensure the feature plan has sufficient detail to implement confidently and correctly. Avoid "double dipping" by documenting findings in the file rather than explaining them in chat.
 
-**Open-and-verify** — a standing discipline within Research & Elaborate, checked again at Critically Assess: every concrete factual claim about existing code, content, or data must trace to a file opened during this planning session. This governs survey findings, required behaviors, and scenarios — if the plan asserts what a function returns, what a data file contains, which comment pins a value, or what a scenario will observe from shipped content, open that artifact and confirm the assertion before writing it down.
-
-Recall and pattern-matching are a starting point, never the last step before a claim lands in the plan. A remembered fact is a hypothesis; an opened file is a finding. Match the verification to the claim's scope: when the plan asserts a file is *free of* something (a string, a licence header, a dependency), the check is a search over the whole file, not a read of its head — absence claims are only as good as the coverage of the look. When the plan cites a compound condition as the reason a case is refused or reached, evaluate every clause for that case and name the ones that hold: a clause is the reason only where no other holds too, and the file can be opened and still read for the clause that fits the story (WI 1705). When the plan cites a **location** — a file and line, or a line range — re-derive it with a search that returns the line (`grep -n`, a symbol lookup) at the moment it is written down. Having opened that file earlier in the session does not license a location written later: lines move under renames, edits and intervening reads, and a wrong line reads as a finding rather than as a guess, so the implementer follows it. Claims about artifacts that do not yet exist are exempt — nothing can be opened — so this rule binds assertions about what is already there, which is precisely where a confident-but-stale memory does its damage. Apply `skills/evidence.md` to survey claims: label them by confidence, and treat a number inherited from another document, task, or measurement as a Hypothesis until it is confirmed for *this* task (a result measured for one task does not automatically bound a different task that resembles it).
+**Open-and-verify** — a standing discipline within Research & Elaborate, checked again at Critically Assess: every concrete claim about existing code, content, or data traces to a file opened this session, and a remembered fact is a hypothesis until it does. Match the check to the claim: an absence claim (free of a string, a header, a dependency) is a search over the whole file; a compound condition cited as the reason a case is refused or reached is evaluated clause by clause, naming the ones that hold; a cited location (a file and line) is re-derived by a search that returns the line at the moment it is written, not from an earlier read. Claims about artifacts that do not yet exist are exempt. Survey claims carry `skills/evidence.md`'s confidence labels, and a fact or number inherited from another document, task, or measurement is a Hypothesis until confirmed for this task. Source: WIs 1210, 1705.
 
 **Test (Descriptive)** — describe validation approaches: expected behaviors, failure modes, edge case scenarios, and thought experiments that confirm the plan is sound. No code or tests written — this is descriptive verification of the plan itself.
 
 **Critically Assess** — check for gaps, ambiguity, contradictions, over- or under-scoping.
 - Invariants are provably true, contain no unstated assumptions, and don't implicitly contradict other invariants
 - Behaviors and verifications are sufficient to confirm correctness without guesswork
-- Every concrete claim about existing code, content, or data was verified against an opened file this session, not written from recall, and every cited location was re-derived by a search when it was written rather than remembered from an earlier read (see **Open-and-verify** above)
+- **Open-and-verify** holds: every concrete claim traces to a file opened this session, and every cited location was re-derived when it was written
 
 **Refine** — after any significant decisions, discoveries, or plan changes, apply another round of assessment and critical assessment to ensure the whole plan remains cohesive and consistent. Planning is not a single pass — it converges through iteration.
 
