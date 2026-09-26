@@ -6,7 +6,7 @@ description: Use when writing, fixing, or choosing the tier of a test that drive
 # Live-Stack Testing
 
 A test that acts on a running system from outside and waits for it to answer. The Go forms of the
-in-process rules are in `skills/go.md`; negative controls are `Test.md` step 3.
+in-process rules are in `skills/go.md` and `skills/go/testing.md`; negative controls are `Test.md` step 3.
 
 ## Choose the tier first
 

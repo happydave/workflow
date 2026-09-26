@@ -59,7 +59,7 @@ This repository is public and holds only generic procedure. Site-specific values
 - `Archive.md` — archive a closed work item, on request only
 
 **skills**
-- `go.md` — Go tooling, testing, and conventions
+- `go.md` — Go tooling, testing, and conventions; `go/` holds its sub-files for concurrent tests, mocks, long-lived handlers, and lint
 - `rust.md` — Rust and Bevy conventions
 - `typescript.md` — TypeScript hub, with profiles for VS Code extensions and web apps
 - `live-stack-testing.md` — tests that drive a running multi-process system
