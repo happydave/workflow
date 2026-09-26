@@ -86,7 +86,7 @@ This repository is public and holds only generic procedure. Site-specific values
 **knowledge** (reference material — look these up as needed; non-normative; the site overlay's `knowledge/` adds site facts)
 - `tools/kind.md` — kind (Kubernetes in Docker): context switching, node nofile limit, arm64 platform matching, disk/max-pods, serial image pulls
 - `vscode-agent-registration.md` — registering agents for VS Code
-- `negative-controls.md` — worked cases behind `Test.md` step 3's control rules: a guard tested by driving the operation, a mutation the suite ignored, a control that passed by chance, breaks that never landed, ran stale code or hid their target, fixtures that could not carry the property or sampled too late
+- `negative-controls.md` — how a full negative-control sweep runs (planning the set, restore and caches, reading a break that fails nothing, the trigger table, the record), and the worked cases behind the rules: a guard tested by driving the operation, a mutation the suite ignored, a control that passed by chance, breaks that never landed, ran stale code or hid their target, fixtures that could not carry the property or sampled too late
 
 ## Typical Pipelines
 

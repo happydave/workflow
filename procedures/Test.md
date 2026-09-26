@@ -46,99 +46,49 @@ holds this run's evidence, not the recipe.
 
 ### 3. Run the Negative Controls
 
-A test that passes against a deliberately broken implementation is not evidence. For each behavior
-the plan specifies in its **Required Behaviors & Verifications** or **Edge Cases**, remove or invert
-that behavior and confirm the intended tests fail on the cases that target it. The scope is the plan's behaviors: not
-every new test, and not every line of the change. Read the first column of
-the table below before breaking anything, and again after each run, since some rows are keyed to a
-result: a matching row adds to the obligations here, and a behavior that matches no row owes only
-these. Worked cases are in `knowledge/negative-controls.md`.
+A test that passes against a deliberately broken implementation is not evidence. A control removes
+or inverts one behavior and confirms that a test fails at the assertion targeting it. `Code.md`
+step 4 ran one for each clause as its test was written, so Test controls only what that pass cannot
+have settled:
 
-Plan the set of controls:
+- **a guard on a destructive, irreversible, or outward-facing operation** — run against the
+  predicate that decides, never by driving the operation with arguments the test did not create
+  (*A destructive operation decides in a pure predicate*, `AGENTS.md`). Where the decision is not
+  separable from the act, do not run the control: the non-separability is the finding, and the
+  restructuring comes first;
+- **each invariant** in the plan's **Invariants & Hard Constraints**;
+- **a test added or changed since Code's break pass** — by review, by a fix in step 2, or by a
+  fixture change, which re-opens every assertion that reads the fixture — and a clause `code.md`
+  shows no break for;
+- **a behavior that failed in the wild** — the defect this work item fixes, or one step 2 found.
 
-- **Name where each observable can be seen**: the fixture feature that would differ if the behavior
-  were violated — a channel, a field, a state — and the moment the assertion samples it. An
-  observable the fixture cannot carry is untested however many controls fail, because a control
-  trips only assertions the fixture lets differ. An effect that ends before the assertion samples —
-  a goroutine that starts and returns, a flag a later step clears, input that stops before the
-  broken state is reached — is asserted through the decision that produces it, with a test still
-  reaching the call site, or the input is extended until the effect holds when the assertion
-  samples. When a fixture changes, every assertion reading it is named again and its control re-run,
-  not only the new ones.
-- **One break per observable.** Read the observables from what the behavior claims rather than from
-  the count of its verification bullets: split a claim wherever a plausible weaker implementation
-  could satisfy one part of it and not the other.
-- **Where another site checks the same rule**, break each site alone and then all of them together.
-  A site an earlier refusal makes unreachable is one finding, not a split repeated for every
-  observable whose path crosses it.
-- **Two breaks are exempt from one-per-observable**: the combined break just described, and a break
-  re-expressed because the first attempt failed before the assertion that targets the behavior (the
-  table's row *fails at an earlier assertion, or before any assertion runs*). A re-expression and the attempt it replaces are both recorded, each as its own
-  row, naming the other.
+A behavior outside this set is not controlled at Test and needs no row saying so.
 
-Run them one at a time:
+**The full sweep** — a control for every behavior in the plan's **Required Behaviors &
+Verifications** and **Edge Cases** — runs when the plan or the owner asks for it, on a
+hardening pass (`RapidIteration.md`), and on a work item that touches code whose defects stay
+silent until they are costly — consensus, replication, failover, durability. A sweep follows
+`knowledge/negative-controls.md`: how the set is planned, the restore and cache rules between
+controls, how a result is read, and the record it keeps.
 
-- **Start from a committed tree and restore to it between controls** — a combined break is one
-  control. `git status` shows the tree clean before the first control, because a break restored by
-  checkout reverts every uncommitted edit in its file (WI 1828); a test fixed during this step is
-  committed before the next control, so the next restore keeps it. After the last control, a diff
-  against that commit shows nothing: a control left applied forges every result after it.
-- **Run with any compiled-code cache off** — for Python, `-B` with `__pycache__` removed; Go's
-  caches key on content, so `-count=1` is enough there. A cache revalidated by timestamp and size
-  runs the previous break after a same-size edit within the timestamp's resolution, while the
-  source still reads as the new break (WI 1732).
+For each control run here:
 
-Read what came back:
-
-- **Read which cases failed, not only that something did.** A break that fails more cases than
-  expected, or fewer, has located a gap.
-- **A break that hangs or panics ends its test binary**, and no case after it in that binary ran.
-  Run controls with a timeout, read the log for the panic or the timeout's dump, and re-run each
-  case the break targets on its own (Go's `-run`, or the runner's equivalent) before reading which
-  cases failed. A targeted case that panics again on its own failed before any assertion (the row
-  *fails at an earlier assertion, or before any assertion runs*) (WI 1275).
-- **Where a behavior is reached by more than one entry point**, say which of them the suite covered
-  it at, whether the break failed something or nothing.
-- **Show the break is live** before reading a nil result as missing coverage: a temporary test that
-  reads the mutated state, or its first effect, directly, deleted once it has answered and before
-  the restore is checked, because a
-  break that never executed reports the same nothing. Where the break is unobservable by
-  construction — two checks of one rule that refuse identically — the combined break discharges
-  this, and the unobservability is itself the finding.
-- **A break that fails nothing is a finding for step 5**, with four readings to separate: the
-  behavior has no test; the break ran but its effect ended before the assertion sampled, which the
-  liveness probe tells apart from the last reading; another check already does the broken one's
-  work; or nothing reaches what you broke. Name which one it was — or which ones, since a masked
-  path is both unreached and covered by whatever masks it.
-- **Read the multi-site split**: every single break passing while the combined one fails means the
-  sites are redundant, unless no case reaches one site alone — a fixture that trips two sites at
-  once hides each behind the other, which is a fixture gap; a single break that fails on its own is the load-bearing one, and the sites
-  that passed are either its redundant copies or unreachable, which the applied diff tells apart; a
-  combined break that also fails nothing means the behavior is untested.
-
-Record what you did:
-
-- **Each control is a row in `test.md`**, in these columns: the break as written — the exact expression — and where it was applied, the
-  fixture feature and moment its assertion reads, the applied-state check, the tests it failed, the
-  assertions that tripped, anything it failed or spared unexpectedly — including a failure at an
-  assertion belonging to another behavior — the runs, and the reading where nothing failed, left
-  blank where something did. One run completes a deterministic control, such as an error versus
-  nil.
-- **Where a control could not be run**, name the behavior and the reason, so an omitted control is
-  never indistinguishable from one that passed. A plan verification with no test is not an omitted
-  control: it is a finding for step 5 in its own right. An observable the fixture cannot carry is recorded
-  the same way, as untested, and is a finding for step 5.
-
-| When the behavior or its control… | Then… | Source |
-|---|---|---|
-| guards a destructive, irreversible, or outward-facing operation | run the control against the predicate that decides, never by driving the operation with arguments the test did not create — *A destructive operation decides in a pure predicate*, `AGENTS.md`. A control runs with the guard removed, so a control that reaches the operation performs it. Where the decision is not separable from the act, do not run the control: the non-separability is the finding, and the restructuring comes first. | WI 1378; the 2026-09-08 loss |
-| could pass or fail by chance — a choice among waiters, scheduling, a random port, a race | one red run is a coin. Run the control repeatedly and record failed-of-total; the passes in that split, over the total, are the rate at which the test misses this defect, and the remedy is to restructure the control so a wrong implementation cannot pass it by luck — typically by extracting the decision and driving it directly, where one run then decides. The remedy is owed even at 0 misses in N: N runs bound the rate, they do not remove the chance. Where the test can also fail by chance on the unbroken tree, run that tree the same number of times, or a red control is a coin of its own. | WI 1500 |
-| fails at an earlier assertion, or before any assertion runs | that is not coverage of this behavior: the tripped assertion must be the one that targets it. The test has other teeth; this behavior may have none. Re-express the break to reach the assertion that targets this behavior — holding the earlier claim constant — and record both attempts. | WI 1486 |
-| is broken by deleting a block | express the break so the artifact still builds — flip the whole condition (`if false && (…)` — a bare `false &&` prefix binds only to the first operand of an `||`), assign the zero value, discard the result, return early — and delete only where the deletion leaves nothing unused. A deletion that strands a variable or an import fails the build, and a build failure reads as *the tests did not notice* while proving nothing about the suite. | WIs 1644, 1646, 1667–1669, 1275 |
-| is broken by moving a derived value — a hash, a timestamp, an identifier the view under test does not carry | move the value the property is about, and confirm the test can tell the difference: a timestamp shifted by a second under a millisecond assertion, or a key changed so the record leaves the view entirely, reports *did not fail* about something else. | WIs 1648, 1670 |
-| mutates a target that is not unique in the file, is applied by a replace helper or script, or runs against an artifact a stale build could answer for | verify the applied state — the diff, a fresh build of the mutated tree — before reading the result, and record that check in its column. The result is exactly what a broken control forges. | WIs 1401, 1403 |
-
-This is `skills/evidence.md`'s "actively seek contradictory evidence" applied to the suite itself: a control that *should* fail is what distinguishes a test with teeth from a test that agrees with whatever it is given.
+- commit step 2's fixes and the review's test changes first, then start each control from that
+  commit and restore to it, with compiled-code caches off; when the last one is done, a diff
+  against that commit shows nothing;
+- express the break so the artifact still builds — flip the whole condition, assign the zero
+  value, discard the result, return early (`skills/go.md` for Go) — and verify it applied before
+  reading the result; a guard's control runs only the predicate's tests and the tests that hand
+  the operation arguments they created;
+- read which cases failed, not only that something did: the tripped assertion is the one that
+  targets the behavior, or the behavior has no proven coverage;
+- run a control a wrong implementation could pass by chance — a choice among waiters, a race, a
+  random port — repeatedly, and the unbroken tree as often; record failed-of-total for both, and
+  restructure the control so that one run decides;
+- a break that fails nothing is shown live first — a temporary test reading the mutated state,
+  deleted before the restore check — and is then a finding for step 5: no test holds the behavior,
+  the effect ended before the assertion sampled, another check masks it, or nothing reaches it.
+  Name which.
 
 ### 4. Produce `test.md`
 
@@ -148,7 +98,7 @@ Document the testing process and results in a `test.md` file within the work ite
 - **Test Summary**: High-level pass/fail status and summary of coverage. A claim that a fix ended an intermittent failure carries the run count it rests on against the prior rate (`skills/evidence.md`, *State the Sample a Claim Rests On*); `Complete.md` refuses the claim without it.
 - **Automated Results**: Output or summary of test suite executions.
 - **Manual Verification**: Description of manual steps taken and their outcomes.
-- **Negative Controls**: a row per control in step 3's columns, and every behavior left uncontrolled with the reason, whether or not any control ran.
+- **Negative Controls**: one line per control — the behavior, the break and where it was applied, the applied-state check, the test and assertion that failed. A control that failed nothing, failed at another assertion, ran repeatedly, or could not be run carries the full record in `knowledge/negative-controls.md`'s columns, as does every control of a sweep. Say whether the full sweep ran.
 - **Findings**: A clearly enumerated list of all problems found.
 
 ### 5. Handle Findings

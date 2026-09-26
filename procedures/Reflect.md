@@ -39,6 +39,8 @@ correction landed in the runbook itself rather than only in `test.md`.
 
 Focus on issues that originated from the process, documentation, or tooling — not incidental problems like a service being temporarily unavailable.
 
+Record friction here on its first occurrence, even when it warrants no change: the reflection is where a later session finds that a problem has happened before.
+
 ### 3. Produce Recommendations
 
 For each significant issue, propose a concrete change to prevent or reduce it in future implementations. Recommendations should target specific documents or artifacts:
@@ -51,6 +53,8 @@ For each significant issue, propose a concrete change to prevent or reduce it in
 - New work items (if the issue warrants separate follow-up)
 
 Avoid vague recommendations. "Improve documentation" is not actionable. "Add an invariant to feature 08 stating that `.vscode/tasks.json` commands must use Makefile targets" is.
+
+A recommendation that changes the workflow repo — a procedure, a skill, a directive, or a new work item against it — is made for a problem experienced repeatedly: the same root cause, in any project, in this work item and in at least one earlier one, found by searching earlier reflections under `docs/pending/` and `docs/archive/` and named by work item ID; or once, when the occurrence caused a loss (data, a host, published content). Where an earlier reflection shows a rule already covers the problem, the recommendation goes to that rule or to its application, not beside it. A first occurrence stays in step 2, and a reflection that found no earlier one says what it searched for. Recommendations to the plan, the project's docs, or its tooling carry no such bar. Source: WI 1878.
 
 ### 4. Human Review
 
