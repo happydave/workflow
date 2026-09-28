@@ -60,9 +60,9 @@ have settled:
   separable from the act, do not run the control: the non-separability is the finding, and the
   restructuring comes first;
 - **each invariant** in the plan's **Invariants & Hard Constraints**;
-- **a test added or changed since Code's break pass** — by review, by a fix in step 2, or by a
-  fixture change, which re-opens every assertion that reads the fixture — and a clause `code.md`
-  shows no break for;
+- **a test added or changed since Code's break pass with no break of its own in `code.md`** — by a
+  review fix outside Code's loop, by a fix in step 2, or by a fixture change, which re-opens every
+  assertion that reads the fixture — and a clause `code.md` shows no break for;
 - **a behavior that failed in the wild** — the defect this work item fixes, or one step 2 found.
 
 A behavior outside this set is not controlled at Test and needs no row saying so.

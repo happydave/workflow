@@ -80,7 +80,7 @@ Also scan exhaustively for mechanical issues regardless of change category:
 
 ### 4. Agent: Report Findings
 
-For each finding, apply one of three responses before reporting. Whichever response applies an edit, the finding is recorded as resolved only after the file's diff has been read: a script's output can show that an edit failed, never that it succeeded. An edit that did not land leaves the finding open, and a failed precondition is evidence about the text — re-open the file before retrying (WI 1657).
+For each finding, apply one of the four responses below before reporting. Whichever response applies an edit, the finding is recorded as resolved only after the file's diff has been read: a script's output can show that an edit failed, never that it succeeded. An edit that did not land leaves the finding open, and a failed precondition is evidence about the text — re-open the file before retrying (WI 1657).
 
 **Fix directly** — if there is an obvious, good solution and the risk is low: apply it, then include the finding in the summary as resolved. This is the default for linter-class issues, typos, name mismatches, and any substantive issue where the correct fix is unambiguous.
 
@@ -88,12 +88,14 @@ For each finding, apply one of three responses before reporting. Whichever respo
 
 **Stop and escalate** — if there is no obvious solution and the risk is high: halt and surface to the Reviewer before proceeding. High-risk decisions include: security vulnerabilities, data loss scenarios, breaking changes to external APIs or contracts, and scope changes that meaningfully deviate from the plan.
 
+**Return to Code's loop** — a plan item the code does not build, or that no test holds — a Required Behavior, an Edge Case, an invariant, a planning decision's stated output — goes back through `Code.md` step 4's loop, and this response takes precedence over the two fixes above however plain the fix; a high-risk item still stops and escalates first. Implement it, write its tests, see each fail once under its break, and log it in `code.md` as a Code entry naming this review, with its Verification Results row updated. Then re-read that item against the plan, with Correctness's search for the paths and readers of what the loop changed, not the whole diff again, and record the finding as resolved with a pointer to the entry. The loop's edits are this review's edits for the run below; `Code.md` step 5 is not repeated, and the version is not bumped again. Source: WIs 1799, 1891, 1906, 1922.
+
 After the last edit this review makes to code, run the build steps of the plan's Applicable Guidelines and the tests covering what the review's edits touched, in the form the guideline gives for a later fix, or over the touched packages or crates where it gives none. A review that edited no code cites Code's recorded run instead (`AGENTS.md`, *A test suite runs once for each tree it certifies*). The disposition rests on that result: a red run is a finding, and a review that leaves the tree red does not proceed to Test.
 
 Organize the findings summary into three tiers:
 
 - **Escalations** — decisions stopped for Reviewer input, and any blocking finding the review cannot resolve itself; include what was found, why it is high-risk or blocking, what options exist, and which one is recommended and why
-- **Resolved** — issues found and fixed, including both direct fixes and decided-and-proceeded cases; mark each finding that was blocking, and include the rationale for any judgment calls
+- **Resolved** — issues found and fixed, including direct fixes, decided-and-proceeded cases and items returned to Code's loop; mark each finding that was blocking, and include the rationale for any judgment calls
 - **Observations** — non-blocking notes the Reviewer may want to be aware of but that do not require action before Test
 
 Write the findings summary to `codereview.md` in the work item folder (see Document Storage).
