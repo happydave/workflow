@@ -88,7 +88,7 @@ For each finding, apply one of three responses before reporting. Whichever respo
 
 **Stop and escalate** — if there is no obvious solution and the risk is high: halt and surface to the Reviewer before proceeding. High-risk decisions include: security vulnerabilities, data loss scenarios, breaking changes to external APIs or contracts, and scope changes that meaningfully deviate from the plan.
 
-After the last edit this review makes, re-run the build and test steps of the plan's Applicable Guidelines. The disposition rests on that run: a red run is a finding, and a review that leaves the tree red does not proceed to Test.
+After the last edit this review makes to code, run the build steps of the plan's Applicable Guidelines and the tests covering what the review's edits touched, in the form the guideline gives for a later fix, or over the touched packages or crates where it gives none. A review that edited no code cites Code's recorded run instead (`AGENTS.md`, *A test suite runs once for each tree it certifies*). The disposition rests on that result: a red run is a finding, and a review that leaves the tree red does not proceed to Test.
 
 Organize the findings summary into three tiers:
 

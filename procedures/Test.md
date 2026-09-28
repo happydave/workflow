@@ -36,7 +36,10 @@ Gather testing instructions from the sources identified in the **Input & Guidanc
 
 ### 2. Execute Tests
 
-Run the identified test suites and perform manual verification. If any steps require human intervention (e.g., UI verification, hardware interaction), the AI agent must explicitly ask the user to perform these steps and report the results.
+Cite each identified suite's result: Code's recorded run, with Code Review's runs over its own edits;
+run a suite here only for an edit made since both, or where no earlier step ran it — an integration,
+live, performance or manual check (`AGENTS.md`, *A test suite runs once for each tree it
+certifies*). Perform the manual verification. If any steps require human intervention (e.g., UI verification, hardware interaction), the AI agent must explicitly ask the user to perform these steps and report the results.
 
 When the verification is a live or environment-driven procedure, execute the project's runbook for
 it (`Runbook.md`) and record in `test.md` the runbook used, every deviation, and every new trap; then
