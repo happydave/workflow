@@ -42,7 +42,8 @@ Update the work item status in the project doc (if a project is specified).
 If this completion **closes a design line or milestone** (its last open work item is now closed),
 move that line's completed rows and version-history prose from the project's anchor document
 into the project's history log **in the same edit**, leaving the anchor a one-line summary +
-history link. Anchors carry open work; history carries done work — offloading at the closure
+history link. Where the project keeps a roadmap, the line's row moves to `done` in the same edit
+(`Roadmap.md`). Anchors carry open work; history carries done work — offloading at the closure
 boundary keeps the anchor from silently re-accumulating (the failure mode is rows accreting
 until a project assessment forces a cleanup).
 

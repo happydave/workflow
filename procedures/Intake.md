@@ -32,7 +32,7 @@ Add only what costs nothing at capture time:
 
 An intake file rests in `docs/intake/` until it is triaged. The visible contents of `docs/intake/` are exactly the untriaged queue — an empty listing means caught up.
 
-Triage (`Triage.md`) assigns each item in the file a disposition: promoted to one or more work items, spawned a project, merged into an existing work item, or declined with a one-line reason. Each disposition is appended to the intake file, and once every item in the file has one, the file moves to the sibling `docs/intake-processed/`.
+Triage (`Triage.md`) assigns each item in the file a disposition: promoted to one or more work items, spawned a project, placed on a project's roadmap as a line, merged into an existing work item, or declined with a one-line reason. Each disposition is appended to the intake file, and once every item in the file has one, the file moves to the sibling `docs/intake-processed/`.
 
 Dispositions are one-directional and write-once per item: the intake file records what it spawned; nothing ever links back to an intake file, and a recorded disposition is never revised. A multi-item file with items still open stays in `docs/intake/`, partial dispositions recorded inline, until every item is dispositioned.
 

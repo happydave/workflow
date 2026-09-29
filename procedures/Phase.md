@@ -86,7 +86,7 @@ Tooling keys members by folder name, never by bare ID, because IDs in the tree a
    3. Read back the Planned members list and report, as **warnings, never refusals**, any entry that resolves to no work item ("planned, never created") or to a work item that does not declare this phase. The owner may well have dropped the entry deliberately; the warning exists because a work item intended for a phase and never written is exactly the "left behind" case.
    4. Confirm any exit criteria beyond membership are met, and run any phase-close check a skill applying to the members' changes defines (for Go, the phase-close race runs in `skills/go.md`). Record the evidence of both, with the commits it certifies, as a dated entry in the record. A failed check refuses the close; its fix is a work item that joins the phase.
    5. Set `status: complete`. Prefer `workflow-phase-complete`, which applies steps 1–3 and refuses on 2; by hand, apply the same gate and say so in the dated entry.
-   6. Update the owning project's document, as `Complete.md` has work items do. If this closes a design line, offload its completed rows to the project's history in the same edit.
+   6. Update the owning project's document, as `Complete.md` has work items do. If this closes a design line, offload its completed rows to the project's history in the same edit, and move the line to `done` on the project's roadmap when it keeps one (`Roadmap.md`).
 
 Phases **never auto-complete** when their last member closes, because exit criteria may exceed membership, and a phase **never blocks** a member's own completion or archival. The close gate is the only enforcement point.
 
@@ -100,7 +100,7 @@ There is no override flag. The owner can always edit the file by hand and the to
 
 ## Guidance
 
-- Sequencing between phases ("decompose checkpoint 3 when 2 is reached") is prose in the project document. It is a judgement made at a review, not a dependency edge, and is not modelled.
+- Sequencing between phases ("decompose checkpoint 3 when 2 is reached") is prose in the project document. It is a judgement made at a review, not a dependency edge, and is not modelled. The dependency that is modelled is a line's needs on the project's roadmap (`Roadmap.md`).
 - Keep the record short. Purpose and exit criteria are a paragraph each; a phase that takes longer to write than a work item is trying to be a design.
 - A phase spanning projects is still owned by one project and appears on that project's surfaces; the members' own backlogs are unchanged. A cross-cutting effort nobody owns is a project.
 - When a work item completes and it was the last open member of its phase, say so in the completion report and point here (`Complete.md`, step 3). Do not close the phase from a work item's pipeline.

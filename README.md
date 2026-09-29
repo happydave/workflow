@@ -30,7 +30,7 @@ The agent reads `AGENTS.md` at the start of each session and consults the refere
 
 ## Typical Pipelines
 
-**New project:** Create Project → Discover → Design → Design Review → Create Work Items (grouped into Phases when the design has checkpoints)
+**New project:** Create Project → Discover → Design → Design Review → Create Work Items (grouped into Phases when the design has checkpoints; lines kept on a Roadmap when there is more than one design)
 
 **Phase (a group of work items that must close together):** Create (`Phase.md`) → members run the Work item pipeline → Close (gated on no open member)
 

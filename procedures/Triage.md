@@ -77,12 +77,15 @@ not discovered mid-implementation.
 
 Create a work item per item (or per tightly-coupled cluster), carrying the
 hypothesis/intent, severity, and any flagged decisions. Record items deliberately
-deferred or out of scope as work items too — do not lose them.
+deferred or out of scope as work items too — do not lose them. An item that is a
+future line of a project rather than a work item — a whole area still to design — goes
+onto the project's roadmap (`Roadmap.md`) instead.
 
 ### 8. Disposition intake files
 
 For each intake file consumed, append a disposition per item: the work item IDs
-or project slugs it spawned, the existing work item it merged into, or declined
+or project slugs it spawned, the roadmap line it was placed on (`Roadmap.md`), the
+existing work item it merged into, or declined
 with a one-line reason. A recorded disposition is never revised. When every item
 in a file has a disposition, move the file to `docs/intake-processed/`. A
 multi-item file with items still open stays in `docs/intake/`, its partial

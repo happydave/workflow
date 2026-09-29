@@ -28,6 +28,7 @@ This repository is public and holds only generic procedure. Site-specific values
 - `WorkItem.md` — create and manage work items
 - `BugReport.md` — a defect captured as a work item with reproduction context
 - `Phase.md` — a group of work items, owned by one project, that must close together
+- `Roadmap.md` — a project's lines, what each needs before it can start, and the tech tree they form
 - `Runbook.md` — a dated operational procedure a project repeats, corrected by every run
 - `GitCommit.md` — stage by path and commit; never pushes
 - `GitMerge.md` — plan and execute a branch merge, recording the strategy
@@ -93,7 +94,7 @@ This repository is public and holds only generic procedure. Site-specific values
 
 ## Typical Pipelines
 
-- Project: `Create Project → Discover → Design → Design Review → Create Work Item(s)` (grouped into Phases when the design has checkpoints; see `Phase.md`)
+- Project: `Create Project → Discover → Design → Design Review → Create Work Item(s)` (grouped into Phases when the design has checkpoints; see `Phase.md`; lines kept on a Roadmap when there is more than one design; see `Roadmap.md`)
 - Phase (a group of work items that must close together): `Create (Phase.md) → members run the Work Item pipeline → Close (gated on no open member)`
 - Intake: `Capture (docs/intake/) → Triage → Work Item(s) or declined` (see `Intake.md`)
 - Work Item: `Plan → Plan Review → Code → Code Review → Test → Voice → Document → Reflect → Git Commit → Complete`
